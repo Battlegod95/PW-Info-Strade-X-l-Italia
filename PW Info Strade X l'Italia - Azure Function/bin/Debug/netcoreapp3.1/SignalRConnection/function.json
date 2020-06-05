@@ -1,0 +1,17 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions-3.0.3",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "methods": [
+        "get"
+      ],
+      "authLevel": "anonymous",
+      "name": "req"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/PW Info Strade X l'Italia - Azure Function.dll",
+  "entryPoint": "PW_Info_Strade_X_l_Italia___Azure_Function.SignalRConnection.Run"
+}
