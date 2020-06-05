@@ -1,13 +1,19 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "ChRVK2oH3q8uwI6usktF0DJOxsb8R15j7Bt4aS3jQq7f5pWnQfkZy+kofArIiinhEQjyj0A9QiwUmTxFB7k2qw==",
   "success": true,
   "projectFilePath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+=======
+  "dgSpecHash": "OCjxZO9iO1F2LwD+tOMg/CL9lFvHRiC7+fDVan8xZJkRjQFG+deHyunkQa2FPMfPUAN+yLjJs6ysCBR3C/H9aA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\PC\\Desktop\\Definitiva Clous\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [
-    "C:\\Users\\Filippo\\.nuget\\packages\\bootstrap\\4.5.0\\bootstrap.4.5.0.nupkg.sha512",
-    "C:\\Users\\Filippo\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
-    "C:\\Users\\Filippo\\.nuget\\packages\\popper.js\\1.16.0\\popper.js.1.16.0.nupkg.sha512",
-    "C:\\Users\\Filippo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\PC\\.nuget\\packages\\bootstrap\\4.5.0\\bootstrap.4.5.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\popper.js\\1.16.0\\popper.js.1.16.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
   ],
   "logs": []
 }

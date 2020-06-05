@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< Updated upstream
     "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {}
   },
   "projects": {
@@ -12,12 +13,25 @@
         "projectPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
         "packagesPath": "C:\\Users\\Filippo\\.nuget\\packages\\",
         "outputPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\obj\\",
+=======
+    "C:\\Users\\PC\\Desktop\\Definitiva Clous\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\PC\\Desktop\\Definitiva Clous\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PC\\Desktop\\Definitiva Clous\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+        "projectName": "WebApp_Infostrade",
+        "projectPath": "C:\\Users\\PC\\Desktop\\Definitiva Clous\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Desktop\\Definitiva Clous\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\obj\\",
+>>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Filippo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
