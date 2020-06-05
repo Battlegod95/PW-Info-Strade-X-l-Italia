@@ -1,0 +1,15 @@
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\ReceiveClient.exe
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\obj\Debug\netcoreapp3.1\ReceiveClient.csprojAssemblyReference.cache
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\obj\Debug\netcoreapp3.1\ReceiveClient.AssemblyInfoInputs.cache
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\obj\Debug\netcoreapp3.1\ReceiveClient.AssemblyInfo.cs
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.Azure.Amqp.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.Azure.EventHubs.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.Azure.Services.AppAuthentication.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\ReceiveClient\obj\Debug\netcoreapp3.1\ReceiveClient.csproj.CopyComplete

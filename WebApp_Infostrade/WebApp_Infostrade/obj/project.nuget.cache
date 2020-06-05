@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Jym6qCKDBEjgg+zJvpltRQveLYfylc0tibVcLWHT7y3Ah7O/VCSA3ebFuH8fix7SyU3eCmH06tbsNCjoOMk0fw==",
+  "success": true,
+  "projectFilePath": "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Filippo\\.nuget\\packages\\bootstrap\\4.5.0\\bootstrap.4.5.0.nupkg.sha512",
+    "C:\\Users\\Filippo\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
+    "C:\\Users\\Filippo\\.nuget\\packages\\popper.js\\1.16.0\\popper.js.1.16.0.nupkg.sha512",
+    "C:\\Users\\Filippo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

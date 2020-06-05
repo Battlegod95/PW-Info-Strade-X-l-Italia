@@ -1,0 +1,4 @@
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\SendClient\bin\Debug\netcoreapp3.1\SendClient.exe
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\SendClient\obj\Debug\netcoreapp3.1\SendClient.csprojAssemblyReference.cache
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\SendClient\obj\Debug\netcoreapp3.1\SendClient.AssemblyInfoInputs.cache
+C:\Filippo\PW_secondoanno\WebApp_Infostrade\SendClient\obj\Debug\netcoreapp3.1\SendClient.AssemblyInfo.cs
