@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jym6qCKDBEjgg+zJvpltRQveLYfylc0tibVcLWHT7y3Ah7O/VCSA3ebFuH8fix7SyU3eCmH06tbsNCjoOMk0fw==",
+  "dgSpecHash": "ChRVK2oH3q8uwI6usktF0DJOxsb8R15j7Bt4aS3jQq7f5pWnQfkZy+kofArIiinhEQjyj0A9QiwUmTxFB7k2qw==",
   "success": true,
-  "projectFilePath": "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+  "projectFilePath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Filippo\\.nuget\\packages\\bootstrap\\4.5.0\\bootstrap.4.5.0.nupkg.sha512",
     "C:\\Users\\Filippo\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",

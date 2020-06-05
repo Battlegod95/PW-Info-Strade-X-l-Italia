@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {}
+    "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {}
   },
   "projects": {
-    "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {
+    "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+        "projectUniqueName": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
         "projectName": "WebApp_Infostrade",
-        "projectPath": "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
+        "projectPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\WebApp_Infostrade.csproj",
         "packagesPath": "C:\\Users\\Filippo\\.nuget\\packages\\",
-        "outputPath": "C:\\Filippo\\PW_secondoanno\\WebApp_Infostrade\\WebApp_Infostrade\\obj\\",
+        "outputPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
