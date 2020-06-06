@@ -1,0 +1,12 @@
+{
+  "name": "sender",
+  "version": "0.0.0",
+  "description": "Sender",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "rsmq": "^0.12.2"
+  }
+}
