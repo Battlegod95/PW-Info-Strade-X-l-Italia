@@ -13,6 +13,11 @@ client.on("connect", (err) => {
 	console.log("connect");
 });
 
+client.on("ready", (err) => {
+	redisNotReady = false;
+
+});
+
 const SerialPort = require('serialport')
 const ByteLength = require('@serialport/parser-byte-length')
 
@@ -36,8 +41,8 @@ function parseMsg(data) {
 	//let byte2 = parseInt(data[2], 10).toString(2).padStart(8, '0');
 
 	console.log("byte 1 ", byte0); //gateway + id sensore
-	console.log("byte 2 ", byte1); //id incrocio
-	console.log("byte 3 ", byte2); //valore
+	//console.log("byte 2 ", byte1); //id incrocio
+	//console.log("byte 3 ", byte2); //valore
 
 	//ipotizziamo il protocollo indicato nell'esercitazione del  prof. Bortolani
 	let gateway = byte0.substring(0, 4); //primi 4 bit del byte : COMANDO
@@ -48,7 +53,7 @@ function parseMsg(data) {
 	let json = {};
 
 	//definire i dati di andata 
-	if (gateway == 'slot00') {
+	if (gateway == slo) {
 
 		json = {
 			"id_incrocio": id,
@@ -61,18 +66,14 @@ function parseMsg(data) {
 	console.log(json);
 
 	//push dei dati nella coda di redis
-	client.on("ready", (err) => {
-		redisNotReady = false;
-		client.rpush("dati", json);
+	client.rpush("dati", json.toString());
 
-		client.llen("dati", function (err, data) {
-			console.log("Lunghezza della lista: " + data);
-		});
+	client.llen("dati", function (err, data) {
+		console.log("Lunghezza della lista: " + data);
+	});
 
-		client.lpop("dati", function (err, data) {
-			console.log(data);
-		});
-
+	client.lpop("dati", function (err, data) {
+		console.log(data);
 	});
 
 }
