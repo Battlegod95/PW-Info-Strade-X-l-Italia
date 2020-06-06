@@ -1,3 +1,18 @@
+const redis = require("redis");
+let redisNotReady = true;
+let client = redis.createClient({
+	host: '127.0.0.1',
+	port: 6379
+});
+
+client.on("error", (err) => {
+	console.log("error", err)
+});
+
+client.on("connect", (err) => {
+	console.log("connect");
+});
+
 const SerialPort = require('serialport')
 const ByteLength = require('@serialport/parser-byte-length')
 
@@ -32,15 +47,32 @@ function parseMsg(data) {
 	var valore = data[2];
 	let json = {};
 
+	//definire i dati di andata 
 	if (gateway == 'slot00') {
 
 		json = {
 			"id_incrocio": id,
-			"Semaforo": sensore,
+			"Sensore": sensore,
 			"Valore": valore
 		};
 
 	}
+
 	console.log(json);
+
+	//push dei dati nella coda di redis
+	client.on("ready", (err) => {
+		redisNotReady = false;
+		client.rpush("dati", json);
+
+		client.llen("dati", function (err, data) {
+			console.log("Lunghezza della lista: " + data);
+		});
+
+		client.lpop("dati", function (err, data) {
+			console.log(data);
+		});
+
+	});
 
 }
