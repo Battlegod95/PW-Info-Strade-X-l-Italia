@@ -1,0 +1,9 @@
+{
+  "name": "receiver",
+  "version": "0.0.0",
+  "description": "Receiver",
+  "main": "app.js",
+  "author": {
+    "name": ""
+  }
+}
