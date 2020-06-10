@@ -8,7 +8,7 @@ Make a simple queue and send/receive messages
 */
 
 function main() {
-	const queuename = "testqueue";
+	const queuename = "dati";
 
 	// create a queue
 	rsmq.createQueue({ qname: queuename }, (err) => {
