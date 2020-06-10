@@ -53,7 +53,7 @@ function parseMsg(data) {
 	let json = {};
 
 	//definire i dati di andata 
-	if (gateway == slo) {
+	if (gateway == slotGateway) {
 
 		json = {
 			"id_incrocio": id,
