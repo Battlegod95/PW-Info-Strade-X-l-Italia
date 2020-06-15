@@ -13,8 +13,6 @@ namespace PWInfoStradeFunctions
 {
     public static class IoTHubToSignalRFunction
     {
-        private static HttpClient client = new HttpClient();
-
         [FunctionName("IoTHubToSignalRFunction")]
         public static async System.Threading.Tasks.Task RunAsync(
             [IoTHubTrigger("messages/events", Connection = "IoTHubEndpoint")]EventData message,
