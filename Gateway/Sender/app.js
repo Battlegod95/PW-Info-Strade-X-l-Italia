@@ -10,8 +10,23 @@ Make a simple queue and send/receive messages
 function main() {
 	const queuename = "dati";
 
-	receiveMessageLoop(queuename);
-	
+	// create a queue
+	rsmq.createQueue({ qname: queuename }, (err) => {
+		if (err) {
+			// if the error is `queueExists` we can keep going as it tells us that the queue is already there
+			if (err.name !== "queueExists") {
+				console.error(err);
+				return;
+			} else {
+				console.log("queue exists.. resuming..");
+			}
+		}
+
+		// start sending messages every 2 seconds
+		//sendMessageLoop(queuename);
+		// start checking for messages every 500ms
+		receiveMessageLoop(queuename);
+	});
 }
 main();
 
@@ -45,7 +60,7 @@ function receiveMessageLoop(queuename) {
 	}, 2500);
 }
 
-// METODO PER L'INVIO DEI MESSAGGI ALLA CODA DI REDIS
+// METODO PER L'INVIO DEI MESSAGGI ALLA CODA DI REDIS DALL'IOT HUB
 /*
 function sendMessageLoop(queuename) {
 	// push a message every 2 seconds into the queue

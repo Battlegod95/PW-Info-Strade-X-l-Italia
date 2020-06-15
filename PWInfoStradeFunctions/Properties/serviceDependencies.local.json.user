@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "storage1": {
+      "restored": true,
+      "restoreTime": "2020-06-14T10:10:38.9246492Z"
+    }
+  },
+  "parameters": {
+    "resourceGroup": {
+      "Type": "resourceGroup",
+      "Value": "PW_Info_Strade_X_Italia"
+    },
+    "subscriptionId": {
+      "Type": "subscription",
+      "Value": "3451ea6d-0cae-4ed7-a499-d77f8f27ac0c"
+    }
+  }
+}
