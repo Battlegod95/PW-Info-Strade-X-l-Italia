@@ -14,7 +14,7 @@ const Client = require('azure-iot-device').Client;
 const ConnectionString = require('azure-iot-device').ConnectionString;
 const Message = require('azure-iot-device').Message;
 const MqttProtocol = require('azure-iot-device-mqtt').Mqtt;
-const AmqpProtocol = require('azure-iot-device-amqp').Amqp;
+//const AmqpProtocol = require('azure-iot-device-amqp').Amqp;
 
 const bi = require('az-iot-bi');
 
