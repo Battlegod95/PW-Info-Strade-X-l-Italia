@@ -37,7 +37,14 @@
 # define RC7 PORTCbits.RC7
 
 
+void printOnLcd(char *datoFromSerial);
+
+
 void initPic();
+
+//ADC
+void init_ADC();
+int read_ADC(char channel);
 
 //LCD
 void send_string(char *str);
@@ -51,8 +58,15 @@ void UART_init(int baudrate);
 void UART_TxChar(char dato);
 
 //variabili globali
+char PicId=167;  // Identificazione Pic
 unsigned char received = 0;
+unsigned char datoSeriale=0; // Dato ricevuto dalla seriale
 int count=0;
+char contAuto=0; // Conteggio automobili
+char contMoto=0; // Conteggio motoveicoli
+char contCamion=0; // Conteggio autocarri
+unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0; // Pulsanti simulazione veicoli
+
 void main(void) {
     
     initPic();
@@ -60,13 +74,41 @@ void main(void) {
     init_lcd();
     send_cmd(L_CLR);
     
+    //UART_TxChar(PicId);  
+    
     while(1)
     {
+        
+        
+        if(stat1) // Auto
+        {
+            contAuto++;
+            stat1=0;
+            UART_TxChar(contAuto);
+        }
+        if(stat2) // Moto
+        {
+            contMoto++;
+            stat2=0;
+        }
+        if(stat3) // Camion
+        {
+            contCamion++;
+            stat3=0;
+        }
         
         
         
         if(received)
         {
+            char stringa=datoSeriale;
+            
+            send_cmd(L_CLR);
+            //send_string(stringa);
+            
+            printOnLcd(datoSeriale);
+            
+            
             received=0;
         }
     }
@@ -79,11 +121,36 @@ void main(void) {
 //Interrupt
 void __interrupt() ISR()
 {
+    
+    //Pulsante per la simulazione del passaggio di autoveicoli
+    if (!(PORTBbits.RB3)&& (!oldBtn1))
+    {
+        stat1=!stat1;
+            
+    }
+    oldBtn1 = !PORTBbits.RB3;
+    //Pulsante per la simulazione del passaggio di motoveicoli
+    if (!(PORTBbits.RB4)&& (!oldBtn2))
+    {
+        stat2=!stat2;
+            
+    }
+    oldBtn2 = !PORTBbits.RB4;
+    //Pulsante per la simulazione del passaggio di autocarri
+    if (!(PORTBbits.RB5)&& (!oldBtn3))
+    {
+        stat3=!stat3;
+            
+    }
+    oldBtn3 = !PORTBbits.RB5;
+    
+    
+    
    if(RCIF)
    {   
         while(!RCIF);        // ricevo dalla seriale:
         RCIF = 0;
-        
+        datoSeriale = RCREG;
         received = 1;
    }
    
@@ -100,6 +167,28 @@ void __interrupt() ISR()
    }
 }
 
+//Formatta e stampa il dato in arrivo dalla seriale
+void printOnLcd(char *datoFromSerial)
+{
+    char resultNum[3], resultStr[9];
+    
+    resultStr=datoFromSerial;
+    
+    int i = 0;
+    while(datoFromSerial[i] != '\0')
+    {
+        resultStr[i]=datoFromSerial[i];
+        i++;
+    }
+    
+     
+    send_cmd(L_CLR); //Pulisco il display
+    
+    send_string(resultStr); //Stampo la temperatura
+}
+
+
+
 //inizializzo il PIC
 void initPic() {
     //TRISC = ~0x04;
@@ -112,6 +201,27 @@ void initPic() {
     TMR0 = 6;
 }
 
+void init_ADC()
+{
+    TRISA = 0xFF;    //Imposto i pin come ingressi
+    ADCON0 = 0x00;   //Setto ADCON0 00000000
+    ADCON1 = 0x80;   //Setto ADCON1 (ADFM) a 1 --> risultato giustificato verso dx 10000000
+    
+    __delay_us(10);  //delay condensatore 10us
+}
+
+int read_ADC(char canale)
+{
+    ADCON0bits.ADON = 1;          //Accendo il convertittore (ADCON0)
+    ADCON0 |= canale << 3;       //Setto il canale da convertire (ADCON0)
+    
+    __delay_us(1.6);     //Attendo 1.6 uS
+    
+    GO_nDONE = 1;      //Avvio la conversione ADGO GO
+    
+    while(GO_nDONE);  //Attendo la fine della conversione
+    return ADRESL + (ADRESH << 8); //Preparo il dato (valore = ADRESL + (ADREAH << 8)
+}
 
 //invio stringa a LCD
 void send_string(char *str)
