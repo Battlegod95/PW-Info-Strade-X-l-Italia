@@ -36,6 +36,10 @@
 # define RC6 PORTCbits.RC6
 # define RC7 PORTCbits.RC7
 
+// Dati Fissi Trasmissione
+#define GATEWAY 200
+#define PIC_ID 5
+
 
 char* num_converter(int num);
 void concatenate( char* str3, char* str1, char* str2 );
@@ -61,10 +65,27 @@ void Uart_send_string(char *str);
 //variabili globali
 int PicId=167;  // Identificazione Pic
 unsigned char received = 0;
-char strToSend[48]; // Messaggio totale da mandare in seriale
-char strControl[8]; // Byte di controllo
-char strCtnTrasmissione[20]; // Stringa contenente il codice di trasmissione e il valore mandato
-char strHeaderTrasmissione[20]; // Stringa contenente l'id del destinatario e l'id del mittente
+
+/*
+ * BYTE TRASMISSIONE (strToSend)
+ * 1 - Byte di controllo
+ * 2 - destinatario (chi deve ricevere la trasmissione)
+ * 3 - mittente (id di chi trasmette)
+ * 4 - id della strada in questione
+ * 5 - codici di trasmissione:     - temperatura: 0 (0000)
+                                   - umidità: 1 (0001)
+                                   - pressione: 2 (0010)
+                                   - colore semaforo: 4 (0011)
+                                   - numero ciclomotori: 5 (0100)
+                                   - numero automezzi: 6 (0101)
+                                   - numero camion: 7 (0110)
+
+ * 6 - valore da trasmettere
+ 
+ */
+
+
+char strToSend[8] = {0,0,0,0,0,0}; // Messaggio totale da mandare in seriale
 
 unsigned char datoSeriale=0; // Dato ricevuto dalla seriale
 int count=0;
@@ -82,12 +103,13 @@ void main(void) {
     
     //UART_TxChar(PicId);  
     
-    concatenate(strControl,"2","");
-    concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
-    concatenate(strCtnTrasmissione,"4","R");
-    //concatenate(strToSend,strHeaderTrasmissione,strCtnTrasmissione);
-    concatenate(strToSend,strControl,strHeaderTrasmissione);
-    concatenate(strToSend,strToSend,strCtnTrasmissione);
+    //Messaggio Demo
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=0;
+    strToSend[4]=0;
+    strToSend[5]=35;
     Uart_send_string(strToSend);
     
     
@@ -119,17 +141,7 @@ void main(void) {
             char stringa=datoSeriale;
             
             send_cmd(L_CLR);
-            //send_string(stringa);
-            concatenate(strControl,"2","");
-            concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
-            concatenate(strCtnTrasmissione,"4","R");
-            //concatenate(strToSend,strHeaderTrasmissione,strCtnTrasmissione);
-            concatenate(strToSend,strControl,strHeaderTrasmissione);
-            concatenate(strToSend,strToSend,strCtnTrasmissione);
-            Uart_send_string(strToSend);
-            
-            
-            //printOnLcd(datoSeriale);
+          
             
             
             received=0;
@@ -231,14 +243,14 @@ void concatenate( char* str3, char* str1, char* str2 )
     str3[j] = '\0';
 }
 
-// Funzione per inviare un array di caratteri alla seriale per poi trasmetterli uno per uno
+
+// Funzione per inviare l'array di byte alla seriale
 void Uart_send_string(char *str)
 {
-    char i = 0;
-    while(str[i] != '\0')
+    char i;
+    for(i=0;i<6;i++)
     {
-        UART_TxChar(str[i]);
-        i++;
+        UART_TxChar(*(str+i));
     }
 }
 

@@ -1739,7 +1739,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 18 "main.c" 2
-# 40 "main.c"
+# 44 "main.c"
 char* num_converter(int num);
 void concatenate( char* str3, char* str1, char* str2 );
 
@@ -1764,10 +1764,8 @@ void Uart_send_string(char *str);
 
 int PicId=167;
 unsigned char received = 0;
-char strToSend[48];
-char strControl[8];
-char strCtnTrasmissione[20];
-char strHeaderTrasmissione[20];
+# 88 "main.c"
+char strToSend[8] = {0,0,0,0,0,0};
 
 unsigned char datoSeriale=0;
 int count=0;
@@ -1785,12 +1783,13 @@ void main(void) {
 
 
 
-    concatenate(strControl,"2","");
-    concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
-    concatenate(strCtnTrasmissione,"4","R");
 
-    concatenate(strToSend,strControl,strHeaderTrasmissione);
-    concatenate(strToSend,strToSend,strCtnTrasmissione);
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=0;
+    strToSend[4]=0;
+    strToSend[5]=35;
     Uart_send_string(strToSend);
 
 
@@ -1822,16 +1821,6 @@ void main(void) {
             char stringa=datoSeriale;
 
             send_cmd(0x01);
-
-            concatenate(strControl,"2","");
-            concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
-            concatenate(strCtnTrasmissione,"4","R");
-
-            concatenate(strToSend,strControl,strHeaderTrasmissione);
-            concatenate(strToSend,strToSend,strCtnTrasmissione);
-            Uart_send_string(strToSend);
-
-
 
 
 
@@ -1935,13 +1924,13 @@ void concatenate( char* str3, char* str1, char* str2 )
 }
 
 
+
 void Uart_send_string(char *str)
 {
-    char i = 0;
-    while(str[i] != '\0')
+    char i;
+    for(i=0;i<6;i++)
     {
-        UART_TxChar(str[i]);
-        i++;
+        UART_TxChar(*(str+i));
     }
 }
 
