@@ -1,5 +1,9 @@
 const RedisSMQ = require("../index");
-const rsmq = new RedisSMQ( {host: "127.0.0.1", port: 6379, ns: "rsmq"} );
+const rsmq = new RedisSMQ({ host: "127.0.0.1", port: 6379, ns: "rsmq" });
+var uuid = require('uuid');
+var Protocol = require('azure-iot-device-mqtt').Mqtt;
+var Client = require('azure-iot-device').Client;
+var Message = require('azure-iot-device').Message;
 
 /*
 ======================================
@@ -44,6 +48,77 @@ function receiveMessageLoop(queuename) {
 		});
 	}, 2500);
 }
+
+var deviceConnectionString = "HostName=IoTHubTrafficLight.azure-devices.net;DeviceId=GatewayTestTrafficLight;SharedAccessKey=rZFdx7r32CVnmdUNQkPwJ6QNoVY3EDvr2nSxnpZOrBM="
+
+var client = Client.fromConnectionString(deviceConnectionString, Protocol);
+
+// open connection
+client.open(function (err) {
+	if (err) {
+		console.error('Could not connect: ' + err.message);
+	}
+	else {
+		console.log('Client connected');
+
+		client.on('error', function (err) {
+			console.error(err.message);
+			process.exit(-1);
+		});
+
+		// var data= new Date();
+		// var ora= data.getHours.toString()+":"+data.getMinutes.toString()+":"+data.getSeconds.toString();
+		// // build message
+		var message = new Message(JSON.stringify(
+			{
+				"Description": "Veicoli",
+				"idIncrocio": 1,
+				"idGateway": slotGateway,
+				"idSemaforo": mittente,
+				"idStrada": idStrada,
+				"StatoSemaforo": trafficLight,
+				"FasciaOraria": (hour + ':' + min),
+				"Data": (gg + '/' + (mm + 1) + '/' + yyyy),
+				"TipologiaVeicolo": [
+					{
+						"type": "Automobile",  //car, heavy, moto
+						"value": nAutomezzi
+					},
+					{
+						"type": "Motociclo",  //car, heavy, moto
+						"value": nCiclomotori
+					},
+					{
+						"type": "Camion",  //car, heavy, moto
+						"value": nCamion
+					}
+				]
+			}));
+
+		message.contentEncoding = "utf-8";
+		message.contentType = "application/json";
+
+		// A unique identifier 
+		message.messageId = uuid.v4();
+
+		//add custom properties
+		message.properties.add("Status", "Active");
+
+
+		console.log('Sending message: ' + message.getData());
+		client.sendEvent(message, function (err) {
+			if (err) {
+				console.error('Could not send: ' + err.toString());
+				process.exit(-1);
+			} else {
+				console.log('Message sent: ');
+				process.exit(0);
+			}
+		});
+	}
+
+});
+
 
 // METODO PER L'INVIO DEI MESSAGGI ALLA CODA DI REDIS DALL'IOT HUB
 /*
