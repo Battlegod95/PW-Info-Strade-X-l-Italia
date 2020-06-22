@@ -82,6 +82,15 @@ void main(void) {
     
     //UART_TxChar(PicId);  
     
+    concatenate(strControl,"2","");
+    concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
+    concatenate(strCtnTrasmissione,"4","R");
+    //concatenate(strToSend,strHeaderTrasmissione,strCtnTrasmissione);
+    concatenate(strToSend,strControl,strHeaderTrasmissione);
+    concatenate(strToSend,strToSend,strCtnTrasmissione);
+    Uart_send_string(strToSend);
+    
+    
     while(1)
     {
         
