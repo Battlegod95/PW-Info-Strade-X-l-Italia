@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\sources\\c90\\pic\\__eeprom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,25 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
-
-
-
-
-
-#pragma config FOSC = HS
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config BOREN = ON
-#pragma config LVP = ON
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-
-
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\sources\\c90\\pic\\__eeprom.c" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1738,312 +1720,176 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 18 "main.c" 2
-# 40 "main.c"
-char* num_converter(int num);
-void concatenate( char* str3, char* str1, char* str2 );
-
-void initPic();
-
-
-void init_ADC();
-int read_ADC(char channel);
-
-
-void send_string(char *str);
-void send_data(char data);
-void send_cmd(char command);
-void init_lcd();
-
-
-void UART_init(int);
-void UART_init(int baudrate);
-void UART_TxChar(char dato);
-void Uart_send_string(char *str);
-
-
-int PicId=167;
-unsigned char received = 0;
-char strToSend[48];
-char strControl[8];
-char strCtnTrasmissione[20];
-char strHeaderTrasmissione[20];
-
-unsigned char datoSeriale=0;
-int count=0;
-char contAuto=0;
-char contMoto=0;
-char contCamion=0;
-unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0;
-
-void main(void) {
-
-    initPic();
-    UART_init(9600);
-    init_lcd();
-    send_cmd(0x01);
-
-
-
-    while(1)
-    {
-
-
-        if(stat1)
-        {
-            contAuto++;
-            stat1=0;
-            UART_TxChar(contAuto);
-        }
-        if(stat2)
-        {
-            contMoto++;
-            stat2=0;
-        }
-        if(stat3)
-        {
-            contCamion++;
-            stat3=0;
-        }
-
-
-
-        if(received)
-        {
-            char stringa=datoSeriale;
-
-            send_cmd(0x01);
-
-            concatenate(strControl,"2","");
-            concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
-            concatenate(strCtnTrasmissione,"4","R");
-
-            concatenate(strToSend,strControl,strHeaderTrasmissione);
-            concatenate(strToSend,strToSend,strCtnTrasmissione);
-            Uart_send_string(strToSend);
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\sources\\c90\\pic\\__eeprom.c" 2
 
 
 
 
-
-            received=0;
-        }
-    }
-
-    return;
-}
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR()
+void
+__eecpymem(volatile unsigned char *to, __eeprom unsigned char * from, unsigned char size)
 {
+ volatile unsigned char *cp = to;
 
+ while (EECON1bits.WR) continue;
+ EEADR = (unsigned char)from;
+ while(size--) {
+  while (EECON1bits.WR) continue;
 
-    if (!(PORTBbits.RB3)&& (!oldBtn1))
-    {
-        stat1=!stat1;
+  EECON1 &= 0x7F;
 
-    }
-    oldBtn1 = !PORTBbits.RB3;
-
-    if (!(PORTBbits.RB4)&& (!oldBtn2))
-    {
-        stat2=!stat2;
-
-    }
-    oldBtn2 = !PORTBbits.RB4;
-
-    if (!(PORTBbits.RB5)&& (!oldBtn3))
-    {
-        stat3=!stat3;
-
-    }
-    oldBtn3 = !PORTBbits.RB5;
-
-
-
-   if(RCIF)
-   {
-        while(!RCIF);
-        RCIF = 0;
-        datoSeriale = RCREG;
-        received = 1;
-   }
-
-   if (INTCON&0x04)
-    {
-        INTCON &= ~0x04;
-        TMR0 = 6;
-        count++;
-        if (count == 100)
-        {
-
-            count = 0;
-        }
-   }
+  EECON1bits.RD = 1;
+  *cp++ = EEDATA;
+  ++EEADR;
+ }
+# 36 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\sources\\c90\\pic\\__eeprom.c"
 }
-char* num_converter(int num)
+
+void
+__memcpyee(__eeprom unsigned char * to, const unsigned char *from, unsigned char size)
 {
-    int length = 2;
-    char result[4] = "    ", i = 3;
+ const unsigned char *ptr =from;
 
-    if(num != 0)
-    {
-        while(num)
-        {
-            result[i] = num%10 + '0';
-            num /= 10;
-            i--;
-        }
-    }
-    else
-    {
-        result[0] = '0';
-    }
+ while (EECON1bits.WR) continue;
+ EEADR = (unsigned char)to - 1U;
 
-    return result;
+ EECON1 &= 0x7F;
+
+ while(size--) {
+  while (EECON1bits.WR) {
+   continue;
+  }
+  EEDATA = *ptr++;
+  ++EEADR;
+  STATUSbits.CARRY = 0;
+  if (INTCONbits.GIE) {
+   STATUSbits.CARRY = 1;
+  }
+  INTCONbits.GIE = 0;
+  EECON1bits.WREN = 1;
+  EECON2 = 0x55;
+  EECON2 = 0xAA;
+  EECON1bits.WR = 1;
+  EECON1bits.WREN = 0;
+  if (STATUSbits.CARRY) {
+   INTCONbits.GIE = 1;
+  }
+ }
+# 101 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\sources\\c90\\pic\\__eeprom.c"
 }
 
-
-
-void concatenate( char* str3, char* str1, char* str2 )
+unsigned char
+__eetoc(__eeprom void *addr)
 {
-    int i = 0, j = 0;
-    while (str1[i] != '\0') {
-        str3[j] = str1[i];
-        i++;
-        j++;
-    }
-
-    i = 0;
-    while (str2[i] != '\0') {
-        str3[j] = str2[i];
-        i++;
-        j++;
-    }
-    str3[j] = '\0';
+ unsigned char data;
+ __eecpymem((unsigned char *) &data,addr,1);
+ return data;
 }
 
-
-void Uart_send_string(char *str)
+unsigned int
+__eetoi(__eeprom void *addr)
 {
-    char i = 0;
-    while(str[i] != '\0')
-    {
-        UART_TxChar(str[i]);
-        i++;
-    }
+ unsigned int data;
+ __eecpymem((unsigned char *) &data,addr,2);
+ return data;
 }
 
-
-
-
-void initPic() {
-
-    TRISD = 0x00;
-    TRISB = 0xFF;
-    TRISE = 0x00;
-
-    INTCON = 0xA0;
-    OPTION_REG = 0x04;
-    TMR0 = 6;
-}
-
-void init_ADC()
+#pragma warning push
+#pragma warning disable 2040
+__uint24
+__eetom(__eeprom void *addr)
 {
-    TRISA = 0xFF;
-    ADCON0 = 0x00;
-    ADCON1 = 0x80;
+ __uint24 data;
+ __eecpymem((unsigned char *) &data,addr,3);
+ return data;
+}
+#pragma warning pop
 
-    _delay((unsigned long)((10)*(32000000L/4000000.0)));
+unsigned long
+__eetol(__eeprom void *addr)
+{
+ unsigned long data;
+ __eecpymem((unsigned char *) &data,addr,4);
+ return data;
 }
 
-int read_ADC(char canale)
+#pragma warning push
+#pragma warning disable 1516
+unsigned long long
+__eetoo(__eeprom void *addr)
 {
-    ADCON0bits.ADON = 1;
-    ADCON0 |= canale << 3;
+ unsigned long long data;
+ __eecpymem((unsigned char *) &data,addr,8);
+ return data;
+}
+#pragma warning pop
 
-    _delay((unsigned long)((1.6)*(32000000L/4000000.0)));
-
-    GO_nDONE = 1;
-
-    while(GO_nDONE);
-    return ADRESL + (ADRESH << 8);
+unsigned char
+__ctoee(__eeprom void *addr, unsigned char data)
+{
+ __memcpyee(addr,(unsigned char *) &data,1);
+ return data;
 }
 
-
-void send_string(char *str)
+unsigned int
+__itoee(__eeprom void *addr, unsigned int data)
 {
-    int i = 0;
-    while(str[i] != '\0')
-    {
-        send_data(str[i]);
-        i++;
-    }
+ __memcpyee(addr,(unsigned char *) &data,2);
+ return data;
 }
 
-
-void send_data(char data)
+#pragma warning push
+#pragma warning disable 2040
+__uint24
+__mtoee(__eeprom void *addr, __uint24 data)
 {
-    PORTEbits.RE1 = 1;
-    PORTD = data;
-    PORTEbits.RE2 = 1;
-    _delay((unsigned long)((3)*(32000000L/4000.0)));
-    PORTEbits.RE1 = 0;
-    _delay((unsigned long)((3)*(32000000L/4000.0)));
-    PORTEbits.RE1 = 1;
+ __memcpyee(addr,(unsigned char *) &data,3);
+ return data;
+}
+#pragma warning pop
+
+unsigned long
+__ltoee(__eeprom void *addr, unsigned long data)
+{
+ __memcpyee(addr,(unsigned char *) &data,4);
+ return data;
 }
 
-
-void send_cmd(char command)
+#pragma warning push
+#pragma warning disable 1516
+unsigned long long
+__otoee(__eeprom void *addr, unsigned long long data)
 {
-    PORTEbits.RE1 = 1;
-    PORTD = command;
-    PORTEbits.RE2 = 0;
-    _delay((unsigned long)((3)*(32000000L/4000.0)));
-    PORTEbits.RE1 = 0;
-    _delay((unsigned long)((3)*(32000000L/4000.0)));
-    PORTEbits.RE1 = 1;
+ __memcpyee(addr,(unsigned char *) &data,8);
+ return data;
+}
+#pragma warning pop
+
+float
+__eetoft(__eeprom void *addr)
+{
+ float data;
+ __eecpymem((unsigned char *) &data,addr,3);
+ return data;
 }
 
-
-void init_lcd()
+double
+__eetofl(__eeprom void *addr)
 {
-    PORTEbits.RE2 = 0;
-    PORTEbits.RE1 = 0;
-    _delay((unsigned long)((20)*(32000000L/4000.0)));
-    PORTEbits.RE1 = 1;
-    send_cmd(0x38);
-    _delay((unsigned long)((5)*(32000000L/4000.0)));
-    send_cmd(0x38);
-    _delay((unsigned long)((1)*(32000000L/4000.0)));
-    send_cmd(0x38);
-    send_cmd(0x08);
-    send_cmd(0x0F);
-    send_cmd(0x01);
-    send_cmd(0x0C);
-    send_cmd(0x80);
+ double data;
+ __eecpymem((unsigned char *) &data,addr,4);
+ return data;
 }
 
-
-
-void UART_init(int baudrate)
+float
+__fttoee(__eeprom void *addr, float data)
 {
-    TRISCbits.TRISC6 = 0;
-    TXSTAbits.TXEN = 1;
-    RCSTAbits.SPEN = 1;
-    RCSTAbits.CREN = 1;
-    SPBRG = (32000000L/(long)(64UL*baudrate))-1;
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    PIE1bits.RCIE = 1;
+ __memcpyee(addr,(unsigned char *) &data,3);
+ return data;
 }
 
-
-void UART_TxChar(char dato)
+double
+__fltoee(__eeprom void *addr, double data)
 {
-    while (!TXIF);
-    TXIF = 0;
-    TXREG = dato;
+ __memcpyee(addr,(unsigned char *) &data,4);
+ return data;
 }

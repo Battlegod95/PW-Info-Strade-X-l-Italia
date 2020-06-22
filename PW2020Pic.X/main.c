@@ -37,8 +37,8 @@
 # define RC7 PORTCbits.RC7
 
 
-void printOnLcd(char *datoFromSerial);
-
+char* num_converter(int num);
+void concatenate( char* str3, char* str1, char* str2 );
 
 void initPic();
 
@@ -56,10 +56,16 @@ void init_lcd();
 void UART_init(int);
 void UART_init(int baudrate);
 void UART_TxChar(char dato);
+void Uart_send_string(char *str);
 
 //variabili globali
-char PicId=167;  // Identificazione Pic
+int PicId=167;  // Identificazione Pic
 unsigned char received = 0;
+char strToSend[48]; // Messaggio totale da mandare in seriale
+char strControl[8]; // Byte di controllo
+char strCtnTrasmissione[20]; // Stringa contenente il codice di trasmissione e il valore mandato
+char strHeaderTrasmissione[20]; // Stringa contenente l'id del destinatario e l'id del mittente
+
 unsigned char datoSeriale=0; // Dato ricevuto dalla seriale
 int count=0;
 char contAuto=0; // Conteggio automobili
@@ -105,8 +111,16 @@ void main(void) {
             
             send_cmd(L_CLR);
             //send_string(stringa);
+            concatenate(strControl,"2","");
+            concatenate(strHeaderTrasmissione,"200",num_converter(PicId));
+            concatenate(strCtnTrasmissione,"4","R");
+            //concatenate(strToSend,strHeaderTrasmissione,strCtnTrasmissione);
+            concatenate(strToSend,strControl,strHeaderTrasmissione);
+            concatenate(strToSend,strToSend,strCtnTrasmissione);
+            Uart_send_string(strToSend);
             
-            printOnLcd(datoSeriale);
+            
+            //printOnLcd(datoSeriale);
             
             
             received=0;
@@ -166,25 +180,57 @@ void __interrupt() ISR()
         }
    }
 }
-
-//Formatta e stampa il dato in arrivo dalla seriale
-void printOnLcd(char *datoFromSerial)
+char* num_converter(int num)
 {
-    char resultNum[3], resultStr[9];
-    
-    resultStr=datoFromSerial;
-    
-    int i = 0;
-    while(datoFromSerial[i] != '\0')
+    int length = 2;
+    char result[4] = "    ", i = 3;
+
+    if(num != 0)
     {
-        resultStr[i]=datoFromSerial[i];
+        while(num)
+        {
+            result[i] = num%10 + '0';
+            num /= 10;
+            i--;
+        }
+    }
+    else
+    {
+        result[0] = '0';
+    }
+
+    return result;
+}
+
+
+// Funzione per concatenare due stringhe
+void concatenate( char* str3, char* str1, char* str2 )
+{
+    int i = 0, j = 0;
+    while (str1[i] != '\0') { 
+        str3[j] = str1[i];
+        i++; 
+        j++; 
+    } 
+
+    i = 0; 
+    while (str2[i] != '\0') { 
+        str3[j] = str2[i]; 
+        i++; 
+        j++; 
+    } 
+    str3[j] = '\0';
+}
+
+// Funzione per inviare un array di caratteri alla seriale per poi trasmetterli uno per uno
+void Uart_send_string(char *str)
+{
+    char i = 0;
+    while(str[i] != '\0')
+    {
+        UART_TxChar(str[i]);
         i++;
     }
-    
-     
-    send_cmd(L_CLR); //Pulisco il display
-    
-    send_string(resultStr); //Stampo la temperatura
 }
 
 
