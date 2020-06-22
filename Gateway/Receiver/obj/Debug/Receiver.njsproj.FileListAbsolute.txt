@@ -1,3 +1,6 @@
 C:\Users\PC\Desktop\Definitiva Clous\PW-Info-Strade-X-l-Italia\Gateway\Receiver\obj\Debug\Receiver.njsprojAssemblyReference.cache
 C:\Users\PC\Desktop\Definitiva Clous\PW-Info-Strade-X-l-Italia\Gateway\Receiver\obj\Debug\Receiver.njsproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\Definitiva Clous\PW-Info-Strade-X-l-Italia\Gateway\Receiver\bin\Microsoft.NodejsTools.WebRole.dll
+D:\documenti its\Project Work\Anno 2\PW-Info-Strade-X-l-Italia\Gateway\Receiver\obj\Debug\Receiver.njsprojAssemblyReference.cache
+D:\documenti its\Project Work\Anno 2\PW-Info-Strade-X-l-Italia\Gateway\Receiver\obj\Debug\Receiver.njsproj.CoreCompileInputs.cache
+D:\documenti its\Project Work\Anno 2\PW-Info-Strade-X-l-Italia\Gateway\Receiver\bin\Microsoft.NodejsTools.WebRole.dll
