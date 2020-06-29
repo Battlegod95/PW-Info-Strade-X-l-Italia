@@ -19,9 +19,16 @@ namespace PWInfoStradeFunctions
             [SignalRConnectionInfo(HubName = "signalrwebapp")] SignalRConnectionInfo connectioninfo,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            log.LogInformation("#####################################################");
+
+            log.LogInformation("REQUEST TOKEN FOR SIGNALR");
+            log.LogInformation($"Tocken + URL = {connectioninfo.Url}");
+            log.LogInformation($"Tocken + URL = {connectioninfo.AccessToken}");
+
+            log.LogInformation("#####################################################");
 
             return connectioninfo;
+
         }
     }
 }

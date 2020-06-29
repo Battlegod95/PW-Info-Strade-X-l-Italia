@@ -8,24 +8,32 @@ using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Azure.WebJobs.Extensions.SignalRService;
 using Newtonsoft.Json;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace PWInfoStradeFunctions
 {
     public static class IoTHubToSignalRFunction
     {
+        private static HttpClient client = new HttpClient();
+
         [FunctionName("IoTHubToSignalRFunction")]
         public static async System.Threading.Tasks.Task RunAsync(
-            [IoTHubTrigger("messages/events", Connection = "IoTHubEndpoint")]EventData message,
+            [IoTHubTrigger("messages/events", Connection = "IoTHubEndpoint", ConsumerGroup = "signalr")]EventData message,
             [SignalR(HubName = "signalrwebapp")] IAsyncCollector<SignalRMessage> signalRMessages, 
             ILogger log)
         {
             var deviceData = JsonConvert.DeserializeObject<DeviceData>(Encoding.UTF8.GetString(message.Body.Array));
 
-            log.LogInformation($"C# IoT Hub trigger function processed a message: {Encoding.UTF8.GetString(message.Body.Array)}");
+            log.LogInformation("#####################################################");
+            log.LogInformation($"DATI VEICOLI PER SIGNALR : {Encoding.UTF8.GetString(message.Body.Array)}");
 
-            log.LogInformation($"device Id: {deviceData.DeviceId}");
-            log.LogInformation($"message Id: {deviceData.MessageId}");
-            log.LogInformation($"Temperature: {deviceData.Temperature}");
+            log.LogInformation($"Il Messaggio Json proveniente dal Gateway: {deviceData.idGateway} " +
+                $"con riferimento all'incrocio: {deviceData.idIncrocio} " +
+                $"e al semaforo: {deviceData.idSemaforo} " +
+                $"ha come valore dello stato del semaforo: {deviceData.StatoSemaforo} " +
+                $"in data: {deviceData.Data}");
+            log.LogInformation("#####################################################");
 
             await signalRMessages.AddAsync(
             new SignalRMessage
