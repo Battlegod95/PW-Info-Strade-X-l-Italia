@@ -112,14 +112,14 @@ function parseMsg(data) {
 		//push dei dati nella coda di redis
 		client.on("ready", (err) => {
 			redisNotReady = false;
-			client.rpush("dati", json);
+			client.rpush("IotData", json);
 
-			client.llen("dati", function (err, data) {
+			client.llen("IotData", function (err, data) {
 				console.log("Lunghezza della lista: " + data);
 			});
 
 			//elimina l'elemento in coda e restituisce l'elemento eliminato
-			client.lpop("dati", function (err, data) {
+			client.lpop("IotData", function (err, data) {
 				console.log(data);
 			});
 
@@ -178,14 +178,14 @@ function parseMsg(data) {
 		//push dei dati nella coda di redis
 		client.on("ready", (err) => {
 			redisNotReady = false;
-			client.rpush("dati", json2);
+			client.rpush("IotData", json2);
 
-			client.llen("dati", function (err, data) {
+			client.llen("IotData", function (err, data) {
 				console.log("Lunghezza della lista: " + data);
 			});
 
 			//elimina l'elemento in coda e restituisce l'elemento eliminato
-			client.lpop("dati", function (err, data) {
+			client.lpop("IotData", function (err, data) {
 				console.log(data);
 			});
 
