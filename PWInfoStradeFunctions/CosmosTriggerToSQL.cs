@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
@@ -28,7 +29,7 @@ namespace PWInfoStradeFunctions
                 );*/
 
                 SqlConnection sqlserverconnection = new SqlConnection();
-                sqlserverconnection.ConnectionString = "Data Source=tcp:pwdatabaseinfostrade.database.windows.net,1433;"
+                sqlserverconnection.ConnectionString = "Data Source=pwdatabaseinfostrade.database.windows.net,1433;"
                                                         + "Initial Catalog=PW_InfoStradeXItalia_Database;"
                                                         + "User ID=emiliano;"
                                                         + "Password=Donbosco95;";
@@ -86,8 +87,8 @@ namespace PWInfoStradeFunctions
                     row["Intersection"] = item.GetPropertyValue<string>("Interserction");
                     row["Location"] = item.GetPropertyValue<string>("Location");
                     row["Healthy"] = item.GetPropertyValue<int>("Healthy");
-                    row["Date"] = item.GetPropertyValue<DateTime>("Date");
-                    row["Time"] = item.GetPropertyValue<TimeSpan>("Time");
+                    row["Date"] = item.GetPropertyValue<SqlDateTime>("Date");
+                    row["Time"] = item.GetPropertyValue<DateTime>("Time");
                     row["Temperature"] = item.GetPropertyValue<float>("Temperature");
                     row["Humidity"] = item.GetPropertyValue<float>("Humidity");
                     row["Pressure"] = item.GetPropertyValue<float>("Pressure");

@@ -1,18 +1,19 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Text;
 
 namespace PWInfoStradeFunctions
 {
-    public class Data
+    public class DataMessaggio
     {
 
         [JsonProperty("Date")]
-        public DateTime DateMessaggio { get; set; }
+        public SqlDateTime Date { get; set; }
 
         [JsonProperty("Time")]
-        public TimeSpan Time { get; set; }
+        public DateTime Time { get; set; }
 
         [JsonProperty("Temperature")]
         public int Temperature { get; set; }
@@ -24,7 +25,6 @@ namespace PWInfoStradeFunctions
         public int Pressure { get; set; }
     }
 
-
     public class Coordinates
     {
 
@@ -34,7 +34,6 @@ namespace PWInfoStradeFunctions
         [JsonProperty("y")]
         public int y { get; set; }
     }
-
 
     public class SensorLocation
     {
@@ -68,7 +67,7 @@ namespace PWInfoStradeFunctions
         public int Healthy { get; set; }
 
         [JsonProperty("Data")]
-        public Data Data { get; set; }
+        public DataMessaggio Data { get; set; }
 
         [JsonProperty("SensorLocation")]
         public SensorLocation SensorLocation { get; set; }

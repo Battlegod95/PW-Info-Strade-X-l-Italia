@@ -1,40 +1,47 @@
 using System;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Dapper;
+using Microsoft.Azure.Amqp.Framing;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace PWInfoStradeFunctions
 {
     public static class SQLQueryToDAM
     {
         [FunctionName("SQLQueryToDAM")]
-        public static async Task Run([TimerTrigger("0 0 * * * *")] TimerInfo myTimer, ILogger log)
+        public static async Task Run([TimerTrigger("0 */1 * * * *")] TimerInfo myTimer, ILogger log, ExecutionContext context)  //0 0 * * * *
         {
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            log.LogInformation($"Function Trigger viene eseguita ogni ora partendo da: {DateTime.Now}");
 
-            var str = Environment.GetEnvironmentVariable("sqldb_connection");
+            var config = new ConfigurationBuilder().SetBasePath(context.FunctionAppDirectory).
+                    AddJsonFile("local.settings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().Build();
+
+            //var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
+
+            var str = config["sqldb_connection"];
+
             using (SqlConnection conn = new SqlConnection(str))
             {
-                var hour = DateTime.Now.Hour;
                 conn.Open();
-                var text = "INSERT INTO dbo.SimulatedInsert( "+
-                    "Id_incrocio, Id_semaforo, Id_strada, Fascia_oraria, Data, Automobile)" + 
-                    "SELECT Id_incrocio, Id_semaforo, " +
-                    "Id_strada, Fascia_oraria " +
-                    "Data AS Data, " +
-                    "SUM(Automobile) AS Automobile, " +
-                    "FROM dbo.TrafficTable " +
-                    "WHERE Fascia_oraria = 13 " +
-                    "GROUP BY Fascia_oraria, Id_incrocio, " +
-                    "Id_semaforo, Id_strada, Data";
+                var query =
+                    "INSERT INTO [SalesLT].[Product] " +
+                   "( [Name] " +
+                   ", [ProductNumber] " +
+                   ", [Color] " +
+                   ", [ProductCategoryID] " +
+                   ", [StandardCost] " +
+                   ", [ListPrice] " +
+                   ", [SellStartDate] ) ";
 
-                using (SqlCommand cmd = new SqlCommand(text, conn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    var rows = await cmd.ExecuteNonQueryAsync();
-                    log.LogInformation($"{rows}");
+                    var result = await cmd.ExecuteNonQueryAsync();
+                    log.LogInformation($"{result}");
                 }
             }
         }

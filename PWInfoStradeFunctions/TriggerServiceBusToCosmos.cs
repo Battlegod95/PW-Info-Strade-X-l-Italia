@@ -33,7 +33,7 @@ namespace PWInfoStradeFunctions
                 Interserction = sensor.Interserction,
                 Location = sensor.Location,
                 Healthy = sensor.Healthy,
-                Date = sensor.Data.DateMessaggio,
+                Date = sensor.Data.Date,
                 Time = sensor.Data.Time,
                 Temperature = sensor.Data.Temperature,
                 Humidity = sensor.Data.Humidity,
