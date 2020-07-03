@@ -64,6 +64,7 @@ void Uart_send_string(char *str);
 
 //variabili globali
 int PicId=167;  // Identificazione Pic
+char numStrade=4; // Variabile che segna il numero delle strade che il sistema deve gestire
 unsigned char received = 0;
 
 /*
@@ -88,11 +89,15 @@ unsigned char received = 0;
 char strToSend[8] = {0,0,0,0,0,0}; // Messaggio totale da mandare in seriale
 
 unsigned char datoSeriale=0; // Dato ricevuto dalla seriale
+int temporizzazioneSemaforo=20;
+
 int count=0;
 char contAuto=0; // Conteggio automobili
 char contMoto=0; // Conteggio motoveicoli
 char contCamion=0; // Conteggio autocarri
 unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0; // Pulsanti simulazione veicoli
+unsigned char scattoSemafori=0;
+char statoSemafori[3]={"V","G","R"};
 
 void main(void) {
     
@@ -101,7 +106,7 @@ void main(void) {
     init_lcd();
     send_cmd(L_CLR);
     
-    //UART_TxChar(PicId);  
+    char semafori[numStrade];
     
     //Messaggio Demo
     strToSend[0]=2;
@@ -112,11 +117,21 @@ void main(void) {
     strToSend[5]=35;
     Uart_send_string(strToSend);
     
+    char i;
+    //for(i=0;i<4;i++)
+    //{
+        //semafori[i]="R";
+    //}
+    
+    semafori[0]=statoSemafori[0];
+    semafori[1]=statoSemafori[2];
+    semafori[2]=statoSemafori[2];
+    semafori[3]=statoSemafori[2];
     
     while(1)
     {
         
-        
+        // Gestione Counter Veicoli
         if(stat1) // Auto
         {
             contAuto++;
@@ -134,6 +149,59 @@ void main(void) {
             stat3=0;
         }
         
+        // Gestione Scatto Semaforo
+        if(scattoSemafori==1)
+        {
+            
+            char semaforoVerde=0;// Variabile di controllo per lo scatto a verde di un singolo semaforo
+            for(i=0;i<4;i++)
+            {
+                
+                
+                 if(semafori[i]==statoSemafori[0])//Cambiamento a Rosso di tutti i semafori Verdi
+                {
+                    semafori[i]=statoSemafori[1];
+                    //Scrittura a schermo
+                    __delay_ms(1000);
+                    semafori[i]=statoSemafori[2];
+                }
+            
+                
+                
+                if(semaforoVerde==0)// Controllo che nessun semaforo sia già diventato verde
+                {
+                    if(semafori[i]==statoSemafori[0])// Se il semaforo corrente è Verde allora modifico
+                    {
+                        if(i<3)// Controllo se sono alla fine dell'array del semaforo
+                        {
+                            // Cambio Stato da Rosso a Verde
+                            if(semafori[i+1]==statoSemafori[2])
+                            {
+                                semafori[i+1]==statoSemafori[0];
+                            }
+                        }
+                        else// Se sono alla fine dell'array allora devo cambiare a Verde il primo elemento
+                        {
+                            if(semafori[0]==statoSemafori[2])
+                            {
+                                semafori[0]==statoSemafori[0];
+                            }
+                        }
+                        
+                        semaforoVerde=1;// Cambiamento della variabile di controllo per segnalare che lo scatto a Verde è avvenuto
+                    }
+                }
+            }
+        }
+        
+        
+        // Gestione Trasmissione d'invio
+        if(scattoSemafori==1)
+        {
+            
+            scattoSemafori=0;
+        }
+        
         
         
         if(received)
@@ -142,6 +210,17 @@ void main(void) {
             
             send_cmd(L_CLR);
           
+            /*
+             
+             * Gestione del ricevimento delle temporizzazioni
+             * 
+             * 0 - mittente (id di chi trasmette)
+             * 1 - id della strada in questione
+             * 2 - codici di trasmissione:     - temporizzazione: 8 (0111)
+             * 3 - valore da trasmettere
+             
+             */
+            
             
             
             received=0;
@@ -196,6 +275,11 @@ void __interrupt() ISR()
         count++;  
         if (count == 100)
         {
+            //Timer Regolato/ Temporizzazione Semaforo Da Gateway
+            /*
+             if Tempo==0
+             scattoSemafori=1;
+             */
             
             count = 0;
         }
