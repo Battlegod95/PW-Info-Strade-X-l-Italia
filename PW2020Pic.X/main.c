@@ -199,6 +199,8 @@ void main(void) {
         if(scattoSemafori==1)
         {
             
+            
+            
             scattoSemafori=0;
         }
         
@@ -285,6 +287,40 @@ void __interrupt() ISR()
         }
    }
 }
+
+
+/*
+ * BYTE TRASMISSIONE (strToSend)
+ * 0 - Byte di controllo
+ * 1 - destinatario (chi deve ricevere la trasmissione)
+ * 2 - mittente (id di chi trasmette)
+ * 3 - id della strada in questione
+ * 4 - codici di trasmissione:     - temperatura: 0 (0000)
+                                   - umidità: 1 (0001)
+                                   - pressione: 2 (0010)
+                                   - colore semaforo: 4 (0011)
+                                   - numero ciclomotori: 5 (0100)
+                                   - numero automezzi: 6 (0101)
+                                   - numero camion: 7 (0110)
+
+ * 5 - valore da trasmettere
+ 
+ */
+void messageTransmission(char idStrada, char codice, char valore)
+{
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=0;
+    strToSend[4]=0;
+    strToSend[5]=35;
+    Uart_send_string(strToSend);
+}
+
+
+
+
+
 char* num_converter(int num)
 {
     int length = 2;
