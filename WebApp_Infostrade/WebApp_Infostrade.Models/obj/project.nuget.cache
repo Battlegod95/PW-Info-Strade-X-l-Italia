@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "ASBHrgGfxI94VCA2dYfLNsYE5577KM11YYBIxiwMjL8UKVFzridnnH7qWDTQwBb7XMKLMI7U5IWcYoXy2xNRlw==",
+  "success": true,
+  "projectFilePath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\WebApp_Infostrade.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

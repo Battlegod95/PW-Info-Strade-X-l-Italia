@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("584e2fad-c7f3-411c-ac7b-f78c6d15a7cb")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApp_Infostrade")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

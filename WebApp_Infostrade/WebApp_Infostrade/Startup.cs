@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApp_Infostrade.Hubs;
 
 namespace WebApp_Infostrade
 {
@@ -24,7 +25,7 @@ namespace WebApp_Infostrade
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR();
+            services.AddSignalR().AddAzureSignalR("Endpoint=https://signalrwebapp.service.signalr.net;AccessKey=3Bs4Twk5KhAi94wk4BXMZwK/3o60T7yINsfh81PfH/U=;Version=1.0;");
             services.AddControllersWithViews();
         }
 
@@ -53,7 +54,10 @@ namespace WebApp_Infostrade
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapHub<ClockHub>("/hubs/clock");
+            });
+            app.UseAzureSignalR(routes =>
+            {
+                routes.MapHub<SignalrHub>("/chat");
             });
         }
         public class ClockHub : Hub<IClock>

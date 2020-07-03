@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_infostrade.Data\\WebApp_infostrade.Data.csproj": {}
+  },
+  "projects": {
+    "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_infostrade.Data\\WebApp_infostrade.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_infostrade.Data\\WebApp_infostrade.Data.csproj",
+        "projectName": "WebApp_infostrade.Data",
+        "projectPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_infostrade.Data\\WebApp_infostrade.Data.csproj",
+        "packagesPath": "C:\\Users\\Filippo\\.nuget\\packages\\",
+        "outputPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_infostrade.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Filippo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\WebApp_Infostrade.Models.csproj": {
+                "projectPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\WebApp_Infostrade.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\WebApp_Infostrade.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\WebApp_Infostrade.Models.csproj",
+        "projectName": "WebApp_Infostrade.Models",
+        "projectPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\WebApp_Infostrade.Models.csproj",
+        "packagesPath": "C:\\Users\\Filippo\\.nuget\\packages\\",
+        "outputPath": "C:\\Filippo\\PW_secondoanno\\PW-Info-Strade-X-l-Italia\\WebApp_Infostrade\\WebApp_Infostrade.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Filippo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

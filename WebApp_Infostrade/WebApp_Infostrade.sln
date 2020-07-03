@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp_Infostrade", "WebApp_Infostrade\WebApp_Infostrade.csproj", "{374622C0-4769-4F0D-BA23-A6F7F9437851}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp_Infostrade.Models", "WebApp_Infostrade.Models\WebApp_Infostrade.Models.csproj", "{8697A56D-1E9E-4652-8C1A-B7C2010BFD9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp_infostrade.Data", "WebApp_infostrade.Data\WebApp_infostrade.Data.csproj", "{B1A27384-9FCF-40E4-9549-861AD2A82860}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{374622C0-4769-4F0D-BA23-A6F7F9437851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{374622C0-4769-4F0D-BA23-A6F7F9437851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{374622C0-4769-4F0D-BA23-A6F7F9437851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8697A56D-1E9E-4652-8C1A-B7C2010BFD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8697A56D-1E9E-4652-8C1A-B7C2010BFD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8697A56D-1E9E-4652-8C1A-B7C2010BFD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8697A56D-1E9E-4652-8C1A-B7C2010BFD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A27384-9FCF-40E4-9549-861AD2A82860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A27384-9FCF-40E4-9549-861AD2A82860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A27384-9FCF-40E4-9549-861AD2A82860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A27384-9FCF-40E4-9549-861AD2A82860}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

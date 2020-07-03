@@ -1,0 +1,70 @@
+﻿@model WebApp_Infostrade.Views.IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building by InfoStrade</a>.</p>
+</div>
+<div>
+    <div class="card">
+        <h5 class="card-header">Featured</h5>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+<!-- AREA CHART Prova -->
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Area Chart</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="chart">
+            <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-2">User</div>
+        <div class="col-4"><input type="text" id="userInput" /></div>
+    </div>
+    <div class="row">
+        <div class="col-2">Message</div>
+        <div class="col-4"><input type="text" id="messageInput" /></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul id="messagesList"></ul>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+
