@@ -49,7 +49,7 @@ function parseMsg(data) {
 	console.log("byte 5 ", byte4); //Tipo di dato
 	console.log("byte 6 ", byte5); // valore del dato
 
-	let comunicazione = byte0.substring(0,2); //i primi due bit servono ad identificare il tipo di comunicazione
+	let comunicazione = byte0.substring(6); //i primi due bit servono ad identificare il tipo di comunicazione
 	let destinatario = byte1.substring(); //8 bit per identificare il destinatario del messaggio
 	let mittente = byte2.substring(); //8 bit per identificare il mittente del messaggio
 	let idStrada = byte3.substring(); // 8 bit per l'identificativo della strada
@@ -62,7 +62,7 @@ function parseMsg(data) {
 	var gg = time.getDate();
 	var mm = time.getMonth();
 	var yyyy = time.getFullYear();
-	var hour = time.getHour();
+	var hour = time.getHours();
 	var min = time.getMinutes();
 	
 	//condizione per identificare che json va riempito
@@ -70,13 +70,13 @@ function parseMsg(data) {
 	if (comunicazione == 01) {
 		switch (tipoDato) {
 			case 00000000:
-				temperature = valoreDato;
+				var temperature = valoreDato;
 				break;
 			case 00000001:
-				humidity: valoreDato;
+				var humidity = valoreDato;
 				break;
 			case 00000010:
-				pressure = valoreDato;
+				var pressure = valoreDato;
 				break;
 		};
 
@@ -131,16 +131,21 @@ function parseMsg(data) {
 
 		switch (tipoDato) {
 			case 00000011:
-				trafficLight = valoreDato;
+				if (valoreDato == 00000000) {
+					var trafficLight = "verde";
+				}
+				else {
+					vtrafficLight = "rosso";
+                }
 				break;
 			case 00000100:
-				nCiclomotori = valoreDato;
+				var nCiclomotori = valoreDato;
 				break;
 			case 00000101:
-				nAutomezzi = valoreDato;
+				var nAutomezzi = valoreDato;
 				break;
 			case 00000110:
-				nCamion = valoreDato;
+				var nCamion = valoreDato;
 				break;
 		}
 
@@ -174,6 +179,7 @@ function parseMsg(data) {
 		};
 
 		console.log(data);
+		console.log(json2);
 
 		//push dei dati nella coda di redis
 		client.on("ready", (err) => {
@@ -197,8 +203,4 @@ function parseMsg(data) {
 		console.log("errore");
 	}
 
-}
-
-
-
-		
+}	
