@@ -69,13 +69,13 @@ function parseMsg(data) {
 
 	if (comunicazione == 01) {
 		switch (tipoDato) {
-			case 00000000:
+			case "00000000":
 				var temperature = valoreDato;
 				break;
-			case 00000001:
+			case "00000001":
 				var humidity = valoreDato;
 				break;
-			case 00000010:
+			case "00000010":
 				var pressure = valoreDato;
 				break;
 		};
@@ -94,7 +94,7 @@ function parseMsg(data) {
 
 
 			"Data": {
-				"Date": (gg + '/' + (mm + 1) + '/' + yyyy),
+				"Date": time,
 				"Time": (hour + ':' + min),
 				"Temperature": temperature + "°C",
 				"Humidity": humidity + "%",
@@ -108,6 +108,7 @@ function parseMsg(data) {
 				}
 			}
 		};
+		console.log(json);
 
 		//push dei dati nella coda di redis
 		client.on("ready", (err) => {
@@ -128,9 +129,8 @@ function parseMsg(data) {
 	}
 	else if (comunicazione == 10)
 	{
-
 		switch (tipoDato) {
-			case 00000011:
+			case "00000011":
 				if (valoreDato == 00000000) {
 					var colore = "verde";
 				}
@@ -139,13 +139,13 @@ function parseMsg(data) {
 				}
 				var trafficLight = colore;
 				break;
-			case 00000100:
+			case "00000100":
 				var nCiclomotori = valoreDato;
 				break;
-			case 00000101:
+			case "00000101":
 				var nAutomezzi = valoreDato;
 				break;
-			case 00000110:
+			case "00000110":
 				var nCamion = valoreDato;
 				break;
 		}
@@ -160,7 +160,7 @@ function parseMsg(data) {
 			"idSemaforo": mittente,
 			"idStrada": idStrada,
 			"StatoSemaforo": trafficLight,
-			"FasciaOraria": (hour + ':' + min),
+			"FasciaOraria": time,
 			"Data": (gg + '/' + (mm + 1) + '/' + yyyy),
 			"TipologiaVeicolo": [
 				{
