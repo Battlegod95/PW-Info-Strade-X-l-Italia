@@ -1,11 +1,11 @@
 'use strict';
 
-var uuid = require('uuid');
+
 var Protocol = require('azure-iot-device-mqtt').Mqtt;
 var Client = require('azure-iot-device').Client;
 var Message = require('azure-iot-device').Message;
 
-var deviceConnectionString = "HostName=IoTHubTrafficLight.azure-devices.net;DeviceId=GatewayTestTrafficLight;SharedAccessKey=rZFdx7r32CVnmdUNQkPwJ6QNoVY3EDvr2nSxnpZOrBM="
+var deviceConnectionString = "HostName=IoTHubTrafficLight.azure-devices.net;DeviceId=4;SharedAccessKey=gg/l6hhNaNqQgJaVYHSWa97ElZDCH64/MOiW5fHf7Z4="
 
 var client = Client.fromConnectionString(deviceConnectionString, Protocol);
 
@@ -26,6 +26,23 @@ client.open(function (err) {
             if (item[1] != null) {
                 console.log(item[1]);
                 var message = new Message(item[1]);
+                message.contentEncoding = "utf-8";
+                message.contentType = "application/json";
+
+                //add custom properties
+                message.properties.add("Status", "Active");
+
+                console.log('Sending message: ' + message.getData());
+                client.sendEvent(message, function (err) {
+                    if (err) {
+                        console.error('Could not send: ' + err.toString());
+                        process.exit(-1);
+                    }
+                    else {
+                        console.log('Message sent: success');
+                        process.exit(0);
+                    }
+                });
             }
         });
 
@@ -76,26 +93,7 @@ client.open(function (err) {
 
         ));*/
 
-        message.contentEncoding = "utf-8";
-        message.contentType = "application/json";
-
-        // A unique identifier 
-        message.messageId = uuid.v4();
-
-        //add custom properties
-        message.properties.add("Status", "Active");
-
-
-        console.log('Sending message: ' + message.getData());
-        client.sendEvent(message, function (err) {
-            if (err) {
-                console.error('Could not send: ' + err.toString());
-                process.exit(-1);
-            } else {
-                console.log('Message sent: success');
-                process.exit(0);
-            }
-        });
+        
     }
 
 });
