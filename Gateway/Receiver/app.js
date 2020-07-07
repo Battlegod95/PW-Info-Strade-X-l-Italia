@@ -40,7 +40,7 @@ function parseMsg(data) {
 	let byte2 = parseInt(data[2], 10).toString(2).padStart(8, '0');
 	let byte3 = parseInt(data[3], 10).toString(2).padStart(8, '0');
 	let byte4 = parseInt(data[4], 10).toString(2).padStart(8, '0');
-	let byte5 = parseInt(data[4], 10).toString(2).padStart(8, '0');
+	let byte5 = parseInt(data[5], 10).toString(2).padStart(8, '0');
 
 	console.log("byte 1 ", byte0); //Byte di controllo del tipo di trasmissione (usati i primi 2 bit e 6 vuoti)
 	console.log("byte 2 ", byte1); //Destinatario
@@ -132,11 +132,12 @@ function parseMsg(data) {
 		switch (tipoDato) {
 			case 00000011:
 				if (valoreDato == 00000000) {
-					var trafficLight = "verde";
+					var colore = "verde";
 				}
 				else {
-					vtrafficLight = "rosso";
-                }
+					colore = "rosso";
+				}
+				var trafficLight = colore;
 				break;
 			case 00000100:
 				var nCiclomotori = valoreDato;
