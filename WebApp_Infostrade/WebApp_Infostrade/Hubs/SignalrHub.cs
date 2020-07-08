@@ -8,14 +8,9 @@ namespace WebApp_Infostrade.Hubs
 {
     public class SignalrHub : Hub
     {
-        public void BroadcastMessage(string name, string message)
+        public Task SendMessage(string message)
         {
-            Clients.All.SendAsync("broadcastMessage", name, message);
-        }
-
-        public void Echo(string name, string message)
-        {
-            Clients.Client(Context.ConnectionId).SendAsync("echo", name, message + " (echo from server)");
+            return Clients.All.SendAsync("ReceiveMessage", message);
         }
     }
 }

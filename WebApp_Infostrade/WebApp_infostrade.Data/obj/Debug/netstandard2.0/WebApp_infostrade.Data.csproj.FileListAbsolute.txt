@@ -1,0 +1,12 @@
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\bin\Debug\netstandard2.0\WebApp_Infostrade.Models.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.csprojAssemblyReference.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.AssemblyInfoInputs.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.AssemblyInfo.cs
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\bin\Debug\netstandard2.0\WebApp_infostrade.Data.deps.json
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\bin\Debug\netstandard2.0\WebApp_infostrade.Data.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\bin\Debug\netstandard2.0\WebApp_infostrade.Data.pdb
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\bin\Debug\netstandard2.0\WebApp_Infostrade.Models.pdb
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.csproj.CoreCompileInputs.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.csproj.CopyComplete
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_infostrade.Data\obj\Debug\netstandard2.0\WebApp_infostrade.Data.pdb

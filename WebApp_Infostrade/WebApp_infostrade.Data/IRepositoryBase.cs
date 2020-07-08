@@ -12,7 +12,7 @@ namespace WebApp_infostrade.Data
     {
         IEnumerable<TModel> GetAll();
         TModel GetById(Tkey id);
-        void Inser(TModel value);
+        void Insert(TModel value);
         void Update(TModel value);
         void Delete(Tkey id);
     }

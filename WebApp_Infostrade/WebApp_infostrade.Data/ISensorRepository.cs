@@ -7,6 +7,7 @@ namespace WebApp_infostrade.Data
 {
     public interface ISensorRepository: IRepositoryBase<Sensor>
     {
+
     }
 }
  
