@@ -1,0 +1,3 @@
+D:\documenti its\Project Work\Anno 2\PW-Info-Strade-X-l-Italia\Gateway\Sender\obj\Debug\Sender.njsprojAssemblyReference.cache
+D:\documenti its\Project Work\Anno 2\PW-Info-Strade-X-l-Italia\Gateway\Sender\obj\Debug\Sender.njsproj.CoreCompileInputs.cache
+D:\documenti its\Project Work\Anno 2\PW-Info-Strade-X-l-Italia\Gateway\Sender\bin\Microsoft.NodejsTools.WebRole.dll

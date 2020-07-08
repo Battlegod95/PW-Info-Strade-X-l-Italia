@@ -113,17 +113,17 @@ function parseMsg(data) {
 		//push dei dati nella coda di redis
 		client.on("ready", (err) => {
 			redisNotReady = false;
-			client.rpush("IotData", json);
+		});
 
-			client.llen("IotData", function (err, data) {
-				console.log("Lunghezza della lista: " + data);
-			});
+		client.rpush("IotData", JSON.stringify(json));
 
-			//elimina l'elemento in coda e restituisce l'elemento eliminato
-			client.lpop("IotData", function (err, data) {
-				console.log(data);
-			});
+		client.llen("IotData", function (err, data) {
+			console.log("Lunghezza della lista: " + data);
+		});
 
+		//elimina l'elemento in coda e restituisce l'elemento eliminato
+		client.lpop("IotData", function (err, data) {
+			console.log(data);
 		});
 
 	}
@@ -132,11 +132,15 @@ function parseMsg(data) {
 		switch (tipoDato) {
 			case "00000011":
 				if (valoreDato == 00000000) {
-					var colore = "verde";
+					var colore = 1;
 				}
-				else {
+				else if (valoreDato == 00000001
+				{
 					colore = "rosso";
 				}
+				else {
+
+                }
 				var trafficLight = colore;
 				break;
 			case "00000100":
@@ -185,17 +189,17 @@ function parseMsg(data) {
 		//push dei dati nella coda di redis
 		client.on("ready", (err) => {
 			redisNotReady = false;
-			client.rpush("IotData", json2);
+		});
 
-			client.llen("IotData", function (err, data) {
-				console.log("Lunghezza della lista: " + data);
-			});
+		client.rpush("IotData", JSON.stringify(json2));
 
-			//elimina l'elemento in coda e restituisce l'elemento eliminato
-			client.lpop("IotData", function (err, data) {
-				console.log(data);
-			});
+		client.llen("IotData", function (err, data) {
+			console.log("Lunghezza della lista: " + data);
+		});
 
+		//elimina l'elemento in coda e restituisce l'elemento eliminato
+		client.lpop("IotData", function (err, data) {
+			console.log(data);
 		});
 
 	}
