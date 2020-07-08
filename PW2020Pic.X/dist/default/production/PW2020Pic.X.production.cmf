@@ -11,28 +11,30 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\PC\AppData\Local\Temp\sg88.o
+$C:\Users\PC\AppData\Local\Temp\sgsg.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 0 2007 2007 1 2
 $dist/default/production\PW2020Pic.X.production.o
-cinit CODE 0 F F 34 2
-text1 CODE 0 1CE 1CE 53 2
-text2 CODE 0 25B 25B 20 2
-text3 CODE 0 294 294 F 2
-text4 CODE 0 27B 27B 19 2
-text5 CODE 0 2A3 2A3 B 2
-text6 CODE 0 221 221 3A 2
-text7 CODE 0 43 43 9D 2
-text8 CODE 0 E0 E0 7F 2
-maintext CODE 0 15F 15F 6F 2
+cinit CODE 0 F F 1D 2
+text1 CODE 0 273 273 53 2
+text2 CODE 0 300 300 20 2
+text3 CODE 0 34C 34C F 2
+text4 CODE 0 320 320 19 2
+text5 CODE 0 35B 35B B 2
+text6 CODE 0 2C6 2C6 3A 2
+text7 CODE 0 157 157 9D 2
+text8 CODE 0 1F4 1F4 7F 2
+maintext CODE 0 2C 2C 12B 2
 cstackCOMMON COMMON 1 70 70 8 1
-cstackBANK0 BANK0 1 32 32 11 1
+cstackBANK0 BANK0 1 33 33 11 1
+inittext CODE 0 339 339 13 2
 intentry CODE 0 4 4 8 2
-bssBANK0 BANK0 1 20 20 12 1
-idataBANK0 CODE 0 2B6 2B6 6 2
-dataBANK0 BANK0 1 43 43 6 1
-clrtext CODE 0 2AE 2AE 8 2
+bssBANK0 BANK0 1 20 20 13 1
+idataBANK0 CODE 0 366 366 9 2
+strings STRING 0 36F 36F 8 2
+dataBANK0 BANK0 1 44 44 9 1
+clrtext CODE 0 377 377 8 2
 bssCOMMON COMMON 1 78 78 3 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -40,22 +42,22 @@ bssCOMMON COMMON 1 78 78 3 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 49-6F 1
+RAM 4D-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 49-6F 1
+BANK0 4D-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 2BC-1FFF 2
+CONST 37F-1FFF 2
 ENTRY 3-3 2
-ENTRY 2BC-1FFF 2
+ENTRY 37F-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 2BC-1FFF 2
+CODE 37F-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -63,9 +65,9 @@ SFR3 180-18F 1
 COMMON 7B-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 2BC-1FFF 2
+STRCODE 37F-1FFF 2
 STRING 3-3 2
-STRING 2BC-1FFF 2
+STRING 37F-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -80,172 +82,230 @@ STRING 2BC-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\PW2020Pic.X.production.o
-F cinit CODE >445:C:\Users\PC\AppData\Local\Temp\sg88.s
-F cinit CODE >448:C:\Users\PC\AppData\Local\Temp\sg88.s
-F cinit CODE >513:C:\Users\PC\AppData\Local\Temp\sg88.s
-14 cinit CODE >514:C:\Users\PC\AppData\Local\Temp\sg88.s
-15 cinit CODE >515:C:\Users\PC\AppData\Local\Temp\sg88.s
-1A cinit CODE >516:C:\Users\PC\AppData\Local\Temp\sg88.s
-1B cinit CODE >517:C:\Users\PC\AppData\Local\Temp\sg88.s
-20 cinit CODE >518:C:\Users\PC\AppData\Local\Temp\sg88.s
-21 cinit CODE >519:C:\Users\PC\AppData\Local\Temp\sg88.s
-26 cinit CODE >520:C:\Users\PC\AppData\Local\Temp\sg88.s
-27 cinit CODE >521:C:\Users\PC\AppData\Local\Temp\sg88.s
-2C cinit CODE >522:C:\Users\PC\AppData\Local\Temp\sg88.s
-2D cinit CODE >523:C:\Users\PC\AppData\Local\Temp\sg88.s
-32 cinit CODE >524:C:\Users\PC\AppData\Local\Temp\sg88.s
-33 cinit CODE >543:C:\Users\PC\AppData\Local\Temp\sg88.s
-34 cinit CODE >544:C:\Users\PC\AppData\Local\Temp\sg88.s
-35 cinit CODE >545:C:\Users\PC\AppData\Local\Temp\sg88.s
-36 cinit CODE >546:C:\Users\PC\AppData\Local\Temp\sg88.s
-37 cinit CODE >547:C:\Users\PC\AppData\Local\Temp\sg88.s
-3C cinit CODE >550:C:\Users\PC\AppData\Local\Temp\sg88.s
-3D cinit CODE >551:C:\Users\PC\AppData\Local\Temp\sg88.s
-3E cinit CODE >552:C:\Users\PC\AppData\Local\Temp\sg88.s
-3F cinit CODE >558:C:\Users\PC\AppData\Local\Temp\sg88.s
-3F cinit CODE >560:C:\Users\PC\AppData\Local\Temp\sg88.s
-40 cinit CODE >561:C:\Users\PC\AppData\Local\Temp\sg88.s
-4 intentry CODE >157:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-E0 text8 CODE >157:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-E0 text8 CODE >161:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-EB text8 CODE >163:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-F5 text8 CODE >165:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-F5 text8 CODE >166:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-FC text8 CODE >168:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-105 text8 CODE >170:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-10F text8 CODE >172:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-10F text8 CODE >173:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-116 text8 CODE >175:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-11F text8 CODE >177:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-129 text8 CODE >179:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-129 text8 CODE >180:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-130 text8 CODE >184:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-134 text8 CODE >186:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-138 text8 CODE >187:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-139 text8 CODE >188:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-13D text8 CODE >189:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-13F text8 CODE >192:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-143 text8 CODE >194:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-147 text8 CODE >195:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-149 text8 CODE >196:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-14F text8 CODE >197:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-156 text8 CODE >200:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-158 text8 CODE >203:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-43 text7 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-43 text7 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-46 text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-4A text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-55 text7 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-57 text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-57 text7 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-5B text7 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-66 text7 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-6A text7 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-72 text7 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-7A text7 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-7C text7 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-7D text7 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-86 text7 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-8A text7 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-8E text7 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-97 text7 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-A9 text7 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-B7 text7 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-B8 text7 CODE >35:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-C1 text7 CODE >36:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-C7 text7 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-CC text7 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-D7 text7 CODE >40:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-DF text7 CODE >41:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
-221 text6 CODE >349:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-221 text6 CODE >351:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-224 text6 CODE >352:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-225 text6 CODE >353:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-228 text6 CODE >354:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-229 text6 CODE >355:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-257 text6 CODE >356:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-258 text6 CODE >357:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-259 text6 CODE >358:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-25A text6 CODE >359:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2A3 text5 CODE >362:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2A4 text5 CODE >364:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2AA text5 CODE >365:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2AB text5 CODE >366:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2AD text5 CODE >367:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-27B text4 CODE >248:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-27C text4 CODE >251:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-27D text4 CODE >253:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-289 text4 CODE >254:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-293 text4 CODE >255:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-294 text3 CODE >260:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-294 text3 CODE >262:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-297 text3 CODE >263:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-299 text3 CODE >264:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-29A text3 CODE >266:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-29C text3 CODE >267:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-29E text3 CODE >268:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2A2 text3 CODE >269:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-25B text2 CODE >317:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-25C text2 CODE >319:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-25F text2 CODE >320:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-261 text2 CODE >321:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-262 text2 CODE >322:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-26B text2 CODE >323:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-26E text2 CODE >324:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-277 text2 CODE >325:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-27A text2 CODE >326:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1CE text1 CODE >329:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1CE text1 CODE >331:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1D1 text1 CODE >332:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1D2 text1 CODE >333:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1DB text1 CODE >334:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1DE text1 CODE >335:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1E4 text1 CODE >336:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1ED text1 CODE >337:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1F3 text1 CODE >338:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1FC text1 CODE >339:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-202 text1 CODE >340:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-208 text1 CODE >341:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-20E text1 CODE >342:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-214 text1 CODE >343:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-21A text1 CODE >344:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-220 text1 CODE >345:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-15F maintext CODE >97:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-15F maintext CODE >99:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-164 maintext CODE >100:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-16F maintext CODE >101:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-174 maintext CODE >102:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-17A maintext CODE >107:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-180 maintext CODE >108:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-184 maintext CODE >109:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-188 maintext CODE >110:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-189 maintext CODE >111:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-18A maintext CODE >112:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-18E maintext CODE >113:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-194 maintext CODE >120:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-19B maintext CODE >122:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-19F maintext CODE >123:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1A0 maintext CODE >124:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1A6 maintext CODE >126:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1AD maintext CODE >128:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1B1 maintext CODE >129:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1B2 maintext CODE >131:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1B7 maintext CODE >133:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1BB maintext CODE >134:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1BC maintext CODE >139:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1C1 maintext CODE >141:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1C1 maintext CODE >143:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-1C7 maintext CODE >147:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
-2AE clrtext CODE >530:C:\Users\PC\AppData\Local\Temp\sg88.s
-2AE clrtext CODE >531:C:\Users\PC\AppData\Local\Temp\sg88.s
-2AF clrtext CODE >532:C:\Users\PC\AppData\Local\Temp\sg88.s
-2AF clrtext CODE >533:C:\Users\PC\AppData\Local\Temp\sg88.s
-2B0 clrtext CODE >534:C:\Users\PC\AppData\Local\Temp\sg88.s
-2B1 clrtext CODE >535:C:\Users\PC\AppData\Local\Temp\sg88.s
-2B2 clrtext CODE >536:C:\Users\PC\AppData\Local\Temp\sg88.s
-2B3 clrtext CODE >537:C:\Users\PC\AppData\Local\Temp\sg88.s
-2B4 clrtext CODE >538:C:\Users\PC\AppData\Local\Temp\sg88.s
-2B5 clrtext CODE >539:C:\Users\PC\AppData\Local\Temp\sg88.s
+F cinit CODE >480:C:\Users\PC\AppData\Local\Temp\sgsg.s
+F cinit CODE >483:C:\Users\PC\AppData\Local\Temp\sgsg.s
+F cinit CODE >590:C:\Users\PC\AppData\Local\Temp\sgsg.s
+10 cinit CODE >591:C:\Users\PC\AppData\Local\Temp\sgsg.s
+11 cinit CODE >592:C:\Users\PC\AppData\Local\Temp\sgsg.s
+12 cinit CODE >593:C:\Users\PC\AppData\Local\Temp\sgsg.s
+13 cinit CODE >594:C:\Users\PC\AppData\Local\Temp\sgsg.s
+14 cinit CODE >595:C:\Users\PC\AppData\Local\Temp\sgsg.s
+15 cinit CODE >596:C:\Users\PC\AppData\Local\Temp\sgsg.s
+16 cinit CODE >597:C:\Users\PC\AppData\Local\Temp\sgsg.s
+17 cinit CODE >598:C:\Users\PC\AppData\Local\Temp\sgsg.s
+18 cinit CODE >599:C:\Users\PC\AppData\Local\Temp\sgsg.s
+1D cinit CODE >618:C:\Users\PC\AppData\Local\Temp\sgsg.s
+1E cinit CODE >619:C:\Users\PC\AppData\Local\Temp\sgsg.s
+1F cinit CODE >620:C:\Users\PC\AppData\Local\Temp\sgsg.s
+20 cinit CODE >621:C:\Users\PC\AppData\Local\Temp\sgsg.s
+25 cinit CODE >624:C:\Users\PC\AppData\Local\Temp\sgsg.s
+26 cinit CODE >625:C:\Users\PC\AppData\Local\Temp\sgsg.s
+27 cinit CODE >626:C:\Users\PC\AppData\Local\Temp\sgsg.s
+28 cinit CODE >632:C:\Users\PC\AppData\Local\Temp\sgsg.s
+28 cinit CODE >634:C:\Users\PC\AppData\Local\Temp\sgsg.s
+29 cinit CODE >635:C:\Users\PC\AppData\Local\Temp\sgsg.s
+4 intentry CODE >297:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+1F4 text8 CODE >297:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+1F4 text8 CODE >301:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+1FF text8 CODE >303:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+209 text8 CODE >305:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+209 text8 CODE >306:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+210 text8 CODE >308:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+219 text8 CODE >310:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+223 text8 CODE >312:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+223 text8 CODE >313:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+22A text8 CODE >315:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+233 text8 CODE >317:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+23D text8 CODE >319:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+23D text8 CODE >320:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+244 text8 CODE >324:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+248 text8 CODE >326:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+24C text8 CODE >327:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+24D text8 CODE >328:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+251 text8 CODE >329:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+253 text8 CODE >332:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+257 text8 CODE >334:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+25B text8 CODE >335:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+25D text8 CODE >336:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+263 text8 CODE >337:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+26A text8 CODE >345:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+26C text8 CODE >348:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+157 text7 CODE >5:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+157 text7 CODE >13:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+15A text7 CODE >14:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+15E text7 CODE >15:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+169 text7 CODE >16:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+16B text7 CODE >17:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+16B text7 CODE >18:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+16F text7 CODE >19:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+17A text7 CODE >20:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+17E text7 CODE >22:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+186 text7 CODE >23:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+18E text7 CODE >24:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+190 text7 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+191 text7 CODE >26:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+19A text7 CODE >27:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+19E text7 CODE >25:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1A2 text7 CODE >30:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1AB text7 CODE >31:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1BD text7 CODE >32:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1CB text7 CODE >33:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1CC text7 CODE >35:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1D5 text7 CODE >36:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1DB text7 CODE >38:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1E0 text7 CODE >39:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1EB text7 CODE >40:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+1F3 text7 CODE >41:C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+2C6 text6 CODE >528:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2C6 text6 CODE >530:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2C9 text6 CODE >531:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2CA text6 CODE >532:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2CD text6 CODE >533:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2CE text6 CODE >534:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2FC text6 CODE >535:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2FD text6 CODE >536:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2FE text6 CODE >537:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2FF text6 CODE >538:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+35B text5 CODE >541:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+35C text5 CODE >543:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+362 text5 CODE >544:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+363 text5 CODE >545:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+365 text5 CODE >546:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+320 text4 CODE >427:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+321 text4 CODE >430:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+322 text4 CODE >432:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+32E text4 CODE >433:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+338 text4 CODE >434:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+34C text3 CODE >439:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+34C text3 CODE >441:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+34F text3 CODE >442:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+351 text3 CODE >443:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+352 text3 CODE >445:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+354 text3 CODE >446:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+356 text3 CODE >447:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+35A text3 CODE >448:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+300 text2 CODE >496:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+301 text2 CODE >498:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+304 text2 CODE >499:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+306 text2 CODE >500:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+307 text2 CODE >501:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+310 text2 CODE >502:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+313 text2 CODE >503:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+31C text2 CODE >504:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+31F text2 CODE >505:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+273 text1 CODE >508:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+273 text1 CODE >510:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+276 text1 CODE >511:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+277 text1 CODE >512:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+280 text1 CODE >513:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+283 text1 CODE >514:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+289 text1 CODE >515:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+292 text1 CODE >516:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+298 text1 CODE >517:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2A1 text1 CODE >518:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2A7 text1 CODE >519:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2AD text1 CODE >520:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2B3 text1 CODE >521:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2B9 text1 CODE >522:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2BF text1 CODE >523:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2C5 text1 CODE >524:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2C maintext CODE >102:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+2C maintext CODE >104:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+31 maintext CODE >105:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+3C maintext CODE >106:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+41 maintext CODE >107:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+47 maintext CODE >112:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+4D maintext CODE >113:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+51 maintext CODE >114:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+55 maintext CODE >115:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+56 maintext CODE >116:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+57 maintext CODE >117:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+5B maintext CODE >118:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+61 maintext CODE >121:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+67 maintext CODE >122:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+6B maintext CODE >123:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+6F maintext CODE >124:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+73 maintext CODE >125:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+75 maintext CODE >126:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+79 maintext CODE >127:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+7F maintext CODE >129:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+85 maintext CODE >130:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+89 maintext CODE >131:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+8D maintext CODE >132:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+91 maintext CODE >133:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+95 maintext CODE >134:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+97 maintext CODE >135:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+9D maintext CODE >137:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+A3 maintext CODE >138:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+A7 maintext CODE >139:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+AB maintext CODE >140:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+AC maintext CODE >141:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+B0 maintext CODE >142:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+B4 maintext CODE >143:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+BA maintext CODE >145:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+C0 maintext CODE >146:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+C4 maintext CODE >147:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+C8 maintext CODE >148:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+C9 maintext CODE >149:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+CD maintext CODE >150:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+D1 maintext CODE >151:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+D7 maintext CODE >153:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+DD maintext CODE >154:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+E1 maintext CODE >155:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+E5 maintext CODE >156:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+E9 maintext CODE >157:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+ED maintext CODE >158:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+F1 maintext CODE >159:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+F7 maintext CODE >161:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+FD maintext CODE >162:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+101 maintext CODE >163:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+105 maintext CODE >164:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+109 maintext CODE >165:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+10D maintext CODE >166:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+111 maintext CODE >167:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+117 maintext CODE >194:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+11E maintext CODE >196:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+122 maintext CODE >197:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+123 maintext CODE >198:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+129 maintext CODE >200:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+130 maintext CODE >202:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+134 maintext CODE >203:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+135 maintext CODE >205:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+13A maintext CODE >207:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+13E maintext CODE >208:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+13F maintext CODE >258:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+144 maintext CODE >263:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+145 maintext CODE >268:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+14A maintext CODE >270:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+14A maintext CODE >272:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+150 maintext CODE >287:C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+377 clrtext CODE >605:C:\Users\PC\AppData\Local\Temp\sgsg.s
+377 clrtext CODE >606:C:\Users\PC\AppData\Local\Temp\sgsg.s
+378 clrtext CODE >607:C:\Users\PC\AppData\Local\Temp\sgsg.s
+378 clrtext CODE >608:C:\Users\PC\AppData\Local\Temp\sgsg.s
+379 clrtext CODE >609:C:\Users\PC\AppData\Local\Temp\sgsg.s
+37A clrtext CODE >610:C:\Users\PC\AppData\Local\Temp\sgsg.s
+37B clrtext CODE >611:C:\Users\PC\AppData\Local\Temp\sgsg.s
+37C clrtext CODE >612:C:\Users\PC\AppData\Local\Temp\sgsg.s
+37D clrtext CODE >613:C:\Users\PC\AppData\Local\Temp\sgsg.s
+37E clrtext CODE >614:C:\Users\PC\AppData\Local\Temp\sgsg.s
+339 inittext CODE >564:C:\Users\PC\AppData\Local\Temp\sgsg.s
+339 inittext CODE >565:C:\Users\PC\AppData\Local\Temp\sgsg.s
+33A inittext CODE >566:C:\Users\PC\AppData\Local\Temp\sgsg.s
+33B inittext CODE >567:C:\Users\PC\AppData\Local\Temp\sgsg.s
+33C inittext CODE >568:C:\Users\PC\AppData\Local\Temp\sgsg.s
+33D inittext CODE >575:C:\Users\PC\AppData\Local\Temp\sgsg.s
+33D inittext CODE >576:C:\Users\PC\AppData\Local\Temp\sgsg.s
+342 inittext CODE >577:C:\Users\PC\AppData\Local\Temp\sgsg.s
+343 inittext CODE >578:C:\Users\PC\AppData\Local\Temp\sgsg.s
+344 inittext CODE >579:C:\Users\PC\AppData\Local\Temp\sgsg.s
+345 inittext CODE >580:C:\Users\PC\AppData\Local\Temp\sgsg.s
+346 inittext CODE >581:C:\Users\PC\AppData\Local\Temp\sgsg.s
+347 inittext CODE >582:C:\Users\PC\AppData\Local\Temp\sgsg.s
+348 inittext CODE >583:C:\Users\PC\AppData\Local\Temp\sgsg.s
+349 inittext CODE >584:C:\Users\PC\AppData\Local\Temp\sgsg.s
+34A inittext CODE >585:C:\Users\PC\AppData\Local\Temp\sgsg.s
+34B inittext CODE >586:C:\Users\PC\AppData\Local\Temp\sgsg.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -265,70 +325,71 @@ __Hspace_1 7B 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
-_UART_TxChar 546 0 CODE 0 text5 dist/default/production\PW2020Pic.X.production.o
+_UART_TxChar 6B6 0 CODE 0 text5 dist/default/production\PW2020Pic.X.production.o
 __size_of_init_lcd 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _RCIF 65 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _TXIF 64 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\PC\AppData\Local\Temp\sg88.o
-_main 2BE 0 CODE 0 maintext dist/default/production\PW2020Pic.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\PC\AppData\Local\Temp\sgsg.o
+_main 58 0 CODE 0 maintext dist/default/production\PW2020Pic.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-start 18 0 CODE 0 init C:\Users\PC\AppData\Local\Temp\sg88.o
-__end_of_Uart_send_string 528 0 CODE 0 text4 dist/default/production\PW2020Pic.X.production.o
+start 18 0 CODE 0 init C:\Users\PC\AppData\Local\Temp\sgsg.o
+__end_of_Uart_send_string 672 0 CODE 0 text4 dist/default/production\PW2020Pic.X.production.o
 __size_of___aldiv 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __size_of_Uart_send_string 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-UART_init@baudrate 40 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sg88.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sg88.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sg88.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sg88.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sg88.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sg88.o
+UART_init@baudrate 41 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sgsg.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sgsg.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sgsg.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sgsg.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sgsg.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\PC\AppData\Local\Temp\sgsg.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-_init_lcd 39C 0 CODE 0 text1 dist/default/production\PW2020Pic.X.production.o
-___aldiv@divisor 32 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+_init_lcd 4E6 0 CODE 0 text1 dist/default/production\PW2020Pic.X.production.o
+___aldiv@divisor 33 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
-___aldiv@sign 3B 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
-_strToSend 2A 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+___aldiv@sign 3C 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+_strToSend 2B 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
-__end_of_init_lcd 442 0 CODE 0 text1 dist/default/production\PW2020Pic.X.production.o
+__end_of_init_lcd 58C 0 CODE 0 text1 dist/default/production\PW2020Pic.X.production.o
 _ADCON0 1F 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _ADCON1 9F 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _ADRESH 1E 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _ADRESL 9E 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __size_of_initPic 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-__end_of___aldiv 1C0 0 CODE 0 text7 dist/default/production\PW2020Pic.X.production.o
+__end_of___aldiv 3E8 0 CODE 0 text7 dist/default/production\PW2020Pic.X.production.o
 _INTCON B 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-_datoSeriale 28 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+_datoSeriale 29 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 _OPTION_REG 81 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\PC\AppData\Local\Temp\sg88.o
-___stacklo 0 0 ABS 0 - C:\Users\PC\AppData\Local\Temp\sg88.o
+___stackhi 0 0 ABS 0 - C:\Users\PC\AppData\Local\Temp\sgsg.o
+___stacklo 0 0 ABS 0 - C:\Users\PC\AppData\Local\Temp\sgsg.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\PW2020Pic.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-___aldiv@quotient 3C 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+___aldiv@quotient 3D 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
 _GO_nDONE FA 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-clear_ram0 55C 0 CODE 0 clrtext dist/default/production\PW2020Pic.X.production.o
-num_converter@F895 43 0 BANK0 1 dataBANK0 dist/default/production\PW2020Pic.X.production.o
-__pcstackBANK0 32 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
-Uart_send_string@str 75 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
-__end_of_initPic 546 0 CODE 0 text3 dist/default/production\PW2020Pic.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\PC\AppData\Local\Temp\sg88.o
+clear_ram0 6EE 0 CODE 0 clrtext dist/default/production\PW2020Pic.X.production.o
+num_converter@F903 44 0 BANK0 1 dataBANK0 dist/default/production\PW2020Pic.X.production.o
+__pcstackBANK0 33 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+Uart_send_string@str 76 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
+__end_of_initPic 6B6 0 CODE 0 text3 dist/default/production\PW2020Pic.X.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\PC\AppData\Local\Temp\sgsg.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 ABS 0 bank3 -
-__Hcinit 86 0 CODE 0 cinit -
+__Hcinit 58 0 CODE 0 cinit -
 __Hidloc 0 0 IDLOC 0 idloc -
 __Hstack 0 0 STACK 2 stack -
-__end_of_UART_TxChar 55C 0 CODE 0 text5 dist/default/production\PW2020Pic.X.production.o
+__stringbase 6E8 0 STRING 0 strings dist/default/production\PW2020Pic.X.production.o
+__end_of_UART_TxChar 6CC 0 CODE 0 text5 dist/default/production\PW2020Pic.X.production.o
 __Hmaintext 0 0 ABS 0 maintext -
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4010 0 CONFIG 0 config -
@@ -339,6 +400,7 @@ __Lbank3 0 0 ABS 0 bank3 -
 __Lcinit 1E 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 0 idloc -
 __Lstack 0 0 STACK 2 stack -
+__Linittext 0 0 ABS 0 inittext -
 _PORTBbits 6 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _PORTEbits 9 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _INTCONbits B 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
@@ -360,81 +422,87 @@ __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-_ISR 1C0 0 CODE 0 text8 dist/default/production\PW2020Pic.X.production.o
+_ISR 3E8 0 CODE 0 text8 dist/default/production\PW2020Pic.X.production.o
 __S0 2008 0 ABS 0 - -
 __S1 7B 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 saved_w 7E 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-_contCamion 25 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
-__end_of_ISR 2BE 0 CODE 0 text8 dist/default/production\PW2020Pic.X.production.o
+_contCamion 26 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+__end_of_ISR 4E6 0 CODE 0 text8 dist/default/production\PW2020Pic.X.production.o
 _oldBtn1 7A 0 COMMON 1 bssCOMMON dist/default/production\PW2020Pic.X.production.o
 _oldBtn2 79 0 COMMON 1 bssCOMMON dist/default/production\PW2020Pic.X.production.o
 _oldBtn3 78 0 COMMON 1 bssCOMMON dist/default/production\PW2020Pic.X.production.o
 __CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\PC\AppData\Local\Temp\sg88.o
-__pdataBANK0 43 0 BANK0 1 dataBANK0 dist/default/production\PW2020Pic.X.production.o
+__stringtab 6DE 0 STRING 0 strings dist/default/production\PW2020Pic.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\PC\AppData\Local\Temp\sgsg.o
+__pdataBANK0 44 0 BANK0 1 dataBANK0 dist/default/production\PW2020Pic.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __size_of_send_cmd 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _RCSTAbits 18 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-___aldiv 86 0 CODE 0 text7 dist/default/production\PW2020Pic.X.production.o
-__pmaintext 2BE 0 CODE 0 maintext dist/default/production\PW2020Pic.X.production.o
-Uart_send_string@i 76 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
+___aldiv 2AE 0 CODE 0 text7 dist/default/production\PW2020Pic.X.production.o
+__pmaintext 58 0 CODE 0 maintext dist/default/production\PW2020Pic.X.production.o
+Uart_send_string@i 75 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-_received 29 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+__Hinittext 0 0 ABS 0 inittext -
+_received 2A 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 __size_of_UART_TxChar 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _ADCON0bits 1F 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
+__end_of__stringtab 6EA 0 STRING 0 strings dist/default/production\PW2020Pic.X.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-_send_cmd 4B6 0 CODE 0 text2 dist/default/production\PW2020Pic.X.production.o
+_send_cmd 600 0 CODE 0 text2 dist/default/production\PW2020Pic.X.production.o
 __pbssCOMMON 78 0 COMMON 1 bssCOMMON dist/default/production\PW2020Pic.X.production.o
+init_fetch0 672 0 CODE 0 inittext dist/default/production\PW2020Pic.X.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __Lend_init 18 0 CODE 0 end_init -
 __CFG_LVP$ON 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-end_of_initialization 7E 0 CODE 0 cinit dist/default/production\PW2020Pic.X.production.o
-__end_of_send_cmd 4F6 0 CODE 0 text2 dist/default/production\PW2020Pic.X.production.o
+end_of_initialization 50 0 CODE 0 cinit dist/default/production\PW2020Pic.X.production.o
+__end_of_send_cmd 640 0 CODE 0 text2 dist/default/production\PW2020Pic.X.production.o
 __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
-?___aldiv 32 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+?___aldiv 33 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
 __Hreset_vec 6 0 CODE 0 reset_vec -
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
-_initPic 528 0 CODE 0 text3 dist/default/production\PW2020Pic.X.production.o
-__end_of_UART_init 4B6 0 CODE 0 text6 dist/default/production\PW2020Pic.X.production.o
+_initPic 698 0 CODE 0 text3 dist/default/production\PW2020Pic.X.production.o
+__end_of_UART_init 600 0 CODE 0 text6 dist/default/production\PW2020Pic.X.production.o
 __size_of_UART_init 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-__ptext1 39C 0 CODE 0 text1 dist/default/production\PW2020Pic.X.production.o
-__ptext2 4B6 0 CODE 0 text2 dist/default/production\PW2020Pic.X.production.o
-__ptext3 528 0 CODE 0 text3 dist/default/production\PW2020Pic.X.production.o
-__ptext4 4F6 0 CODE 0 text4 dist/default/production\PW2020Pic.X.production.o
-__ptext5 546 0 CODE 0 text5 dist/default/production\PW2020Pic.X.production.o
-__ptext6 442 0 CODE 0 text6 dist/default/production\PW2020Pic.X.production.o
-__ptext7 86 0 CODE 0 text7 dist/default/production\PW2020Pic.X.production.o
-__ptext8 1C0 0 CODE 0 text8 dist/default/production\PW2020Pic.X.production.o
+__ptext1 4E6 0 CODE 0 text1 dist/default/production\PW2020Pic.X.production.o
+__ptext2 600 0 CODE 0 text2 dist/default/production\PW2020Pic.X.production.o
+__ptext3 698 0 CODE 0 text3 dist/default/production\PW2020Pic.X.production.o
+__ptext4 640 0 CODE 0 text4 dist/default/production\PW2020Pic.X.production.o
+__ptext5 6B6 0 CODE 0 text5 dist/default/production\PW2020Pic.X.production.o
+__ptext6 58C 0 CODE 0 text6 dist/default/production\PW2020Pic.X.production.o
+__ptext7 2AE 0 CODE 0 text7 dist/default/production\PW2020Pic.X.production.o
+__ptext8 3E8 0 CODE 0 text8 dist/default/production\PW2020Pic.X.production.o
 UART_TxChar@dato 73 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
-___aldiv@dividend 36 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+___aldiv@dividend 37 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
+_scattoSemafori 22 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
-_UART_init 442 0 CODE 0 text6 dist/default/production\PW2020Pic.X.production.o
+_UART_init 58C 0 CODE 0 text6 dist/default/production\PW2020Pic.X.production.o
 __CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-__end_of__initialization 7E 0 CODE 0 cinit dist/default/production\PW2020Pic.X.production.o
+__end_of__initialization 50 0 CODE 0 cinit dist/default/production\PW2020Pic.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-__pidataBANK0 56C 0 CODE 0 idataBANK0 dist/default/production\PW2020Pic.X.production.o
+__pidataBANK0 6CC 0 CODE 0 idataBANK0 dist/default/production\PW2020Pic.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 __CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
 _TXSTAbits 98 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-_Uart_send_string 4F6 0 CODE 0 text4 dist/default/production\PW2020Pic.X.production.o
+_Uart_send_string 640 0 CODE 0 text4 dist/default/production\PW2020Pic.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-___aldiv@counter 3A 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
-__end_of_main 39C 0 CODE 0 maintext dist/default/production\PW2020Pic.X.production.o
+init_ram0 67A 0 CODE 0 inittext dist/default/production\PW2020Pic.X.production.o
+___aldiv@counter 3B 0 BANK0 1 cstackBANK0 dist/default/production\PW2020Pic.X.production.o
+__end_of_main 2AE 0 CODE 0 maintext dist/default/production\PW2020Pic.X.production.o
 _PORTD 8 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _RCREG 1A 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 _SPBRG 99 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
@@ -448,18 +516,19 @@ __Lram 0 0 ABS 0 ram -
 _count 20 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 interrupt_function 8 0 CODE 0 intentry dist/default/production\PW2020Pic.X.production.o
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
-_stat1 24 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
-_stat2 23 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
-_stat3 22 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+_stat1 25 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+_stat2 24 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+_stat3 23 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\PW2020Pic.X.production.o
 __size_of_ISR 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
 send_cmd@command 75 0 COMMON 1 cstackCOMMON dist/default/production\PW2020Pic.X.production.o
-_contAuto 27 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
-_contMoto 26 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+_contAuto 28 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
+_contMoto 27 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\PW2020Pic.X.production.o
 __pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\PW2020Pic.X.production.o
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
+__pstrings 6DE 0 STRING 0 strings dist/default/production\PW2020Pic.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -486,9 +555,11 @@ __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\PW2020Pic.X.production.o
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackCOMMON 1 70 70 B 1
-intentry 0 4 8 2B8 2
+intentry 0 4 8 36B 2
 reset_vec 0 0 0 3 2
-bssBANK0 1 20 20 29 1
+bssBANK0 1 20 20 2D 1
+strings 0 36F 6DE 8 2
+clrtext 0 377 6EE 8 2
 config 0 2007 400E 1 2
 # OTES Section
 # This section contains data of all the note-psects.  The beginning of the section

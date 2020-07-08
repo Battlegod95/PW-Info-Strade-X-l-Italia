@@ -97,7 +97,7 @@ char contMoto=0; // Conteggio motoveicoli
 char contCamion=0; // Conteggio autocarri
 unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0; // Pulsanti simulazione veicoli
 unsigned char scattoSemafori=0;
-char statoSemafori[3]={"V","G","R"};
+//char statoSemafori[3]={"V","G","R"};
 
 void main(void) {
     
@@ -106,9 +106,9 @@ void main(void) {
     init_lcd();
     send_cmd(L_CLR);
     
-    char semafori[numStrade];
+    //char semafori[numStrade];
     
-    //Messaggio Demo
+    //Messaggio Demo temperatura: 0 (0000)
     strToSend[0]=2;
     strToSend[1]=GATEWAY;
     strToSend[2]=PIC_ID;
@@ -117,16 +117,75 @@ void main(void) {
     strToSend[5]=35;
     Uart_send_string(strToSend);
     
+    //Messaggio Demo umidità: 1 (0001)
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=2;
+    strToSend[4]=1;
+    strToSend[5]=50;
+    Uart_send_string(strToSend);
+    //Messaggio Demo pressione: 2 (0010)
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=4;
+    strToSend[4]=2;
+    strToSend[5]=1;
+    Uart_send_string(strToSend);
+    //Messaggio Demo colore semaforo: 4 (0011)
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=0;
+    strToSend[4]=4;
+    strToSend[5]="R";
+    Uart_send_string(strToSend);
+    //Messaggio Demo numero ciclomotori: 5 (0100)
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=0;
+    strToSend[4]=5;
+    strToSend[5]=5;
+    Uart_send_string(strToSend);
+    //Messaggio Demo numero automezzi: 6 (0101)
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=2;
+    strToSend[4]=6;
+    strToSend[5]=4;
+    Uart_send_string(strToSend);
+    //Messaggio Demo numero camion: 7 (0110)
+    strToSend[0]=2;
+    strToSend[1]=GATEWAY;
+    strToSend[2]=PIC_ID;
+    strToSend[3]=3;
+    strToSend[4]=7;
+    strToSend[5]=2;
+    Uart_send_string(strToSend);
+    
+    
+    /*
+     - temperatura: 0 (0000)
+                                   - umidità: 1 (0001)
+                                   - pressione: 2 (0010)
+                                   - colore semaforo: 4 (0011)
+                                   - numero ciclomotori: 5 (0100)
+                                   - numero automezzi: 6 (0101)
+                                   - numero camion: 7 (0110)*/
+    
     char i;
     //for(i=0;i<4;i++)
     //{
         //semafori[i]="R";
     //}
     
-    semafori[0]=statoSemafori[0];
-    semafori[1]=statoSemafori[2];
-    semafori[2]=statoSemafori[2];
-    semafori[3]=statoSemafori[2];
+    //semafori[0]=statoSemafori[0];
+    //semafori[1]=statoSemafori[2];
+    //semafori[2]=statoSemafori[2];
+    //semafori[3]=statoSemafori[2];
     
     while(1)
     {
@@ -148,7 +207,7 @@ void main(void) {
             contCamion++;
             stat3=0;
         }
-        
+        /*
         // Gestione Scatto Semaforo
         if(scattoSemafori==1)
         {
@@ -193,7 +252,7 @@ void main(void) {
                 }
             }
         }
-        
+        */
         
         // Gestione Trasmissione d'invio
         if(scattoSemafori==1)

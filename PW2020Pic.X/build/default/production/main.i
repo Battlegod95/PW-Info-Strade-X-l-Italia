@@ -1763,16 +1763,21 @@ void Uart_send_string(char *str);
 
 
 int PicId=167;
+char numStrade=4;
 unsigned char received = 0;
-# 88 "main.c"
+# 89 "main.c"
 char strToSend[8] = {0,0,0,0,0,0};
 
 unsigned char datoSeriale=0;
+int temporizzazioneSemaforo=20;
+
 int count=0;
 char contAuto=0;
 char contMoto=0;
 char contCamion=0;
 unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0;
+unsigned char scattoSemafori=0;
+
 
 void main(void) {
 
@@ -1793,6 +1798,56 @@ void main(void) {
     Uart_send_string(strToSend);
 
 
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=2;
+    strToSend[4]=1;
+    strToSend[5]=50;
+    Uart_send_string(strToSend);
+
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=4;
+    strToSend[4]=2;
+    strToSend[5]=1;
+    Uart_send_string(strToSend);
+
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=0;
+    strToSend[4]=4;
+    strToSend[5]="R";
+    Uart_send_string(strToSend);
+
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=0;
+    strToSend[4]=5;
+    strToSend[5]=5;
+    Uart_send_string(strToSend);
+
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=2;
+    strToSend[4]=6;
+    strToSend[5]=4;
+    Uart_send_string(strToSend);
+
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=3;
+    strToSend[4]=7;
+    strToSend[5]=2;
+    Uart_send_string(strToSend);
+# 179 "main.c"
+    char i;
+# 190 "main.c"
     while(1)
     {
 
@@ -1813,6 +1868,14 @@ void main(void) {
             contCamion++;
             stat3=0;
         }
+# 258 "main.c"
+        if(scattoSemafori==1)
+        {
+
+
+
+            scattoSemafori=0;
+        }
 
 
 
@@ -1821,9 +1884,7 @@ void main(void) {
             char stringa=datoSeriale;
 
             send_cmd(0x01);
-
-
-
+# 287 "main.c"
             received=0;
         }
     }
@@ -1877,10 +1938,31 @@ void __attribute__((picinterrupt(("")))) ISR()
         if (count == 100)
         {
 
+
+
+
+
+
             count = 0;
         }
    }
 }
+# 368 "main.c"
+void messageTransmission(char idStrada, char codice, char valore)
+{
+    strToSend[0]=2;
+    strToSend[1]=200;
+    strToSend[2]=5;
+    strToSend[3]=0;
+    strToSend[4]=0;
+    strToSend[5]=35;
+    Uart_send_string(strToSend);
+}
+
+
+
+
+
 char* num_converter(int num)
 {
     int length = 2;
