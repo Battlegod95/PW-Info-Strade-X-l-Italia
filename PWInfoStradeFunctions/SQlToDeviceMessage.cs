@@ -71,10 +71,6 @@ namespace PWInfoStradeFunctions
                      
                     }
 
-                 //SQLJsonObject temporizzazione = new SQLJsonObject();
-                    //string jsonFilter = JsonConvert.SerializeObject(temporizzazione, Formatting.Indented);
-                    //log.LogInformation($"il JSON filtrato è: {jsonFilter}");
-
                 }
             }
         }
