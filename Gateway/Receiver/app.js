@@ -70,13 +70,13 @@ function parseMsg(data) {
 	if (comunicazione == 01) {
 		switch (tipoDato) {
 			case "00000000":
-				var temperature = valoreDato;
+				var temperature = parseInt(valoreDato, 2);
 				break;
 			case "00000001":
-				var humidity = valoreDato;
+				var humidity = parseInt(valoreDato, 2);
 				break;
 			case "00000010":
-				var pressure = valoreDato;
+				var pressure = parseInt(valoreDato, 2);
 				break;
 		};
 
@@ -108,23 +108,27 @@ function parseMsg(data) {
 				}
 			}
 		};
-		console.log(json);
+		//controllo completamento json
+		if (json.temperature != "" && json.humidity != "" && json.pressure != "") {
 
-		//push dei dati nella coda di redis
-		client.on("ready", (err) => {
-			redisNotReady = false;
-		});
+			//push dei dati nella coda di redis
+			client.on("ready", (err) => {
+				redisNotReady = false;
+			});
 
-		client.rpush("IotData", JSON.stringify(json));
+			client.rpush("IotData", JSON.stringify(json));
 
-		client.llen("IotData", function (err, data) {
-			console.log("Lunghezza della lista: " + data);
-		});
+			client.llen("IotData", function (err, data) {
+				console.log("Lunghezza della lista: " + data);
+			});
 
-		//elimina l'elemento in coda e restituisce l'elemento eliminato
-		client.lpop("IotData", function (err, data) {
-			console.log(data);
-		});
+			//elimina l'elemento in coda e restituisce l'elemento eliminato
+			client.lpop("IotData", function (err, data) {
+				console.log(data);
+			});
+
+			console.log(json);
+		}
 
 	}
 	else if (comunicazione == 10)
@@ -134,12 +138,12 @@ function parseMsg(data) {
 				if (valoreDato == 00000000) {
 					var colore = 1;
 				}
-				else if (valoreDato == 00000001
+				else if (valoreDato == 00000001)
 				{
-					colore = "rosso";
+					colore = 2;
 				}
 				else {
-
+					colore = 3;
                 }
 				var trafficLight = colore;
 				break;
@@ -183,24 +187,27 @@ function parseMsg(data) {
 
 		};
 
-		console.log(data);
-		console.log(json2);
+		if (json2.trafficLight != "" && json2.nAutomezzi != "" && json2.nCiclomotori != "" && json2.nCamion != "") {
 
-		//push dei dati nella coda di redis
-		client.on("ready", (err) => {
-			redisNotReady = false;
-		});
+			//push dei dati nella coda di redis
+			client.on("ready", (err) => {
+				redisNotReady = false;
+			});
 
-		client.rpush("IotData", JSON.stringify(json2));
+			client.rpush("IotData", JSON.stringify(json2));
 
-		client.llen("IotData", function (err, data) {
-			console.log("Lunghezza della lista: " + data);
-		});
+			client.llen("IotData", function (err, data) {
+				console.log("Lunghezza della lista: " + data);
+			});
 
-		//elimina l'elemento in coda e restituisce l'elemento eliminato
-		client.lpop("IotData", function (err, data) {
-			console.log(data);
-		});
+			//elimina l'elemento in coda e restituisce l'elemento eliminato
+			client.lpop("IotData", function (err, data) {
+				console.log(data);
+			});
+			console.log(json2);
+
+        }
+		
 
 	}
 	else
