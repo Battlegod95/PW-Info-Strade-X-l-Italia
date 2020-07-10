@@ -100,11 +100,6 @@ namespace PWInfoStradeFunctions
                                 i.Tipologia_veicolo + ", " +
                                 i.Conteggio + " " +
                             " )";
-                            //"WHERE Fascia_oraria = 13 " +
-                            //"GROUP BY Fascia_oraria, Id_incrocio, " +
-                            //    "Id_semaforo, Id_strada, Data, " +
-                            //    "Automobile " +
-                            //"ORDER BY Fascia_oraria asc ";
 
                             command = new SqlCommand(sql, cnn);
 
