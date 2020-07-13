@@ -17,7 +17,7 @@ namespace PWInfoStradeFunctions
     public static class SQLQueryToDAM
     {
         [FunctionName("SQLQueryToDAM")]
-        public static void Run([TimerTrigger("0 */1 * * * *")] TimerInfo myTimer, ILogger log, ExecutionContext context)  //0 0 * * * *
+        public static void Run([TimerTrigger("0 0 * * * *")] TimerInfo myTimer, ILogger log, ExecutionContext context)  //0 0 * * * *
         {
             log.LogInformation($"Funzione triggerata per scrivere nel database comune con il DAM a partire da: {DateTime.Now}");
 
@@ -63,55 +63,62 @@ namespace PWInfoStradeFunctions
 
                     List<SQLJsonObjectTipologiaVeicolo> obj = JsonConvert.DeserializeObject<List<SQLJsonObjectTipologiaVeicolo>>(json);
 
-                    var date = DateTime.Now;
-                    foreach (var i in obj)
+                    if (obj != null)
                     {
-                        if (i.Fascia_oraria == date.Hour)
+                        var date = DateTime.Now;
+
+                        foreach (var i in obj)
                         {
-                            var configuration = new ConfigurationBuilder().SetBasePath(context.FunctionAppDirectory).
-                                AddJsonFile("local.settings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().Build();
+                            if (i.Fascia_oraria == date.Hour)
+                            {
+                                var configuration = new ConfigurationBuilder().SetBasePath(context.FunctionAppDirectory).
+                                    AddJsonFile("local.settings.json", optional: true, reloadOnChange: true).AddEnvironmentVariables().Build();
 
-                            var connectionString = config["sqldb_connection_DAM"];
+                                var connectionString = config["sqldb_connection_DAM"];
 
-                            SqlConnection cnn;
+                                SqlConnection cnn;
 
-                            cnn = new SqlConnection(connectionString);
+                                cnn = new SqlConnection(connectionString);
 
-                            cnn.Open();
+                                cnn.Open();
 
-                            SqlCommand command;
-                            SqlDataAdapter adapter = new SqlDataAdapter();
-                            string sql = "";
+                                SqlCommand command;
+                                SqlDataAdapter adapter = new SqlDataAdapter();
+                                string sql = "";
 
-                            sql = "INSERT INTO[dbo].[Traffico](" +
-                               "Id_incrocio, " +
-                               "Id_semaforo, " +
-                               "Id_strada, " +
-                               "Fascia_oraria, " +
-                               "Data, " +
-                               "Tipologia_veicolo, " +
-                               "Conteggio) " +
-                            "VALUES (" +
-                                i.Id_incrocio + ", " +
-                                 i.Id_semaforo + ", " +
-                                i.Id_strada + ", " +
-                                i.Fascia_oraria + ", " +
-                                i.Data + ", " +
-                                i.Tipologia_veicolo + ", " +
-                                i.Conteggio + " " +
-                            " )";
+                                sql = "INSERT INTO[dbo].[Traffico](" +
+                                   "Id_incrocio, " +
+                                   "Id_semaforo, " +
+                                   "Id_strada, " +
+                                   "Fascia_oraria, " +
+                                   "Data, " +
+                                   "Tipologia_veicolo, " +
+                                   "Conteggio) " +
+                                "VALUES (" +
+                                    i.Id_incrocio + ", " +
+                                     i.Id_semaforo + ", " +
+                                    i.Id_strada + ", " +
+                                    i.Fascia_oraria + ", " +
+                                    i.Data + ", " +
+                                    i.Tipologia_veicolo + ", " +
+                                    i.Conteggio + " " +
+                                " )";
 
-                            command = new SqlCommand(sql, cnn);
+                                command = new SqlCommand(sql, cnn);
 
-                            adapter.InsertCommand = new SqlCommand(sql, cnn);
-                            adapter.InsertCommand.ExecuteNonQuery();
+                                adapter.InsertCommand = new SqlCommand(sql, cnn);
+                                adapter.InsertCommand.ExecuteNonQuery();
 
-                            command.Dispose();
-                            cnn.Close();
+                                command.Dispose();
+                                cnn.Close();
+                            }
+
                         }
-
                     }
-
+                    else
+                    {
+                        log.LogInformation($"Nessun dato disponibile");
+                    }
                 }
             }
         }

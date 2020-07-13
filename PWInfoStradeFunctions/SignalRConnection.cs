@@ -22,8 +22,8 @@ namespace PWInfoStradeFunctions
             log.LogInformation("#####################################################");
 
             log.LogInformation("REQUEST TOKEN FOR SIGNALR");
-            log.LogInformation($"Tocken + URL = {connectioninfo.Url}");
-            log.LogInformation($"Tocken + URL = {connectioninfo.AccessToken}");
+            log.LogInformation($"URL + {connectioninfo.Url}");
+            log.LogInformation($"Token = {connectioninfo.AccessToken}");
 
             log.LogInformation("#####################################################");
 

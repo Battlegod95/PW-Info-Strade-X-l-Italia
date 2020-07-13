@@ -14,7 +14,7 @@ namespace PWInfoStradeFunctions
     public static class SQlToDeviceMessage
     {
         [FunctionName("SQlToDeviceMessage")]
-        public static async System.Threading.Tasks.Task RunAsync([TimerTrigger("0 */1 * * * *")] TimerInfo myTimer, ILogger log, ExecutionContext context)
+        public static async System.Threading.Tasks.Task RunAsync([TimerTrigger("0 0 * * * *")] TimerInfo myTimer, ILogger log, ExecutionContext context)
         {
 
             log.LogInformation($"Function Trigger viene eseguita ogni ora partendo da: {DateTime.Now}");
