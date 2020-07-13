@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "signalr1": {
+      "restored": true,
+      "restoreTime": "2020-07-13T08:43:19.8679793Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2020-07-13T08:42:32.8059584Z"
+    }
+  },
+  "parameters": {
+    "resourceGroup": {
+      "Type": "resourceGroup",
+      "Value": "PW_Info_Strade_X_Italia"
+    },
+    "subscriptionId": {
+      "Type": "subscription",
+      "Value": "3451ea6d-0cae-4ed7-a499-d77f8f27ac0c"
+    }
+  }
+}

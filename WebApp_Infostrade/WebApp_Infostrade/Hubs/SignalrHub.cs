@@ -8,9 +8,9 @@ namespace WebApp_Infostrade.Hubs
 {
     public class SignalrHub : Hub
     {
-        public Task SendMessage(string message)
+        public Task SendMessage(string iotMessage)
         {
-            return Clients.All.SendAsync("ReceiveMessage", message);
+            return Clients.All.SendAsync("iotMessage", iotMessage);
         }
     }
 }

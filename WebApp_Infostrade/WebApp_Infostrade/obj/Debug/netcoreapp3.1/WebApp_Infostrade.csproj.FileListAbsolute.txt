@@ -181,5 +181,15 @@ C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Inf
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\WebApp_Infostrade.Models.pdb
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.iottrafficlightinfostrade - Web Deploy.json
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.AzureKeyVault.HostingStartup.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.Azure.KeyVault.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.Azure.KeyVault.WebKey.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.Azure.Services.AppAuthentication.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.AzureKeyVault.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.Azure.dll
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\obj\Debug\netcoreapp3.1\WebApp_Infostrade.csproj.CoreCompileInputs.cache
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\WebApp_Infostrade\WebApp_Infostrade\obj\Debug\netcoreapp3.1\WebApp_Infostrade.MvcApplicationPartsAssemblyInfo.cache

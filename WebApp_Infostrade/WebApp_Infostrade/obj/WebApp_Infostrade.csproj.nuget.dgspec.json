@@ -196,6 +196,10 @@
               "target": "Package",
               "version": "[2.9.3, )"
             },
+            "Microsoft.AspNetCore.AzureKeyVault.HostingStartup": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            },
             "Microsoft.Azure.SignalR": {
               "target": "Package",
               "version": "[1.5.0, )"

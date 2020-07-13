@@ -30,6 +30,14 @@ namespace WebApp_Infostrade
             services.AddControllersWithViews();
 
             services.AddScoped<ISensorRepository, SensorRepository>();
+
+            /*services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder =>
+            {
+                builder.AllowAnyMethod().AllowAnyHeader()
+                       .WithOrigins("http://localhost:44336")
+                       .AllowCredentials();
+            }));*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,32 +56,27 @@ namespace WebApp_Infostrade
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseFileServer();
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<SignalrHub>("/signalrwebapp");
+                //endpoints.MapHub<SignalrHub>("/signalrwebapp");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.UseAzureSignalR(routes =>
+            app.UseEndpoints(routes =>
             {
                 routes.MapHub<SignalrHub>("/signalrwebapp");
             });
-        }
-        public class ClockHub : Hub<IClock>
-        {
-            public async Task SendTimeToClients(DateTime dateTime)
+            /*app.UseAzureSignalR(routes =>
             {
-                await Clients.All.ShowTime(dateTime);
-            }
-        }
-        public interface IClock
-        {
-            Task ShowTime(DateTime currentTime);
+                routes.MapHub<SignalrHub>("/signalrwebapp");
+            });*/
         }
     }
 }
