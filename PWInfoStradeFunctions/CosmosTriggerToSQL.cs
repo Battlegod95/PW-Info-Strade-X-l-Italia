@@ -1,15 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
+//using System;
+//using System.Collections.Generic;
+//using System.Data;
+//using System.Data.SqlClient;
+//using System.Data.SqlTypes;
+//using Microsoft.Azure.Documents;
+//using Microsoft.Azure.WebJobs;
+//using Microsoft.Azure.WebJobs.Host;
+//using Microsoft.Extensions.Logging;
 
-namespace PWInfoStradeFunctions
-{
+//namespace PWInfoStradeFunctions
+//{
 //    public static class CosmosTriggerToSQL
 //    {
 //        public static bool BulkInsertDataTable(string tableName, DataTable dataTable)
@@ -116,4 +116,4 @@ namespace PWInfoStradeFunctions
 //            }
 //        }
 //    }
-}
+//}

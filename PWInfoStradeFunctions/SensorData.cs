@@ -1,75 +1,62 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Text;
 
-namespace PWInfoStradeFunctions
+public class Data
 {
-    public class DataMessaggio
-    {
 
-        [JsonProperty("Date")]
-        public SqlDateTime Date { get; set; }
+    [JsonProperty("Temperature")]
+    public int Temperature { get; set; }
 
-        [JsonProperty("Time")]
-        public DateTime Time { get; set; }
+    [JsonProperty("Humidity")]
+    public int Humidity { get; set; }
 
-        [JsonProperty("Temperature")]
-        public int Temperature { get; set; }
+    [JsonProperty("Pressure")]
+    public int Pressure { get; set; }
+}
 
-        [JsonProperty("Humidity")]
-        public int Humidity { get; set; }
+public class Coordinates
+{
 
-        [JsonProperty("Pressure")]
-        public int Pressure { get; set; }
-    }
+    [JsonProperty("x")]
+    public int x { get; set; }
 
-    public class Coordinates
-    {
+    [JsonProperty("y")]
+    public int y { get; set; }
+}
 
-        [JsonProperty("x")]
-        public int x { get; set; }
+public class SensorLocation
+{
 
-        [JsonProperty("y")]
-        public int y { get; set; }
-    }
+    [JsonProperty("coordinates")]
+    public Coordinates coordinates { get; set; }
+}
 
-    public class SensorLocation
-    {
+public class SensorData
+{
 
-        [JsonProperty("coordinates")]
-        public Coordinates coordinates { get; set; }
-    }
+    [JsonProperty("Description")]
+    public string Description { get; set; }
 
-    public class SensorData
-    {
+    [JsonProperty("idGateway")]
+    public string idGateway { get; set; }
 
-        [JsonProperty("Description")]
-        public string Description { get; set; }
+    [JsonProperty("idIncrocio")]
+    public int idIncrocio { get; set; }
 
-        [JsonProperty("idGateway")]
-        public string idGateway { get; set; }
+    [JsonProperty("CrossRoad")]
+    public string CrossRoad { get; set; }
 
-        [JsonProperty("idIncrocio")]
-        public int idIncrocio { get; set; }
+    [JsonProperty("Interserction")]
+    public string Interserction { get; set; }
 
-        [JsonProperty("CrossRoad")]
-        public string CrossRoad { get; set; }
+    [JsonProperty("Location")]
+    public string Location { get; set; }
 
-        [JsonProperty("Interserction")]
-        public string Interserction { get; set; }
+    [JsonProperty("Healthy")]
+    public int Healthy { get; set; }
 
-        [JsonProperty("Location")]
-        public string Location { get; set; }
+    [JsonProperty("Data")]
+    public Data Data { get; set; }
 
-        [JsonProperty("Healthy")]
-        public int Healthy { get; set; }
-
-        [JsonProperty("Data")]
-        public DataMessaggio Data { get; set; }
-
-        [JsonProperty("SensorLocation")]
-        public SensorLocation SensorLocation { get; set; }
-    }
+    [JsonProperty("SensorLocation")]
+    public SensorLocation SensorLocation { get; set; }
 }
