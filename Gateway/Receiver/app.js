@@ -1,3 +1,10 @@
+var Client = require('azure-iot-device').Client;
+var Protocol = require('azure-iot-device-mqtt').Mqtt;
+
+var connectionString = 'HostName=IoTHubTrafficLight.azure-devices.net;DeviceId=4;SharedAccessKey=gg/l6hhNaNqQgJaVYHSWa97ElZDCH64/MOiW5fHf7Z4=';
+
+var client_iothub = Client.fromConnectionString(connectionString, Protocol);
+
 const redis = require("redis");
 let redisNotReady = true;
 let client = redis.createClient({
@@ -19,8 +26,22 @@ client.on("ready", (err) => {
 });
 
 const SerialPort = require('serialport')
-const ByteLength = require('@serialport/parser-byte-length')
-const port = new SerialPort('/dev/ttyS0');
+const ByteLength = require('@serialport/parser-byte-length');
+const { compileFunction } = require("vm");
+const port = new SerialPort('COM8', { baudRate: 38400 });
+//const port = new SerialPort('/dev/ttyS0');
+
+//variabili json Sensori
+var temperature = 0;
+var humidity = 0;
+var pressure = 0;
+
+//variabili json Veicoli
+var colore = 0;
+var trafficLight = 0;
+var nAutomezzi = 0;
+var nCiclomotori = 0;
+var nCamion = 0;
 
 //con questo parser lavoriamo con 6 byte alla volta
 const parser = port.pipe(new ByteLength({ length: 6 }))
@@ -40,7 +61,7 @@ function parseMsg(data) {
 	let byte2 = parseInt(data[2], 10).toString(2).padStart(8, '0');
 	let byte3 = parseInt(data[3], 10).toString(2).padStart(8, '0');
 	let byte4 = parseInt(data[4], 10).toString(2).padStart(8, '0');
-	let byte5 = parseInt(data[5], 10).toString(2).padStart(8, '0');
+	let byte5 = parseInt(data[5], 10);
 
 	console.log("byte 1 ", byte0); //Byte di controllo del tipo di trasmissione (usati i primi 2 bit e 6 vuoti)
 	console.log("byte 2 ", byte1); //Destinatario
@@ -54,7 +75,7 @@ function parseMsg(data) {
 	let mittente = byte2.substring(); //8 bit per identificare il mittente del messaggio
 	let idStrada = byte3.substring(); // 8 bit per l'identificativo della strada
 	let tipoDato = byte4.substring(); //8 bit per determinare il tipo di dato che si riceve
-	let valoreDato = byte5.substring(); //8 bit per determinare il valore del tipo di dato ricevuto
+	let valoreDato = byte5; //8 bit per determinare il valore del tipo di dato ricevuto
 
 
 	//gestione data e ora
@@ -64,26 +85,25 @@ function parseMsg(data) {
 	var yyyy = time.getFullYear();
 	var hour = time.getHours();
 	var min = time.getMinutes();
-	
+
+
 	//condizione per identificare che json va riempito
 
 	if (comunicazione == 01) {
 		switch (tipoDato) {
 			case "00000000":
-				var temperature = parseInt(valoreDato, 2);
+				temperature = valoreDato;
 				break;
 			case "00000001":
-				var humidity = parseInt(valoreDato, 2);
+				humidity = valoreDato;
 				break;
 			case "00000010":
-				var pressure = parseInt(valoreDato, 2);
+				pressure = valoreDato;
 				break;
 		};
 
 		//definire i json da inviare
-		let json = {}
-
-		json = {
+		let json = {
 
 			"Desciption": "Sensori",
 			"Location": "Pordenone",
@@ -95,124 +115,240 @@ function parseMsg(data) {
 
 			"Data": {
 				"Date": time,
-				"Time": (hour + ':' + min),
-				"Temperature": temperature + "°C",
-				"Humidity": humidity + "%",
-				"Pressure": pressure,
+				"Temperature": 0,
+				"Humidity": 0,
+				"Pressure": 0,
 
 			},
 			"SensorLocation": {
 				"coordinates": {
-					"x": -4,
-					"y": 3,
+					"x": -5,
+					"y": 96,
 				}
 			}
 		};
+
+		if (temperature != 0) {
+			json.Data.Temperature = temperature;
+		}
+		if (humidity != 0) {
+			json.Data.Humidity = humidity;
+		}
+		if (pressure != 0) {
+			json.Data.Pressure = pressure;
+		}
+
 		//controllo completamento json
-		if (json.temperature != "" && json.humidity != "" && json.pressure != "") {
+		if (json.Data.Temperature != 0 && json.Data.Humidity != 0 && json.Data.Pressure != 0) {
 
-			//push dei dati nella coda di redis
-			client.on("ready", (err) => {
-				redisNotReady = false;
-			});
+			console.log(json);
 
-			client.rpush("IotData", JSON.stringify(json));
+			/* 			//push dei dati nella coda di redis
+						client.on("ready", (err) => {
+							redisNotReady = false;
+						});
+			
+						client.rpush("IotData", JSON.stringify(json)); */
 
 			client.llen("IotData", function (err, data) {
 				console.log("Lunghezza della lista: " + data);
 			});
 
-			//elimina l'elemento in coda e restituisce l'elemento eliminato
+			//resetto il json
+			pressure = 0;
+			temperature = 0;
+			humidity = 0;
+
+			json = 0;
+
+
+			/*elimina l'elemento in coda e restituisce l'elemento eliminato
 			client.lpop("IotData", function (err, data) {
 				console.log(data);
-			});
+			});*/
 
-			console.log(json);
+
 		}
 
 	}
-	else if (comunicazione == 10)
-	{
+
+	else if (comunicazione == 10) {
 		switch (tipoDato) {
 			case "00000011":
 				if (valoreDato == 00000000) {
-					var colore = 1;
+					colore = 1;
 				}
-				else if (valoreDato == 00000001)
-				{
+				else if (valoreDato == 00000001) {
 					colore = 2;
 				}
 				else {
 					colore = 3;
-                }
-				var trafficLight = colore;
+				}
+				trafficLight = colore;
 				break;
 			case "00000100":
-				var nCiclomotori = valoreDato;
+				nAutomezzi = valoreDato;
 				break;
 			case "00000101":
-				var nAutomezzi = valoreDato;
+				nCiclomotori = valoreDato;
 				break;
 			case "00000110":
-				var nCamion = valoreDato;
+				nCamion = valoreDato;
 				break;
 		}
 
 		//definire i json da inviare
-		let json2 = {}
 
-		json2 = {
+
+
+		valori = [];
+
+
+
+		if (nAutomezzi != 0) {
+			var obj = {
+				type: "Automobile",  //car, heavy, moto
+				value: nAutomezzi
+			}
+			valori.push(obj);
+		}
+		else {
+			var obj = {
+				type: "Automobile",  //car, heavy, moto
+				value: 0
+			}
+			valori.push(obj);
+		}
+
+		if (nCiclomotori != 0) {
+			var obj = {
+				type: "Motociclo",  //car, heavy, moto
+				value: nCiclomotori
+			}
+			valori.push(obj);
+		}
+		else {
+			var obj = {
+				type: "Motociclo",  //car, heavy, moto
+				value: 0
+			}
+			valori.push(obj);
+		}
+
+		if (nCamion != 0) {
+			var obj = {
+				type: "Camion",  //car, heavy, moto
+				value: nCamion
+			}
+			valori.push(obj);
+		}
+		else {
+			var obj = {
+				type: "Camion",  //car, heavy, moto
+				value: 0
+			}
+			valori.push(obj);
+		}
+
+
+		let json2 = {
 			"Description": "Veicoli",
 			"idIncrocio": 1,
 			"idGateway": slotGateway,
 			"idSemaforo": mittente,
 			"idStrada": idStrada,
-			"StatoSemaforo": trafficLight,
-			"FasciaOraria": time,
-			"Data": (gg + '/' + (mm + 1) + '/' + yyyy),
-			"TipologiaVeicolo": [
-				{
-					"type": "Automobile",  //car, heavy, moto
-					"value": nAutomezzi
-				},
-				{
-					"type": "Motociclo",  //car, heavy, moto
-					"value": nCiclomotori
-				},
-				{
-					"type": "Camion",  //car, heavy, moto
-					"value": nCamion
-				}
-			]
+			"StatoSemaforo": 0,
+			"FasciaOraria": hour,
+			"Data": time,
+			"TipologiaVeicolo": valori
 
 		};
 
-		if (json2.trafficLight != "" && json2.nAutomezzi != "" && json2.nCiclomotori != "" && json2.nCamion != "") {
+		if (trafficLight != 0) {
+			json2.StatoSemaforo = trafficLight;
+		}
+
+		var completato = true;
+
+		json2.TipologiaVeicolo.forEach(element => {
+
+			if (element.value == 0) {
+				completato = false;
+			}
+
+		});
+
+		//controllo completamento json
+		if (json2.StatoSemaforo != 0 && completato) {
+
+			console.log(json2);
 
 			//push dei dati nella coda di redis
 			client.on("ready", (err) => {
 				redisNotReady = false;
 			});
 
-			client.rpush("IotData", JSON.stringify(json2));
+			/*client.rpush("IotData", JSON.stringify(json2)); */
 
 			client.llen("IotData", function (err, data) {
 				console.log("Lunghezza della lista: " + data);
 			});
 
-			//elimina l'elemento in coda e restituisce l'elemento eliminato
+			//resetto il json
+			colore = 0;
+			trafficLight = 0;
+			nAutomezzi = 0;
+			nCiclomotori = 0;
+			nCamion = 0;
+
+			json2 = 0;
+
+
+			/*elimina l'elemento in coda e restituisce l'elemento eliminato
 			client.lpop("IotData", function (err, data) {
 				console.log(data);
-			});
-			console.log(json2);
+			});*/
 
-        }
-		
+
+		}
 
 	}
-	else
-	{
+	else {
 		console.log("errore");
 	}
 
-}	
+}
+
+client_iothub.open(function (err) {
+	if (err) {
+		console.error('error connecting to hub: ' + err);
+		process.exit(1);
+	}
+	console.log('client opened');
+	// Create device Twin
+	client_iothub.getTwin(function (err, twin) {
+		if (err) {
+			console.error('error getting twin: ' + err);
+			process.exit(1);
+		}
+		console.log('twin contents:');
+		twin.on('properties.desired', function (delta) {
+			console.log('new desired properties received:');
+			console.log(JSON.stringify(delta.Temporizzazione_verde));
+
+			temporizzazione = delta.Temporizzazione_verde.toString(16);
+
+			console.log(temporizzazione);
+			if (temporizzazione < 0) {
+				temporizzazione = 0;
+			}
+
+			if (temporizzazione.length < 2) {
+				port.write('La temporizzazione per il semaforo è' + '0' + temporizzazione, 'hex');
+			}
+			else {
+				port.write(temporizzazione.toString(16), 'hex'); //invio dati al pic
+			}
+		});
+	});
+});

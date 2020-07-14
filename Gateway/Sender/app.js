@@ -41,27 +41,19 @@ var connectionLoop = function (err) {
 
         function waitQueue() {
             clientRedis.brpop(['IotData', 0], function (listName, item) {
-                if (item[1] != null) {
+                if (item[1] != null) {//verifico che l'elemento non sia vuoto
                     console.log(item[1]);
                     var message = new Message(item[1]);
                     console.log(message);
-                    client.sendEvent(message, function (err) {
-                        if (err) {
-                            console.error('Could not send: ' + err.toString());
-                            process.exit(-1);
-                        }
-                        else {
-                            console.log('Message sent: success');
-                            process.exit(0);
-                        }
-                    });
-
+                    client.sendEvent(message);//invio il messaggio
+                    message.contentEncoding = "utf-8";
+                    message.contentType = "application/json";
                 }
                 process.nextTick(waitQueue);
             });
         }
         waitQueue();
-        console.log(message);
+
 
         client.on('error', function (err) {
             console.error(err.message);
@@ -70,7 +62,7 @@ var connectionLoop = function (err) {
         client.on('disconnect', function () {
             //clearInterval(sendInterval);
             client.removeAllListeners();
-            client.open(connectCallback);
+            client.open(connectionLoop);
         });
     }
 };
@@ -84,72 +76,3 @@ function printResultFor(op) {
         if (res) console.log(op + ' status: ' + res.constructor.name);
     };
 }
-
-                /*message.contentEncoding = "utf-8";
-                message.contentType = "application/json";
-           
-                //add custom properties
-                message.properties.add("Status", "Active");
-
-                console.log('Sending message: ' + message.getData());
-                client.sendEvent(message, function (err) {
-                    if (err) {
-                        console.error('Could not send: ' + err.toString());
-                        process.exit(-1);
-                    }
-                    else {
-                        console.log('Message sent: success');
-                        process.exit(0);
-                    }
-                });*/
-
-
-
-
-/* var data = new Date();
- var ora = data.getHours();
- // build message
- var message = new Message(JSON.stringify(
-
-     {
-       "Description": "Sensori",
-       "idGateway": "PROVA8",
-       "idIncrocio": 5,
-       "CrossRoad": "Via Prasecco",
-       "Interserction": "Via Andrea Mantegna",
-       "Location": "Pordenone",
-       "Healthy": 1,
-       "Data": {
-         "Date": "2020-06-23",
-         "Time": "11:34:54.1237",
-         "Temperature": 50,
-         "Humidity": 790,
-         "Pressure": 990
-       },
-       "SensorLocation": {
-         "coordinates": {
-           "x": -25,
-           "y": 96
-         }
-       }
-     }
-
-
-     {
-         "Description": "Veicoli",
-         "idGateway": "slot00",
-         "idIncrocio": 1,
-         "idSemaforo": 2,
-         "idStrada": 3,
-         "StatoSemaforo": 1,
-         "FasciaOraria": ora,
-         "Data": data,
-         "TipologiaVeicolo": {
-             "Automobile": 20,
-             "Motociclo": 5,
-             "Camion": 2
-         }
-     }
-
- ));*/
-
