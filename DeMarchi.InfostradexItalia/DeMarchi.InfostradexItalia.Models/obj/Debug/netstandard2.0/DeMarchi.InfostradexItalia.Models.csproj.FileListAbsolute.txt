@@ -1,0 +1,9 @@
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.deps.json
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.csprojAssemblyReference.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.AssemblyInfoInputs.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.AssemblyInfo.cs
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.pdb
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.csproj.CoreCompileInputs.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Models\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.pdb

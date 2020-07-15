@@ -1,0 +1,12 @@
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.csprojAssemblyReference.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.AssemblyInfoInputs.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.AssemblyInfo.cs
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.deps.json
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.pdb
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\bin\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Models.pdb
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.csproj.CoreCompileInputs.cache
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.csproj.CopyComplete
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.dll
+C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.Data\obj\Debug\netstandard2.0\DeMarchi.InfostradexItalia.Data.pdb
