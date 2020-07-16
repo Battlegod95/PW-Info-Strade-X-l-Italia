@@ -1739,7 +1739,8 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 18 "main.c" 2
-# 45 "main.c"
+# 44 "main.c"
+void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore);
 void print_Countdown(int num, char statoSem);
 void concatenate( char* str3, char* str1, char* str2 );
 
@@ -1790,12 +1791,11 @@ void main(void) {
     send_cmd(0x01);
 # 190 "main.c"
     char i;
-# 199 "main.c"
-    semafori[0]=statoSemafori[2];
+
+
     semafori[1]=statoSemafori[2];
     semafori[2]=statoSemafori[2];
     semafori[3]=statoSemafori[2];
-    _delay((unsigned long)((500)*(32000000L/4000.0)));
     semafori[0]=statoSemafori[0];
 
 
@@ -1879,14 +1879,25 @@ void main(void) {
 
             }
         }
-
-
-
+# 306 "main.c"
         if(scattoSemafori==1)
         {
 
+            messageTransmission(1, 1, 0, 0);
+            messageTransmission(1, 2, 1, 0);
+            messageTransmission(1, 4, 2, 0);
 
+            messageTransmission(2, 0, 3, semafori[0]);
+            messageTransmission(2, 1, 3, semafori[1]);
+            messageTransmission(2, 2, 3, semafori[2]);
+            messageTransmission(2, 3, 3, semafori[3]);
 
+            messageTransmission(2, 1, 4, contMoto);
+            contMoto=0;
+            messageTransmission(2, 1, 5, contAuto);
+            contAuto=0;
+            messageTransmission(2, 1, 6, contCamion);
+            contCamion=0;
             scattoSemafori=0;
         }
 
@@ -1958,6 +1969,7 @@ void __attribute__((picinterrupt(("")))) ISR()
                 print_Countdown(countDown, 1);
             if(semafori[0]==statoSemafori[2])
                 print_Countdown(countDown, 2);
+
             if(flagGiallo==1)
             {
                 f++;
@@ -1989,7 +2001,7 @@ void __attribute__((picinterrupt(("")))) ISR()
         }
    }
 }
-# 416 "main.c"
+# 446 "main.c"
 void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
     strToSend[0]=tipoMessaggio;

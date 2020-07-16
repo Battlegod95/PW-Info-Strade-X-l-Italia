@@ -19,30 +19,32 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "113 C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"317
+"346
 [v _ISR ISR `II(v  1 e 1 0 ]
-"450
+"446
+[v _messageTransmission messageTransmission `(v  1 e 1 0 ]
+"480
 [v _Uart_send_string Uart_send_string `(v  1 e 1 0 ]
-"462
+"492
 [v _initPic initPic `(v  1 e 1 0 ]
-"495
+"525
 [v _print_Countdown print_Countdown `(v  1 e 1 0 ]
-"553
+"583
 [v _send_string send_string `(v  1 e 1 0 ]
-"564
+"594
 [v _send_data send_data `(v  1 e 1 0 ]
-"576
+"606
 [v _send_cmd send_cmd `(v  1 e 1 0 ]
 [v i1_send_cmd send_cmd `(v  1 e 1 0 ]
-"588
+"618
 [v _init_lcd init_lcd `(v  1 e 1 0 ]
-"608
+"638
 [v _UART_init UART_init `(v  1 e 1 0 ]
-"621
+"651
 [v _UART_TxChar UART_TxChar `(v  1 e 1 0 ]
 "59 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
-[s S46 . 1 `uc 1 RB0 1 0 :1:0 
+[s S48 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -52,20 +54,20 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "233
-[u S55 . 1 `S46 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES55  1 e 1 @6 ]
+[u S57 . 1 `S48 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES57  1 e 1 @6 ]
 "340
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-[s S153 . 1 `uc 1 RE0 1 0 :1:0 
+[s S161 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 ]
 "414
-[u S157 . 1 `S153 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES157  1 e 1 @9 ]
+[u S165 . 1 `S161 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES165  1 e 1 @9 ]
 "454
 [v _INTCON INTCON `VEuc  1 e 1 @11 ]
-[s S268 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S276 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -75,14 +77,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "477
-[s S277 . 1 `uc 1 . 1 0 :2:0 
+[s S285 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S282 . 1 `S268 1 . 1 0 `S277 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES282  1 e 1 @11 ]
-[s S223 . 1 `uc 1 RX9D 1 0 :1:0 
+[u S290 . 1 `S276 1 . 1 0 `S285 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES290  1 e 1 @11 ]
+[s S231 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -92,18 +94,18 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "994
-[s S232 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S240 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S236 . 1 `uc 1 . 1 0 :6:0 
+[s S244 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S239 . 1 `uc 1 . 1 0 :6:0 
+[s S247 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S242 . 1 `S223 1 . 1 0 `S232 1 . 1 0 `S236 1 . 1 0 `S239 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES242  1 e 1 @24 ]
+[u S250 . 1 `S231 1 . 1 0 `S240 1 . 1 0 `S244 1 . 1 0 `S247 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES250  1 e 1 @24 ]
 "1059
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1066
@@ -112,14 +114,14 @@
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
 "1159
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
-[s S94 . 1 `uc 1 ADON 1 0 :1:0 
+[s S102 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 GO_nDONE 1 0 :1:2 
 `uc 1 CHS 1 0 :3:3 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1190
-[s S100 . 1 `uc 1 . 1 0 :2:0 
+[s S108 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 GO 1 0 :1:2 
 `uc 1 CHS0 1 0 :1:3 
 `uc 1 CHS1 1 0 :1:4 
@@ -127,21 +129,21 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S108 . 1 `uc 1 . 1 0 :2:0 
+[s S116 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nDONE 1 0 :1:2 
 ]
-[s S111 . 1 `uc 1 . 1 0 :2:0 
+[s S119 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 GO_DONE 1 0 :1:2 
 ]
-[u S114 . 1 `S94 1 . 1 0 `S100 1 . 1 0 `S108 1 . 1 0 `S111 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES114  1 e 1 @31 ]
+[u S122 . 1 `S102 1 . 1 0 `S108 1 . 1 0 `S116 1 . 1 0 `S119 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES122  1 e 1 @31 ]
 "1255
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
 "1325
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1375
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S165 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S173 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -151,13 +153,13 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1454
-[u S174 . 1 `S165 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES174  1 e 1 @135 ]
+[u S182 . 1 `S173 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES182  1 e 1 @135 ]
 "1499
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1561
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S300 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S308 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -167,9 +169,9 @@
 `uc 1 PSPIE 1 0 :1:7 
 ]
 "1635
-[u S309 . 1 `S300 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES309  1 e 1 @140 ]
-[s S186 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S317 . 1 `S308 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES317  1 e 1 @140 ]
+[s S194 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -179,15 +181,15 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2025
-[s S195 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S203 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S199 . 1 `uc 1 . 1 0 :6:0 
+[s S207 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S202 . 1 `S186 1 . 1 0 `S195 1 . 1 0 `S199 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES202  1 e 1 @152 ]
+[u S210 . 1 `S194 1 . 1 0 `S203 1 . 1 0 `S207 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES210  1 e 1 @152 ]
 "2080
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "2222
@@ -235,38 +237,70 @@
 "113
 [v _main main `(v  1 e 1 0 ]
 {
-"302
+"331
 [v main@stringa stringa `uc  1 a 1 31 ]
-"233
+"225
 [v main@semaforoVerde semaforoVerde `uc  1 a 1 32 ]
 "190
 [v main@i i `uc  1 a 1 33 ]
-"312
+"341
 } 0
-"588
+"446
+[v _messageTransmission messageTransmission `(v  1 e 1 0 ]
+{
+[v messageTransmission@tipoMessaggio tipoMessaggio `uc  1 a 1 wreg ]
+[v messageTransmission@tipoMessaggio tipoMessaggio `uc  1 a 1 wreg ]
+[v messageTransmission@idStrada idStrada `uc  1 p 1 11 ]
+[v messageTransmission@codice codice `uc  1 p 1 12 ]
+[v messageTransmission@valore valore `uc  1 p 1 13 ]
+"448
+[v messageTransmission@tipoMessaggio tipoMessaggio `uc  1 a 1 15 ]
+"455
+} 0
+"480
+[v _Uart_send_string Uart_send_string `(v  1 e 1 0 ]
+{
+[v Uart_send_string@str str `*.4uc  1 a 1 wreg ]
+"482
+[v Uart_send_string@i i `uc  1 a 1 10 ]
+"480
+[v Uart_send_string@str str `*.4uc  1 a 1 wreg ]
+"483
+[v Uart_send_string@str str `*.4uc  1 a 1 9 ]
+"487
+} 0
+"651
+[v _UART_TxChar UART_TxChar `(v  1 e 1 0 ]
+{
+[v UART_TxChar@dato dato `uc  1 a 1 wreg ]
+[v UART_TxChar@dato dato `uc  1 a 1 wreg ]
+[v UART_TxChar@dato dato `uc  1 a 1 7 ]
+"656
+} 0
+"618
 [v _init_lcd init_lcd `(v  1 e 1 0 ]
 {
-"604
+"634
 } 0
-"576
+"606
 [v _send_cmd send_cmd `(v  1 e 1 0 ]
 {
 [v send_cmd@command command `uc  1 a 1 wreg ]
 [v send_cmd@command command `uc  1 a 1 wreg ]
-"578
+"608
 [v send_cmd@command command `uc  1 a 1 9 ]
-"585
+"615
 } 0
-"462
+"492
 [v _initPic initPic `(v  1 e 1 0 ]
 {
-"471
+"501
 } 0
-"608
+"638
 [v _UART_init UART_init `(v  1 e 1 0 ]
 {
 [v UART_init@baudrate baudrate `i  1 p 2 22 ]
-"618
+"648
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
@@ -281,68 +315,68 @@
 [v ___aldiv@dividend dividend `l  1 p 4 11 ]
 "41
 } 0
-"317 C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+"346 C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"396
+"426
 } 0
-"495
+"525
 [v _print_Countdown print_Countdown `(v  1 e 1 0 ]
 {
-"538
-[v print_Countdown@secondStr_402 secondStr `[17]uc  1 a 17 38 ]
-"533
-[v print_Countdown@secondStr_400 secondStr `[17]uc  1 a 17 21 ]
-"528
+"568
+[v print_Countdown@secondStr_410 secondStr `[17]uc  1 a 17 38 ]
+"563
+[v print_Countdown@secondStr_408 secondStr `[17]uc  1 a 17 21 ]
+"558
 [v print_Countdown@secondStr secondStr `[17]uc  1 a 17 4 ]
-"497
+"527
 [v print_Countdown@firstStr firstStr `[17]uc  1 a 17 55 ]
 [v print_Countdown@resultNum resultNum `[3]uc  1 a 3 72 ]
-"498
+"528
 [v print_Countdown@i i `i  1 a 2 77 ]
 [v print_Countdown@length length `i  1 a 2 75 ]
-"495
+"525
 [v print_Countdown@num num `i  1 p 2 9 ]
 [v print_Countdown@statoSem statoSem `uc  1 p 1 11 ]
-"497
-[v print_Countdown@F925 F925 `[17]uc  1 s 17 F925 ]
 "527
-[v print_Countdown@F929 F929 `[17]uc  1 s 17 F929 ]
-"532
-[v print_Countdown@F931 F931 `[17]uc  1 s 17 F931 ]
-"537
-[v print_Countdown@F933 F933 `[17]uc  1 s 17 F933 ]
-"549
+[v print_Countdown@F930 F930 `[17]uc  1 s 17 F930 ]
+"557
+[v print_Countdown@F934 F934 `[17]uc  1 s 17 F934 ]
+"562
+[v print_Countdown@F936 F936 `[17]uc  1 s 17 F936 ]
+"567
+[v print_Countdown@F938 F938 `[17]uc  1 s 17 F938 ]
+"579
 } 0
-"576
+"606
 [v i1_send_cmd send_cmd `(v  1 e 1 0 ]
 {
 [v i1send_cmd@command command `uc  1 a 1 wreg ]
 [v i1send_cmd@command command `uc  1 a 1 wreg ]
-"578
+"608
 [v i1send_cmd@command command `uc  1 a 1 2 ]
-"585
+"615
 } 0
-"553
+"583
 [v _send_string send_string `(v  1 e 1 0 ]
 {
 [v send_string@str str `*.4uc  1 a 1 wreg ]
-"555
+"585
 [v send_string@i i `i  1 a 2 4 ]
-"553
+"583
 [v send_string@str str `*.4uc  1 a 1 wreg ]
-"555
+"585
 [v send_string@str str `*.4uc  1 a 1 6 ]
-"561
+"591
 } 0
-"564
+"594
 [v _send_data send_data `(v  1 e 1 0 ]
 {
 [v send_data@data data `uc  1 a 1 wreg ]
 [v send_data@data data `uc  1 a 1 wreg ]
-"566
+"596
 [v send_data@data data `uc  1 a 1 2 ]
-"573
+"603
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]

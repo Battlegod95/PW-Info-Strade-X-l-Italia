@@ -38,10 +38,10 @@
 
 // Dati Fissi Trasmissione
 #define GATEWAY 200
-#define PIC_ID 4
+#define PIC_ID 4 //Id del pic che identifica anche l'incrocio
 #define TEMPO_DEFAULT 5
 
-
+void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore);
 void print_Countdown(int num, char statoSem);
 void concatenate( char* str3, char* str1, char* str2 );
 
@@ -188,19 +188,11 @@ void main(void) {
                                    - numero camion: 7 (0110)*/
     
     char i;
-    //for(i=0;i<4;i++)
-    //{
-        //semafori[i]="R";
-    //}
     
-    //Verde 0, Giallo 1, Rosso 2
-    //char statoSemafori[3]={0,1,2};
     //Inizializzazione Semafori
-    semafori[0]=statoSemafori[2];
     semafori[1]=statoSemafori[2];
     semafori[2]=statoSemafori[2];
     semafori[3]=statoSemafori[2];
-    __delay_ms(500);
     semafori[0]=statoSemafori[0];
     
     
@@ -309,6 +301,7 @@ void main(void) {
  * GUARDARE LA TEMPORIZZAZIONE DEL GIALLO PER LEGGE
  * TEMPORIZZAZIONE MINIMA 3 secondi
  */
+        //void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore);
         // Gestione Trasmissione d'invio
         if(scattoSemafori==1)
         {
@@ -317,14 +310,17 @@ void main(void) {
             messageTransmission(1, 2, 1, 0);//Sensore umidità
             messageTransmission(1, 4, 2, 0);//Sendore Pressione
             //Stato Semafori
-            messageTransmission(2, 2, 3, semafori[0]);
+            messageTransmission(2, 0, 3, semafori[0]);
             messageTransmission(2, 1, 3, semafori[1]);
-            messageTransmission(2, 1, 3, semafori[2]);
-            messageTransmission(2, 1, 3, semafori[3]);
+            messageTransmission(2, 2, 3, semafori[2]);
+            messageTransmission(2, 3, 3, semafori[3]);
             //Veicoli
             messageTransmission(2, 1, 4, contMoto);
+            contMoto=0;
             messageTransmission(2, 1, 5, contAuto);
+            contAuto=0;
             messageTransmission(2, 1, 6, contCamion);
+            contCamion=0;
             scattoSemafori=0;
         }
         
@@ -396,6 +392,7 @@ void __interrupt() ISR()
                 print_Countdown(countDown, 1);
             if(semafori[0]==statoSemafori[2])
                 print_Countdown(countDown, 2);
+            
             if(flagGiallo==1)
             {
                 f++;
