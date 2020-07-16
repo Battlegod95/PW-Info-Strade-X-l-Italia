@@ -2,7 +2,7 @@
 @model IndexModel
 @{
     //string chartCsv = string.Join(",", Model.ConteggioChart.Select(x => x.Conteggio).ToArray());
-    string chartAY = string.Join(",", Model.ConteggioChart.Select(x => x.Fascia_oraria).ToArray());
+    //string chartAY = string.Join(",", Model.ConteggioChart.Select(x => x.Fascia_oraria).ToArray());
     string chartAutomobile = string.Join(",", Model.AutomobileChart.Select(x => x.Conteggio).ToArray());
     string chartAutomobileAY = string.Join(",", Model.AutomobileChart.Select(x => x.Fascia_oraria).ToArray());
     string chartCamion = string.Join(",", Model.CamionChart.Select(x => x.Conteggio).ToArray());
@@ -24,10 +24,14 @@
     .tbody {
         height: 400px;
     }
+
+    #datatable {
+        margin-left: 10px;
+    }
 </style>
 
 
-<!--CARD-->
+<!--CARD TEMPERATURE, HUMIDITY, PRESSURE-->
 @foreach (var x in Model.LastSensor)
 {
     <div class="card-deck rounded-circle">
@@ -51,22 +55,59 @@
             <div class="card-header bg-light" style="text-align:center">Pressure</div>
             <div class="card-body">
                 <div>
-                    <h1 style="text-align:center">@x.Pressure Atm</h1>
+                    <h1 style="text-align:center">@x.Pressure bar</h1>
                 </div>
             </div>
         </div>
     </div>
 }
 
-<!-- AREA CHART -->
+<!--LIST-->
+<div class="card card-primary" style="margin-top:10px">
+    <div class="card-header">
+        <h3 class="card-title">List</h3>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="col">Id Strada</th>
+                    <th scope="col">Id Incrocio</th>
+                    <th scope="col">Id Semaforo</th>
+                    <th scope="col">Stato Semaforo</th>
+                </tr>
+                @foreach (var t in Model.TrafficState)
+                {
+                    <tr>
+                        <td style="padding-left: 35px;">@t.Id_strada</td>
+                        <td style="padding-left: 45px;">@t.Id_incrocio</td>
+                        <td style="padding-left: 55px;">@t.Id_semaforo</td>
+                        @if (t.Stato_semaforo == 1)
+                        {
+                            <td style="padding-left: 60px; padding-top: 15px;"><div style="background: lawngreen; border-radius: 50%; width: 15px; height: 15px;"></div></td>
+                        }
+                        else if (t.Stato_semaforo == 2)
+                        {
+                            <td style="padding-left: 60px;"><div style="background: yellow; border-radius: 50%; width: 15px; height: 15px;"></div></td>
+                        }
+                        else
+                        {
+                            <td style="padding-left: 60px;"><div style="background: red; border-radius: 50%; width: 15px; height: 15px;"></div></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- LINE CHART -->
 <div class="card card-primary" style="margin-top:10px">
     <div class="card-header" style="padding-top:10px">
-        <h3 class="card-title">Area Chart</h3>
+        <h3 class="card-title">Chart</h3>
     </div>
     <div class="card-body">
         <canvas id="ChartAutomobile"></canvas>
-        @*<canvas class="col-6" id="ChartCamion"></canvas>
-        <canvas class="col-6" id="ChartMotociclo"></canvas>*@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
@@ -77,21 +118,21 @@
         data: [@chartAutomobile],
         lineTension: 0,
         fill: false,
-        borderColor: 'red'
+        borderColor: '#ff6384'
     };
     var Camion = {
         label:"Camion",
         data: [@chartCamion],
         lineTension: 0,
         fill: false,
-        borderColor: 'green'
+        borderColor: '#4bc0c0'
     };
     var Motociclo = {
         label:"Motociclo",
         data: [@chartMotociclo],
         lineTension: 0,
         fill: false,
-        borderColor: 'blue'
+        borderColor: '#36a2eb'
     };
 
     var speedData = {
@@ -111,171 +152,5 @@
         options: {}
     });
 
-
-
-    @*   var CarChart = new Chart('ChartAutomobile', {
-        type: 'line',
-        data: {
-            labels: [@chartAutomobileAY],
-            datasets: [{
-                label: 'N of car',
-                data: [@chartAutomobile],
-            backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                yAxisID: 'y',
-            },
-            {
-                label: "N of Truk",
-                data: [@chartCamion],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    yAxisID: 'y1',
-            },
-            {
-                label: "N of Truk",
-                data: [@chartMotociclo],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                yAxisID: 'y2',
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'left',
-                },
-                y1: {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'left',
-                },
-                y2: {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'left',
-                }
-            }
-        }
-    });
-
-    var TrukChart = new Chart('ChartCamion', {
-        type: 'line',
-        data: {
-            labels: [@chartCamionAY],
-            datasets: [{
-                label: 'N of truk',
-                data: [@chartCamion],
-            backgroundcolor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ]
-            }]
-        },
-        options: {
-            scales: {
-                yaxes: [{
-                    ticks: {
-                        beginatzero: true,
-                        max: 200,
-                        stepvalue: 10,
-                        steps: 10
-                    }
-                }]
-            }
-        }
-    });
-
-    var MotorcycleChart = new Chart('ChartMotociclo', {
-        type: 'line',
-        data: {
-            labels: [@chartMotocicloAY],
-            datasets: [{
-                label: 'N of motorcycle',
-                data: [@chartMotociclo],
-            backgroundcolor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ]
-            }]
-        },
-        options: {
-            scales: {
-                yaxes: [{
-                    ticks: {
-                        beginatzero: true,
-                        max: 200,
-                        stepvalue: 10,
-                        steps: 10
-                    }
-                }]
-            }
-        }
-    });*@
 </script>
 
-<!--LIST-->
-<div class="card card-primary" style="margin-top:10px">
-    <div class="card-header">
-        <h3 class="card-title">List</h3>
-    </div>
-    <div class="card-body">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th scope="col">Id Strada</th>
-                    <th scope="col">Id Incrocio</th>
-                    <th scope="col">Id Semaforo</th>
-                    <th scope="col">Stato Semaforo</th>
-                </tr>
-                @foreach (var t in Model.TrafficState)
-                {
-                    <tr>
-                        <td>@t.Id_strada</td>
-                        <td>@t.Id_incrocio</td>
-                        <td>@t.Id_semaforo</td>
-                        @if (t.Stato_semaforo == 1)
-                        {
-                            <td><div style="background: lawngreen; border-radius: 50%; width: 15px; height: 15px;"></div></td>
-                        }
-                        else if (t.Stato_semaforo == 2)
-                        {
-                            <td class="dot" style="color: yellow"></td>
-                        }
-                        else
-                        {
-                            <td class="dot" style="background-color:red"></td>
-                        }
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>

@@ -139,6 +139,5 @@ C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\D
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.WebApp\bin\Debug\netcoreapp3.1\DeMarchi.InfostradexItalia.Models.dll
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.WebApp\bin\Debug\netcoreapp3.1\DeMarchi.InfostradexItalia.Data.pdb
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.WebApp\bin\Debug\netcoreapp3.1\DeMarchi.InfostradexItalia.Models.pdb
-C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.WebApp\obj\Debug\netcoreapp3.1\Razor\Pages\Products\Index.cshtml.g.cs
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.WebApp\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
 C:\Filippo\PW_secondoanno\PW-Info-Strade-X-l-Italia\DeMarchi.InfostradexItalia\DeMarchi.InfostradexItalia.WebApp\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
