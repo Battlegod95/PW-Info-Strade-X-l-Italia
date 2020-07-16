@@ -38,10 +38,11 @@
 
 // Dati Fissi Trasmissione
 #define GATEWAY 200
-#define PIC_ID 5
+#define PIC_ID 4
+#define TEMPO_DEFAULT 5
 
 
-char* num_converter(int num);
+void print_Countdown(int num, char statoSem);
 void concatenate( char* str3, char* str1, char* str2 );
 
 void initPic();
@@ -69,35 +70,45 @@ unsigned char received = 0;
 
 /*
  * BYTE TRASMISSIONE (strToSend)
- * 1 - Byte di controllo
+ * 1 - Byte di controllo (se sensori 1 se veicoli o semaforo 2)
  * 2 - destinatario (chi deve ricevere la trasmissione)
  * 3 - mittente (id di chi trasmette)
  * 4 - id della strada in questione
  * 5 - codici di trasmissione:     - temperatura: 0 (0000)
                                    - umidità: 1 (0001)
                                    - pressione: 2 (0010)
-                                   - colore semaforo: 4 (0011)
-                                   - numero ciclomotori: 5 (0100)
-                                   - numero automezzi: 6 (0101)
-                                   - numero camion: 7 (0110)
+                                   - colore semaforo: 3 (0011)
+ *                                      valore 00000000 (0) = verde
+ *                                      valore 00000001 (1) = giallo
+ *                                      valore 00000010 (2) = rosso
+                                   - numero ciclomotori: 4 (0100)
+                                   - numero automezzi: 5 (0101)
+                                   - numero camion: 6 (0110)
 
  * 6 - valore da trasmettere
  
+ * 
+ * 
+ * GUARDARE LA TEMPORIZZAZIONE DEL GIALLO PER LEGGE
+ * TEMPORIZZAZIONE MINIMA 3 secondi
  */
 
 
 char strToSend[8] = {0,0,0,0,0,0}; // Messaggio totale da mandare in seriale
 
 unsigned char datoSeriale=0; // Dato ricevuto dalla seriale
-int temporizzazioneSemaforo=20;
 
-int count=0;
+int count=0,f=0;
 char contAuto=0; // Conteggio automobili
 char contMoto=0; // Conteggio motoveicoli
 char contCamion=0; // Conteggio autocarri
 unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0; // Pulsanti simulazione veicoli
-unsigned char scattoSemafori=0;
-//char statoSemafori[3]={"V","G","R"};
+char semafori[4]; //Numero dei semafori dell'incrocio
+unsigned char scattoSemafori=0,flagGiallo=0;
+//Verde 0, Giallo 1, Rosso 2
+char statoSemafori[3]={0,1,2};
+char countDown=TEMPO_DEFAULT, temporizzazione=0; // Temporizzazione del Verde, 35 secondi è la temporizzazione di default
+
 
 void main(void) {
     
@@ -106,8 +117,8 @@ void main(void) {
     init_lcd();
     send_cmd(L_CLR);
     
-    //char semafori[numStrade];
     
+    /*
     //Messaggio Demo temperatura: 0 (0000)
     strToSend[0]=2;
     strToSend[1]=GATEWAY;
@@ -165,7 +176,7 @@ void main(void) {
     strToSend[4]=7;
     strToSend[5]=2;
     Uart_send_string(strToSend);
-    
+    */
     
     /*
      - temperatura: 0 (0000)
@@ -182,20 +193,27 @@ void main(void) {
         //semafori[i]="R";
     //}
     
-    //semafori[0]=statoSemafori[0];
-    //semafori[1]=statoSemafori[2];
-    //semafori[2]=statoSemafori[2];
-    //semafori[3]=statoSemafori[2];
+    //Verde 0, Giallo 1, Rosso 2
+    //char statoSemafori[3]={0,1,2};
+    //Inizializzazione Semafori
+    semafori[0]=statoSemafori[2];
+    semafori[1]=statoSemafori[2];
+    semafori[2]=statoSemafori[2];
+    semafori[3]=statoSemafori[2];
+    __delay_ms(500);
+    semafori[0]=statoSemafori[0];
+    
     
     while(1)
     {
+        
         
         // Gestione Counter Veicoli
         if(stat1) // Auto
         {
             contAuto++;
             stat1=0;
-            UART_TxChar(contAuto);
+            //UART_TxChar(contAuto);
         }
         if(stat2) // Moto
         {
@@ -207,59 +225,106 @@ void main(void) {
             contCamion++;
             stat3=0;
         }
-        /*
+        
         // Gestione Scatto Semaforo
         if(scattoSemafori==1)
         {
-            
+            //Verde 0, Giallo 1, Rosso 2
             char semaforoVerde=0;// Variabile di controllo per lo scatto a verde di un singolo semaforo
             for(i=0;i<4;i++)
             {
-                
-                
-                 if(semafori[i]==statoSemafori[0])//Cambiamento a Rosso di tutti i semafori Verdi
-                {
-                    semafori[i]=statoSemafori[1];
-                    //Scrittura a schermo
-                    __delay_ms(1000);
-                    semafori[i]=statoSemafori[2];
-                }
-            
-                
                 
                 if(semaforoVerde==0)// Controllo che nessun semaforo sia già diventato verde
                 {
                     if(semafori[i]==statoSemafori[0])// Se il semaforo corrente è Verde allora modifico
                     {
+                        
+                         if(semafori[i]==statoSemafori[0])//Cambiamento a Rosso di tutti i semafori Verdi
+                        {
+                            flagGiallo=1;
+                            while(flagGiallo==1)
+                                semafori[i]=statoSemafori[1]; 
+                            //__delay_ms(3000); //3 Secondi Obbligatori di giallo
+                            semafori[i]=statoSemafori[2];
+                            
+                            
+                        }
+                        
                         if(i<3)// Controllo se sono alla fine dell'array del semaforo
                         {
+                            
                             // Cambio Stato da Rosso a Verde
                             if(semafori[i+1]==statoSemafori[2])
                             {
+                                flagGiallo=1;
+                                while(flagGiallo==1)
+                                    semafori[i+1]=statoSemafori[1]; 
+                                //__delay_ms(3000); //3 Secondi Obbligatori di giallo
+                                
                                 semafori[i+1]==statoSemafori[0];
+                                
                             }
                         }
                         else// Se sono alla fine dell'array allora devo cambiare a Verde il primo elemento
                         {
                             if(semafori[0]==statoSemafori[2])
                             {
+                                flagGiallo=1;
+                                while(flagGiallo==1)
+                                    semafori[i+1]=statoSemafori[1]; 
+                                //__delay_ms(3000); //3 Secondi Obbligatori di giallo
                                 semafori[0]==statoSemafori[0];
+                                
                             }
                         }
                         
                         semaforoVerde=1;// Cambiamento della variabile di controllo per segnalare che lo scatto a Verde è avvenuto
                     }
                 }
+                
             }
         }
-        */
         
+        /*
+ * BYTE TRASMISSIONE (strToSend)
+ * 1 - Byte di controllo (se sensori 1 se veicoli o semaforo 2)
+ * 2 - destinatario (chi deve ricevere la trasmissione)
+ * 3 - mittente (id di chi trasmette)
+ * 4 - id della strada in questione
+ * 5 - codici di trasmissione:     - temperatura: 0 (0000)
+                                   - umidità: 1 (0001)
+                                   - pressione: 2 (0010)
+                                   - colore semaforo: 3 (0011)
+ *                                      valore 00000000 (0) = verde
+ *                                      valore 00000001 (1) = giallo
+ *                                      valore 00000010 (2) = rosso
+                                   - numero ciclomotori: 4 (0100)
+                                   - numero automezzi: 5 (0101)
+                                   - numero camion: 6 (0110)
+
+ * 6 - valore da trasmettere
+ 
+ * 
+ * 
+ * GUARDARE LA TEMPORIZZAZIONE DEL GIALLO PER LEGGE
+ * TEMPORIZZAZIONE MINIMA 3 secondi
+ */
         // Gestione Trasmissione d'invio
         if(scattoSemafori==1)
         {
-            
-            
-            
+            //Sensori
+            messageTransmission(1, 1, 0, 0);// Simulare i sensori Temperatura
+            messageTransmission(1, 2, 1, 0);//Sensore umidità
+            messageTransmission(1, 4, 2, 0);//Sendore Pressione
+            //Stato Semafori
+            messageTransmission(2, 2, 3, semafori[0]);
+            messageTransmission(2, 1, 3, semafori[1]);
+            messageTransmission(2, 1, 3, semafori[2]);
+            messageTransmission(2, 1, 3, semafori[3]);
+            //Veicoli
+            messageTransmission(2, 1, 4, contMoto);
+            messageTransmission(2, 1, 5, contAuto);
+            messageTransmission(2, 1, 6, contCamion);
             scattoSemafori=0;
         }
         
@@ -268,22 +333,10 @@ void main(void) {
         if(received)
         {
             char stringa=datoSeriale;
-            
-            send_cmd(L_CLR);
-          
+            temporizzazione=stringa;
             /*
-             
-             * Gestione del ricevimento delle temporizzazioni
-             * 
-             * 0 - mittente (id di chi trasmette)
-             * 1 - id della strada in questione
-             * 2 - codici di trasmissione:     - temporizzazione: 8 (0111)
-             * 3 - valore da trasmettere
-             
+             * Mi arriverà un numero e quel numero è la temporizzazione del verde
              */
-            
-            
-            
             received=0;
         }
     }
@@ -334,8 +387,36 @@ void __interrupt() ISR()
         INTCON &= ~0x04;
         TMR0 = 6;
         count++;  
-        if (count == 100)
+        if (count == 125) //Quando count diventa 125 è passato un secondo
         {
+            //Aggiornamento dello stato visuale del semaforo con id 0
+            if(semafori[0]==statoSemafori[0])
+                print_Countdown(countDown, 0);//seguo il semaforo 0
+            if(semafori[0]==statoSemafori[1])
+                print_Countdown(countDown, 1);
+            if(semafori[0]==statoSemafori[2])
+                print_Countdown(countDown, 2);
+            if(flagGiallo==1)
+            {
+                f++;
+                if(f>=3)
+                {
+                    flagGiallo=0;
+                    f=0;
+                }
+            }
+            else
+            {
+                countDown--;
+                if(countDown==0)
+                {
+                    scattoSemafori=1;
+                    if(temporizzazione!=0)
+                        countDown=temporizzazione;
+                    else
+                        countDown=TEMPO_DEFAULT;
+                }
+            }
             //Timer Regolato/ Temporizzazione Semaforo Da Gateway
             /*
              if Tempo==0
@@ -365,42 +446,17 @@ void __interrupt() ISR()
  * 5 - valore da trasmettere
  
  */
-void messageTransmission(char idStrada, char codice, char valore)
+void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
-    strToSend[0]=2;
+    strToSend[0]=tipoMessaggio;
     strToSend[1]=GATEWAY;
     strToSend[2]=PIC_ID;
-    strToSend[3]=0;
-    strToSend[4]=0;
-    strToSend[5]=35;
+    strToSend[3]=idStrada;
+    strToSend[4]=codice;
+    strToSend[5]=valore;
     Uart_send_string(strToSend);
 }
 
-
-
-
-
-char* num_converter(int num)
-{
-    int length = 2;
-    char result[4] = "    ", i = 3;
-
-    if(num != 0)
-    {
-        while(num)
-        {
-            result[i] = num%10 + '0';
-            num /= 10;
-            i--;
-        }
-    }
-    else
-    {
-        result[0] = '0';
-    }
-
-    return result;
-}
 
 
 // Funzione per concatenare due stringhe
@@ -443,7 +499,7 @@ void initPic() {
     TRISE = 0x00; //TRISE output
     //TRISCbits.TRISC0 = 0;
     INTCON = 0xA0;
-    OPTION_REG = 0x04;
+    OPTION_REG = 0x07;
     TMR0 = 6;
 }
 
@@ -468,6 +524,63 @@ int read_ADC(char canale)
     while(GO_nDONE);  //Attendo la fine della conversione
     return ADRESL + (ADRESH << 8); //Preparo il dato (valore = ADRESL + (ADREAH << 8)
 }
+
+void print_Countdown(int num, char statoSem)
+{
+    char resultNum[3], firstStr[17] = "Tempo:          ";
+    int length = 2, i = 0;
+    
+    if(num < 10) //Controllo la lunghezza del numero
+        length = 1;
+    else if(num == 100)
+        length = 3;
+    
+    if(num != 0)
+    {
+        while(num) //Assegno ogni cifra del numero alla stringa accondando il carattere '0' cosi' da renderlo un carattere
+        {
+            resultNum[i] = num%10 + '0';
+            num /= 10;
+            i++;
+        }   
+    }
+    else
+    {
+        resultNum[0] = '0'; //Se il numero e' 0 allora lo inserisco direttamente senno' da errore e non stampa nulla a schermo
+    }
+    
+    for(i=0; i<length; i++) //Sostituisco i campi vuoti con la stringa del numero che ho trovato
+    {
+        firstStr[13-i] = resultNum[i];
+    }
+    
+    send_cmd(L_CLR); //Pulisco il display
+    send_cmd(L_L2);
+    if(statoSem==0)//Verde
+    {
+       char secondStr[17] = "Sem 0:     Verde";
+       send_string(secondStr);
+    }
+    if(statoSem==1)//Giallo
+    {
+       char secondStr[17] = "Sem 0:    Giallo";
+       send_string(secondStr);
+    }
+    if(statoSem==2)//Rosso
+    {
+       char secondStr[17] = "Sem 0:     Rosso";
+       send_string(secondStr);
+    }
+    
+    //send_string(secondStr);
+    __delay_ms(100);
+    
+    send_cmd(L_L1); //Punto alla riga desiderata
+    send_string(firstStr); //Stampo la temperatura
+    
+    
+}
+
 
 //invio stringa a LCD
 void send_string(char *str)

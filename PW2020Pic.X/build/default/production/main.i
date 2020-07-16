@@ -1739,8 +1739,8 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
 # 18 "main.c" 2
-# 44 "main.c"
-char* num_converter(int num);
+# 45 "main.c"
+void print_Countdown(int num, char statoSem);
 void concatenate( char* str3, char* str1, char* str2 );
 
 void initPic();
@@ -1765,18 +1765,21 @@ void Uart_send_string(char *str);
 int PicId=167;
 char numStrade=4;
 unsigned char received = 0;
-# 89 "main.c"
+# 97 "main.c"
 char strToSend[8] = {0,0,0,0,0,0};
 
 unsigned char datoSeriale=0;
-int temporizzazioneSemaforo=20;
 
-int count=0;
+int count=0,f=0;
 char contAuto=0;
 char contMoto=0;
 char contCamion=0;
 unsigned char oldBtn1=0, stat1=0, oldBtn2=0, stat2=0, oldBtn3=0, stat3=0;
-unsigned char scattoSemafori=0;
+char semafori[4];
+unsigned char scattoSemafori=0,flagGiallo=0;
+
+char statoSemafori[3]={0,1,2};
+char countDown=5, temporizzazione=0;
 
 
 void main(void) {
@@ -1785,78 +1788,27 @@ void main(void) {
     UART_init(9600);
     init_lcd();
     send_cmd(0x01);
-
-
-
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=0;
-    strToSend[4]=0;
-    strToSend[5]=35;
-    Uart_send_string(strToSend);
-
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=2;
-    strToSend[4]=1;
-    strToSend[5]=50;
-    Uart_send_string(strToSend);
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=4;
-    strToSend[4]=2;
-    strToSend[5]=1;
-    Uart_send_string(strToSend);
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=0;
-    strToSend[4]=4;
-    strToSend[5]="R";
-    Uart_send_string(strToSend);
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=0;
-    strToSend[4]=5;
-    strToSend[5]=5;
-    Uart_send_string(strToSend);
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=2;
-    strToSend[4]=6;
-    strToSend[5]=4;
-    Uart_send_string(strToSend);
-
-    strToSend[0]=2;
-    strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=3;
-    strToSend[4]=7;
-    strToSend[5]=2;
-    Uart_send_string(strToSend);
-# 179 "main.c"
-    char i;
 # 190 "main.c"
+    char i;
+# 199 "main.c"
+    semafori[0]=statoSemafori[2];
+    semafori[1]=statoSemafori[2];
+    semafori[2]=statoSemafori[2];
+    semafori[3]=statoSemafori[2];
+    _delay((unsigned long)((500)*(32000000L/4000.0)));
+    semafori[0]=statoSemafori[0];
+
+
     while(1)
     {
+
 
 
         if(stat1)
         {
             contAuto++;
             stat1=0;
-            UART_TxChar(contAuto);
+
         }
         if(stat2)
         {
@@ -1868,7 +1820,68 @@ void main(void) {
             contCamion++;
             stat3=0;
         }
-# 258 "main.c"
+
+
+        if(scattoSemafori==1)
+        {
+
+            char semaforoVerde=0;
+            for(i=0;i<4;i++)
+            {
+
+                if(semaforoVerde==0)
+                {
+                    if(semafori[i]==statoSemafori[0])
+                    {
+
+                         if(semafori[i]==statoSemafori[0])
+                        {
+                            flagGiallo=1;
+                            while(flagGiallo==1)
+                                semafori[i]=statoSemafori[1];
+
+                            semafori[i]=statoSemafori[2];
+
+
+                        }
+
+                        if(i<3)
+                        {
+
+
+                            if(semafori[i+1]==statoSemafori[2])
+                            {
+                                flagGiallo=1;
+                                while(flagGiallo==1)
+                                    semafori[i+1]=statoSemafori[1];
+
+
+                                semafori[i+1]==statoSemafori[0];
+
+                            }
+                        }
+                        else
+                        {
+                            if(semafori[0]==statoSemafori[2])
+                            {
+                                flagGiallo=1;
+                                while(flagGiallo==1)
+                                    semafori[i+1]=statoSemafori[1];
+
+                                semafori[0]==statoSemafori[0];
+
+                            }
+                        }
+
+                        semaforoVerde=1;
+                    }
+                }
+
+            }
+        }
+
+
+
         if(scattoSemafori==1)
         {
 
@@ -1882,9 +1895,10 @@ void main(void) {
         if(received)
         {
             char stringa=datoSeriale;
+            temporizzazione=stringa;
 
-            send_cmd(0x01);
-# 287 "main.c"
+
+
             received=0;
         }
     }
@@ -1935,8 +1949,36 @@ void __attribute__((picinterrupt(("")))) ISR()
         INTCON &= ~0x04;
         TMR0 = 6;
         count++;
-        if (count == 100)
+        if (count == 125)
         {
+
+            if(semafori[0]==statoSemafori[0])
+                print_Countdown(countDown, 0);
+            if(semafori[0]==statoSemafori[1])
+                print_Countdown(countDown, 1);
+            if(semafori[0]==statoSemafori[2])
+                print_Countdown(countDown, 2);
+            if(flagGiallo==1)
+            {
+                f++;
+                if(f>=3)
+                {
+                    flagGiallo=0;
+                    f=0;
+                }
+            }
+            else
+            {
+                countDown--;
+                if(countDown==0)
+                {
+                    scattoSemafori=1;
+                    if(temporizzazione!=0)
+                        countDown=temporizzazione;
+                    else
+                        countDown=5;
+                }
+            }
 
 
 
@@ -1947,43 +1989,18 @@ void __attribute__((picinterrupt(("")))) ISR()
         }
    }
 }
-# 368 "main.c"
-void messageTransmission(char idStrada, char codice, char valore)
+# 416 "main.c"
+void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
-    strToSend[0]=2;
+    strToSend[0]=tipoMessaggio;
     strToSend[1]=200;
-    strToSend[2]=5;
-    strToSend[3]=0;
-    strToSend[4]=0;
-    strToSend[5]=35;
+    strToSend[2]=4;
+    strToSend[3]=idStrada;
+    strToSend[4]=codice;
+    strToSend[5]=valore;
     Uart_send_string(strToSend);
 }
 
-
-
-
-
-char* num_converter(int num)
-{
-    int length = 2;
-    char result[4] = "    ", i = 3;
-
-    if(num != 0)
-    {
-        while(num)
-        {
-            result[i] = num%10 + '0';
-            num /= 10;
-            i--;
-        }
-    }
-    else
-    {
-        result[0] = '0';
-    }
-
-    return result;
-}
 
 
 
@@ -2026,7 +2043,7 @@ void initPic() {
     TRISE = 0x00;
 
     INTCON = 0xA0;
-    OPTION_REG = 0x04;
+    OPTION_REG = 0x07;
     TMR0 = 6;
 }
 
@@ -2051,6 +2068,63 @@ int read_ADC(char canale)
     while(GO_nDONE);
     return ADRESL + (ADRESH << 8);
 }
+
+void print_Countdown(int num, char statoSem)
+{
+    char resultNum[3], firstStr[17] = "Tempo:          ";
+    int length = 2, i = 0;
+
+    if(num < 10)
+        length = 1;
+    else if(num == 100)
+        length = 3;
+
+    if(num != 0)
+    {
+        while(num)
+        {
+            resultNum[i] = num%10 + '0';
+            num /= 10;
+            i++;
+        }
+    }
+    else
+    {
+        resultNum[0] = '0';
+    }
+
+    for(i=0; i<length; i++)
+    {
+        firstStr[13-i] = resultNum[i];
+    }
+
+    send_cmd(0x01);
+    send_cmd(0xC0);
+    if(statoSem==0)
+    {
+       char secondStr[17] = "Sem 0:     Verde";
+       send_string(secondStr);
+    }
+    if(statoSem==1)
+    {
+       char secondStr[17] = "Sem 0:    Giallo";
+       send_string(secondStr);
+    }
+    if(statoSem==2)
+    {
+       char secondStr[17] = "Sem 0:     Rosso";
+       send_string(secondStr);
+    }
+
+
+    _delay((unsigned long)((100)*(32000000L/4000.0)));
+
+    send_cmd(0x80);
+    send_string(firstStr);
+
+
+}
+
 
 
 void send_string(char *str)
