@@ -221,6 +221,7 @@ void main(void) {
         // Gestione Scatto Semaforo
         if(scattoSemafori==1)
         {
+            //Gestione dello scambio tra verde e rosso, ma non viceversa
             //Verde 0, Giallo 1, Rosso 2
             char semaforoVerde=0;// Variabile di controllo per lo scatto a verde di un singolo semaforo
             for(i=0;i<4;i++)
@@ -275,6 +276,8 @@ void main(void) {
                 }
                 
             }
+            
+            
         }
         
         /*
@@ -328,8 +331,8 @@ void main(void) {
         
         if(received)
         {
-            char stringa=datoSeriale;
-            temporizzazione=stringa;
+            //char stringa=datoSeriale;
+            temporizzazione=datoSeriale;
             /*
              * Mi arriverà un numero e quel numero è la temporizzazione del verde
              */

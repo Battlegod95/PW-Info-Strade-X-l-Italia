@@ -1825,6 +1825,7 @@ void main(void) {
         if(scattoSemafori==1)
         {
 
+
             char semaforoVerde=0;
             for(i=0;i<4;i++)
             {
@@ -1878,8 +1879,10 @@ void main(void) {
                 }
 
             }
+
+
         }
-# 306 "main.c"
+# 309 "main.c"
         if(scattoSemafori==1)
         {
 
@@ -1905,8 +1908,8 @@ void main(void) {
 
         if(received)
         {
-            char stringa=datoSeriale;
-            temporizzazione=stringa;
+
+            temporizzazione=datoSeriale;
 
 
 
@@ -2001,7 +2004,7 @@ void __attribute__((picinterrupt(("")))) ISR()
         }
    }
 }
-# 446 "main.c"
+# 449 "main.c"
 void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
     strToSend[0]=tipoMessaggio;
