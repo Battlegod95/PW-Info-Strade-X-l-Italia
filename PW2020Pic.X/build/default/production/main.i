@@ -1886,9 +1886,9 @@ void main(void) {
         if(scattoSemafori==1)
         {
 
-            messageTransmission(1, 1, 0, 0);
-            messageTransmission(1, 2, 1, 0);
-            messageTransmission(1, 4, 2, 0);
+            messageTransmission(1, 1, 0, 10);
+            messageTransmission(1, 2, 1, 60);
+            messageTransmission(1, 4, 2, 1);
 
             messageTransmission(2, 0, 3, semafori[0]);
             messageTransmission(2, 1, 3, semafori[1]);

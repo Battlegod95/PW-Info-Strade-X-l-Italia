@@ -787,14 +787,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 310:         {
 {
 "312
-[; ;main.c: 312:             messageTransmission(1, 1, 0, 0);
-[e ( _messageTransmission (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 312:             messageTransmission(1, 1, 0, 10);
+[e ( _messageTransmission (4 , , , -> -> 1 `i `uc -> -> 1 `i `uc -> -> 0 `i `uc -> -> 10 `i `uc ]
 "313
-[; ;main.c: 313:             messageTransmission(1, 2, 1, 0);
-[e ( _messageTransmission (4 , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 313:             messageTransmission(1, 2, 1, 60);
+[e ( _messageTransmission (4 , , , -> -> 1 `i `uc -> -> 2 `i `uc -> -> 1 `i `uc -> -> 60 `i `uc ]
 "314
-[; ;main.c: 314:             messageTransmission(1, 4, 2, 0);
-[e ( _messageTransmission (4 , , , -> -> 1 `i `uc -> -> 4 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 314:             messageTransmission(1, 4, 2, 1);
+[e ( _messageTransmission (4 , , , -> -> 1 `i `uc -> -> 4 `i `uc -> -> 2 `i `uc -> -> 1 `i `uc ]
 "316
 [; ;main.c: 316:             messageTransmission(2, 0, 3, semafori[0]);
 [e ( _messageTransmission (4 , , , -> -> 2 `i `uc -> -> 0 `i `uc -> -> 3 `i `uc *U + &U _semafori * -> -> -> 0 `i `ui `ux -> -> # *U &U _semafori `ui `ux ]

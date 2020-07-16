@@ -309,9 +309,9 @@ void main(void) {
         if(scattoSemafori==1)
         {
             //Sensori
-            messageTransmission(1, 1, 0, 0);// Simulare i sensori Temperatura
-            messageTransmission(1, 2, 1, 0);//Sensore umidità
-            messageTransmission(1, 4, 2, 0);//Sendore Pressione
+            messageTransmission(1, 1, 0, 10);// Simulare i sensori Temperatura
+            messageTransmission(1, 2, 1, 60);//Sensore umidità
+            messageTransmission(1, 4, 2, 1);//Sendore Pressione
             //Stato Semafori
             messageTransmission(2, 0, 3, semafori[0]);
             messageTransmission(2, 1, 3, semafori[1]);
