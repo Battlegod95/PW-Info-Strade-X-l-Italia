@@ -2,7 +2,7 @@
 @model IndexModel
 @{
     //string chartCsv = string.Join(",", Model.ConteggioChart.Select(x => x.Conteggio).ToArray());
-    //string chartAY = string.Join(",", Model.ConteggioChart.Select(x => x.Fascia_oraria).ToArray());
+    string chartAY = string.Join(",", Model.ConteggioChart.Select(x => x.Fascia_oraria).ToArray());
     string chartAutomobile = string.Join(",", Model.AutomobileChart.Select(x => x.Conteggio).ToArray());
     string chartAutomobileAY = string.Join(",", Model.AutomobileChart.Select(x => x.Fascia_oraria).ToArray());
     string chartCamion = string.Join(",", Model.CamionChart.Select(x => x.Conteggio).ToArray());
@@ -64,15 +64,56 @@
         <h3 class="card-title">Area Chart</h3>
     </div>
     <div class="card-body">
-        <canvas class="col-6" id="ChartAutomobile"></canvas>
-        <canvas class="col-6" id="ChartCamion"></canvas>
-        <canvas class="col-6" id="ChartMotociclo"></canvas>
+        <canvas id="ChartAutomobile"></canvas>
+        @*<canvas class="col-6" id="ChartCamion"></canvas>
+        <canvas class="col-6" id="ChartMotociclo"></canvas>*@
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-    var myChart = new Chart('ChartAutomobile', {
+    var Automobile = {
+        label:"Automobile",
+        data: [@chartAutomobile],
+        lineTension: 0,
+        fill: false,
+        borderColor: 'red'
+    };
+    var Camion = {
+        label:"Camion",
+        data: [@chartCamion],
+        lineTension: 0,
+        fill: false,
+        borderColor: 'green'
+    };
+    var Motociclo = {
+        label:"Motociclo",
+        data: [@chartMotociclo],
+        lineTension: 0,
+        fill: false,
+        borderColor: 'blue'
+    };
+
+    var speedData = {
+        labels: [@chartAutomobileAY],
+        datasets: [Automobile, Camion, Motociclo]
+    };
+
+    var ctx = document.getElementById('ChartAutomobile').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: speedData,
+
+        // Configuration options go here
+        options: {}
+    });
+
+
+
+    @*   var CarChart = new Chart('ChartAutomobile', {
         type: 'line',
         data: {
             labels: [@chartAutomobileAY],
@@ -87,7 +128,25 @@
                     'rgba(153, 102, 255, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
-                borderColor: [
+                yAxisID: 'y',
+            },
+            {
+                label: "N of Truk",
+                data: [@chartCamion],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    yAxisID: 'y1',
+            },
+            {
+                label: "N of Truk",
+                data: [@chartMotociclo],
+                backgroundColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
@@ -95,16 +154,54 @@
                     'rgba(153, 102, 255, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
-                borderWidth: 1
+                yAxisID: 'y2',
             }]
         },
         options: {
             scales: {
-                yAxes: [{
+                y: {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                },
+                y1: {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                },
+                y2: {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                }
+            }
+        }
+    });
+
+    var TrukChart = new Chart('ChartCamion', {
+        type: 'line',
+        data: {
+            labels: [@chartCamionAY],
+            datasets: [{
+                label: 'N of truk',
+                data: [@chartCamion],
+            backgroundcolor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                yaxes: [{
                     ticks: {
-                        beginAtZero: true,
+                        beginatzero: true,
                         max: 200,
-                        stepValue: 10,
+                        stepvalue: 10,
                         steps: 10
                     }
                 }]
@@ -112,86 +209,37 @@
         }
     });
 
-    var mychart = new Chart('ChartCamion', {
-            type: 'line',
-            data: {
-                labels: [@chartCamionAY],
-                datasets: [{
-                    label: 'N of truk',
-                    data: [@chartCamion],
-                backgroundcolor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    bordercolor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderwidth: 1
+    var MotorcycleChart = new Chart('ChartMotociclo', {
+        type: 'line',
+        data: {
+            labels: [@chartMotocicloAY],
+            datasets: [{
+                label: 'N of motorcycle',
+                data: [@chartMotociclo],
+            backgroundcolor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                yaxes: [{
+                    ticks: {
+                        beginatzero: true,
+                        max: 200,
+                        stepvalue: 10,
+                        steps: 10
+                    }
                 }]
-            },
-            options: {
-                scales: {
-                    yaxes: [{
-                        ticks: {
-                            beginatzero: true,
-                            max: 200,
-                            stepvalue: 10,
-                            steps: 10
-                        }
-                    }]
-                }
             }
-        });
-
-    var char3 = new Chart('ChartMotociclo', {
-            type: 'line',
-            data: {
-                labels: [@chartMotocicloAY],
-                datasets: [{
-                    label: 'N of motorcycle',
-                    data: [@chartMotociclo],
-                backgroundcolor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    bordercolor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderwidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yaxes: [{
-                        ticks: {
-                            beginatzero: true,
-                            max: 200,
-                            stepvalue: 10,
-                            steps: 10
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
+        }
+    });*@
+</script>
 
 <!--LIST-->
 <div class="card card-primary" style="margin-top:10px">
