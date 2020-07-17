@@ -190,10 +190,11 @@ void main(void) {
     char i;
     
     //Inizializzazione Semafori
+    semafori[0]=statoSemafori[0];
     semafori[1]=statoSemafori[2];
     semafori[2]=statoSemafori[2];
     semafori[3]=statoSemafori[2];
-    semafori[0]=statoSemafori[0];
+    
     
     
     while(1)
@@ -227,7 +228,7 @@ void main(void) {
             for(i=0;i<4;i++)
             {
                 
-                if(semaforoVerde==0)// Controllo che nessun semaforo sia già diventato verde
+                while(semaforoVerde==0)// Controllo che nessun semaforo sia già diventato verde
                 {
                     if(semafori[i]==statoSemafori[0])// Se il semaforo corrente è Verde allora modifico
                     {
@@ -236,7 +237,9 @@ void main(void) {
                         {
                             flagGiallo=1;
                             while(flagGiallo==1)
+                            {
                                 semafori[i]=statoSemafori[1]; 
+                            }
                             //__delay_ms(3000); //3 Secondi Obbligatori di giallo
                             semafori[i]=statoSemafori[2];
                             
@@ -251,7 +254,9 @@ void main(void) {
                             {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
+                                {
                                     semafori[i+1]=statoSemafori[1]; 
+                                }
                                 
                                 
                                 semafori[i+1]==statoSemafori[0];
@@ -264,8 +269,9 @@ void main(void) {
                             {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
+                                {
                                     semafori[0]=statoSemafori[1]; 
-                                
+                                }
                                 semafori[0]==statoSemafori[0];
                                 
                             }
@@ -285,19 +291,19 @@ void main(void) {
         if(scattoSemafori==1)
         {
             //Sensori
-            messageTransmission(1, 1, 0, 10);// Simulare i sensori Temperatura
+            messageTransmission(1, 1, 0, 25);// Simulare i sensori Temperatura
             messageTransmission(1, 2, 1, 60);//Sensore umidità
-            messageTransmission(1, 4, 2, 1);//Sendore Pressione
+            messageTransmission(1, 4, 2, 1);//Sensore Pressione
             //Stato Semafori
             messageTransmission(2, 0, 3, semafori[0]);
             messageTransmission(2, 1, 3, semafori[1]);
             messageTransmission(2, 2, 3, semafori[2]);
             messageTransmission(2, 3, 3, semafori[3]);
             //Veicoli
-            messageTransmission(2, 1, 4, contMoto);
+            //messageTransmission(2, 1, 4, contMoto);
             messageTransmission(2, 1, 4, 4);
             contMoto=0;
-            messageTransmission(2, 1, 5, contAuto);
+            //messageTransmission(2, 1, 5, contAuto);
             messageTransmission(2, 1, 5, 7);
             contAuto=0;
             messageTransmission(2, 1, 6, 3);

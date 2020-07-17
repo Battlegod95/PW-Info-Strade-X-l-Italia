@@ -1793,10 +1793,11 @@ void main(void) {
     char i;
 
 
+    semafori[0]=statoSemafori[0];
     semafori[1]=statoSemafori[2];
     semafori[2]=statoSemafori[2];
     semafori[3]=statoSemafori[2];
-    semafori[0]=statoSemafori[0];
+
 
 
     while(1)
@@ -1830,7 +1831,7 @@ void main(void) {
             for(i=0;i<4;i++)
             {
 
-                if(semaforoVerde==0)
+                while(semaforoVerde==0)
                 {
                     if(semafori[i]==statoSemafori[0])
                     {
@@ -1839,7 +1840,9 @@ void main(void) {
                         {
                             flagGiallo=1;
                             while(flagGiallo==1)
+                            {
                                 semafori[i]=statoSemafori[1];
+                            }
 
                             semafori[i]=statoSemafori[2];
 
@@ -1854,7 +1857,9 @@ void main(void) {
                             {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
+                                {
                                     semafori[i+1]=statoSemafori[1];
+                                }
 
 
                                 semafori[i+1]==statoSemafori[0];
@@ -1867,8 +1872,9 @@ void main(void) {
                             {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
+                                {
                                     semafori[0]=statoSemafori[1];
-
+                                }
                                 semafori[0]==statoSemafori[0];
 
                             }
@@ -1888,7 +1894,7 @@ void main(void) {
         if(scattoSemafori==1)
         {
 
-            messageTransmission(1, 1, 0, 10);
+            messageTransmission(1, 1, 0, 25);
             messageTransmission(1, 2, 1, 60);
             messageTransmission(1, 4, 2, 1);
 
@@ -1897,10 +1903,10 @@ void main(void) {
             messageTransmission(2, 2, 3, semafori[2]);
             messageTransmission(2, 3, 3, semafori[3]);
 
-            messageTransmission(2, 1, 4, contMoto);
+
             messageTransmission(2, 1, 4, 4);
             contMoto=0;
-            messageTransmission(2, 1, 5, contAuto);
+
             messageTransmission(2, 1, 5, 7);
             contAuto=0;
             messageTransmission(2, 1, 6, 3);
@@ -2008,7 +2014,7 @@ void __attribute__((picinterrupt(("")))) ISR()
         }
    }
 }
-# 427 "main.c"
+# 433 "main.c"
 void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
     strToSend[0]=tipoMessaggio;

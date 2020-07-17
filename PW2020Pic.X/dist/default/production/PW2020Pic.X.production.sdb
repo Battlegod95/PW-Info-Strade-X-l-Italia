@@ -19,28 +19,28 @@
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
 "113 C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"327
+"333
 [v _ISR ISR `II(v  1 e 1 0 ]
-"427
+"433
 [v _messageTransmission messageTransmission `(v  1 e 1 0 ]
-"439
+"445
 [v _Uart_send_string Uart_send_string `(v  1 e 1 0 ]
-"449
+"455
 [v _initPic initPic `(v  1 e 1 0 ]
-"482
+"488
 [v _print_Countdown print_Countdown `(v  1 e 1 0 ]
-"540
+"546
 [v _send_string send_string `(v  1 e 1 0 ]
-"551
+"557
 [v _send_data send_data `(v  1 e 1 0 ]
-"563
+"569
 [v _send_cmd send_cmd `(v  1 e 1 0 ]
 [v i1_send_cmd send_cmd `(v  1 e 1 0 ]
-"575
+"581
 [v _init_lcd init_lcd `(v  1 e 1 0 ]
-"595
+"601
 [v _UART_init UART_init `(v  1 e 1 0 ]
-"608
+"614
 [v _UART_TxChar UART_TxChar `(v  1 e 1 0 ]
 "59 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -238,13 +238,13 @@
 "113
 [v _main main `(v  1 e 1 0 ]
 {
-"226
+"227
 [v main@semaforoVerde semaforoVerde `uc  1 a 1 31 ]
 "190
 [v main@i i `uc  1 a 1 32 ]
-"322
+"328
 } 0
-"427
+"433
 [v _messageTransmission messageTransmission `(v  1 e 1 0 ]
 {
 [v messageTransmission@tipoMessaggio tipoMessaggio `uc  1 a 1 wreg ]
@@ -252,54 +252,54 @@
 [v messageTransmission@idStrada idStrada `uc  1 p 1 11 ]
 [v messageTransmission@codice codice `uc  1 p 1 12 ]
 [v messageTransmission@valore valore `uc  1 p 1 13 ]
-"429
+"435
 [v messageTransmission@tipoMessaggio tipoMessaggio `uc  1 a 1 15 ]
-"436
+"442
 } 0
-"439
+"445
 [v _Uart_send_string Uart_send_string `(v  1 e 1 0 ]
 {
 [v Uart_send_string@str str `*.4uc  1 a 1 wreg ]
-"441
+"447
 [v Uart_send_string@i i `uc  1 a 1 10 ]
-"439
+"445
 [v Uart_send_string@str str `*.4uc  1 a 1 wreg ]
-"442
+"448
 [v Uart_send_string@str str `*.4uc  1 a 1 9 ]
-"446
+"452
 } 0
-"608
+"614
 [v _UART_TxChar UART_TxChar `(v  1 e 1 0 ]
 {
 [v UART_TxChar@dato dato `uc  1 a 1 wreg ]
 [v UART_TxChar@dato dato `uc  1 a 1 wreg ]
 [v UART_TxChar@dato dato `uc  1 a 1 7 ]
-"613
+"619
 } 0
-"575
+"581
 [v _init_lcd init_lcd `(v  1 e 1 0 ]
 {
-"591
+"597
 } 0
-"563
+"569
 [v _send_cmd send_cmd `(v  1 e 1 0 ]
 {
 [v send_cmd@command command `uc  1 a 1 wreg ]
 [v send_cmd@command command `uc  1 a 1 wreg ]
-"565
+"571
 [v send_cmd@command command `uc  1 a 1 9 ]
-"572
+"578
 } 0
-"449
+"455
 [v _initPic initPic `(v  1 e 1 0 ]
 {
-"458
+"464
 } 0
-"595
+"601
 [v _UART_init UART_init `(v  1 e 1 0 ]
 {
 [v UART_init@baudrate baudrate `i  1 p 2 22 ]
-"605
+"611
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
@@ -314,68 +314,68 @@
 [v ___aldiv@dividend dividend `l  1 p 4 11 ]
 "41
 } 0
-"327 C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
+"333 C:\Project Work 02\project\PW-Info-Strade-X-l-Italia\PW2020Pic.X\main.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"407
+"413
 } 0
-"482
+"488
 [v _print_Countdown print_Countdown `(v  1 e 1 0 ]
 {
-"525
+"531
 [v print_Countdown@secondStr_403 secondStr `[17]uc  1 a 17 38 ]
-"520
+"526
 [v print_Countdown@secondStr_401 secondStr `[17]uc  1 a 17 21 ]
-"515
+"521
 [v print_Countdown@secondStr secondStr `[17]uc  1 a 17 4 ]
-"484
+"490
 [v print_Countdown@firstStr firstStr `[17]uc  1 a 17 55 ]
 [v print_Countdown@resultNum resultNum `[3]uc  1 a 3 72 ]
-"485
+"491
 [v print_Countdown@i i `i  1 a 2 77 ]
 [v print_Countdown@length length `i  1 a 2 75 ]
-"482
+"488
 [v print_Countdown@num num `i  1 p 2 9 ]
 [v print_Countdown@statoSem statoSem `uc  1 p 1 11 ]
-"484
+"490
 [v print_Countdown@F923 F923 `[17]uc  1 s 17 F923 ]
-"514
+"520
 [v print_Countdown@F927 F927 `[17]uc  1 s 17 F927 ]
-"519
+"525
 [v print_Countdown@F929 F929 `[17]uc  1 s 17 F929 ]
-"524
+"530
 [v print_Countdown@F931 F931 `[17]uc  1 s 17 F931 ]
-"536
+"542
 } 0
-"563
+"569
 [v i1_send_cmd send_cmd `(v  1 e 1 0 ]
 {
 [v i1send_cmd@command command `uc  1 a 1 wreg ]
 [v i1send_cmd@command command `uc  1 a 1 wreg ]
-"565
+"571
 [v i1send_cmd@command command `uc  1 a 1 2 ]
-"572
+"578
 } 0
-"540
+"546
 [v _send_string send_string `(v  1 e 1 0 ]
 {
 [v send_string@str str `*.4uc  1 a 1 wreg ]
-"542
-[v send_string@i i `i  1 a 2 4 ]
-"540
-[v send_string@str str `*.4uc  1 a 1 wreg ]
-"542
-[v send_string@str str `*.4uc  1 a 1 6 ]
 "548
+[v send_string@i i `i  1 a 2 4 ]
+"546
+[v send_string@str str `*.4uc  1 a 1 wreg ]
+"548
+[v send_string@str str `*.4uc  1 a 1 6 ]
+"554
 } 0
-"551
+"557
 [v _send_data send_data `(v  1 e 1 0 ]
 {
 [v send_data@data data `uc  1 a 1 wreg ]
 [v send_data@data data `uc  1 a 1 wreg ]
-"553
+"559
 [v send_data@data data `uc  1 a 1 2 ]
-"560
+"566
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
