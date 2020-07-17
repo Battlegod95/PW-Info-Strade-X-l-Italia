@@ -1861,7 +1861,7 @@ void main(void) {
 
                             }
                         }
-                        else
+                        if(i>=3)
                         {
                             if(semafori[0]==statoSemafori[2])
                             {
@@ -1898,10 +1898,12 @@ void main(void) {
             messageTransmission(2, 3, 3, semafori[3]);
 
             messageTransmission(2, 1, 4, contMoto);
+            messageTransmission(2, 1, 4, 4);
             contMoto=0;
             messageTransmission(2, 1, 5, contAuto);
+            messageTransmission(2, 1, 5, 7);
             contAuto=0;
-            messageTransmission(2, 1, 6, contCamion);
+            messageTransmission(2, 1, 6, 3);
             contCamion=0;
             scattoSemafori=0;
         }
@@ -1951,6 +1953,21 @@ void __attribute__((picinterrupt(("")))) ISR()
     oldBtn3 = !PORTBbits.RB5;
 
 
+    if(f==0)
+    {
+        flagGiallo=0;
+        f=3;
+    }
+
+    if(countDown==0)
+    {
+        scattoSemafori=1;
+        if(temporizzazione!=0)
+            countDown=temporizzazione;
+        else
+            countDown=5;
+    }
+
 
    if(RCIF)
    {
@@ -1968,10 +1985,8 @@ void __attribute__((picinterrupt(("")))) ISR()
         if (count == 125)
         {
 
-
             if(semafori[0]==statoSemafori[0])
                 print_Countdown(countDown, 0);
-
             if(semafori[0]==statoSemafori[2])
                 print_Countdown(countDown, 2);
 
@@ -1982,29 +1997,18 @@ void __attribute__((picinterrupt(("")))) ISR()
                    print_Countdown(f, 1);
 
                 f--;
-                if(f==0)
-                {
-                    flagGiallo=0;
-                    f=3;
-                }
+
             }
             else
             {
                 countDown--;
-                if(countDown==0)
-                {
-                    scattoSemafori=1;
-                    if(temporizzazione!=0)
-                        countDown=temporizzazione;
-                    else
-                        countDown=5;
-                }
+
             }
             count = 0;
         }
    }
 }
-# 423 "main.c"
+# 427 "main.c"
 void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
     strToSend[0]=tipoMessaggio;
