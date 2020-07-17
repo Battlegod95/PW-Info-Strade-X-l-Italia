@@ -1771,7 +1771,7 @@ char strToSend[8] = {0,0,0,0,0,0};
 
 unsigned char datoSeriale=0;
 
-int count=0,f=0;
+int count=0,f=3;
 char contAuto=0;
 char contMoto=0;
 char contCamion=0;
@@ -1780,8 +1780,8 @@ char semafori[4];
 unsigned char scattoSemafori=0,flagGiallo=0;
 
 char statoSemafori[3]={0,1,2};
-char countDown=5, temporizzazione=0;
-
+char countDown=5;
+char temporizzazione=0;
 
 void main(void) {
 
@@ -1835,7 +1835,7 @@ void main(void) {
                     if(semafori[i]==statoSemafori[0])
                     {
 
-                         if(semafori[i]==statoSemafori[0])
+                        if(semafori[i]==statoSemafori[0])
                         {
                             flagGiallo=1;
                             while(flagGiallo==1)
@@ -1867,7 +1867,7 @@ void main(void) {
                             {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
-                                    semafori[i+1]=statoSemafori[1];
+                                    semafori[0]=statoSemafori[1];
 
                                 semafori[0]==statoSemafori[0];
 
@@ -1882,7 +1882,9 @@ void main(void) {
 
 
         }
-# 309 "main.c"
+
+
+
         if(scattoSemafori==1)
         {
 
@@ -1966,20 +1968,24 @@ void __attribute__((picinterrupt(("")))) ISR()
         if (count == 125)
         {
 
+
             if(semafori[0]==statoSemafori[0])
                 print_Countdown(countDown, 0);
-            if(semafori[0]==statoSemafori[1])
-                print_Countdown(countDown, 1);
+
             if(semafori[0]==statoSemafori[2])
                 print_Countdown(countDown, 2);
 
+
             if(flagGiallo==1)
             {
-                f++;
-                if(f>=3)
+                if(semafori[0]==statoSemafori[1])
+                   print_Countdown(f, 1);
+
+                f--;
+                if(f==0)
                 {
                     flagGiallo=0;
-                    f=0;
+                    f=3;
                 }
             }
             else
@@ -1994,17 +2000,11 @@ void __attribute__((picinterrupt(("")))) ISR()
                         countDown=5;
                 }
             }
-
-
-
-
-
-
             count = 0;
         }
    }
 }
-# 449 "main.c"
+# 423 "main.c"
 void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore)
 {
     strToSend[0]=tipoMessaggio;
@@ -2017,28 +2017,6 @@ void messageTransmission(char tipoMessaggio, char idStrada, char codice, char va
 }
 
 
-
-
-void concatenate( char* str3, char* str1, char* str2 )
-{
-    int i = 0, j = 0;
-    while (str1[i] != '\0') {
-        str3[j] = str1[i];
-        i++;
-        j++;
-    }
-
-    i = 0;
-    while (str2[i] != '\0') {
-        str3[j] = str2[i];
-        i++;
-        j++;
-    }
-    str3[j] = '\0';
-}
-
-
-
 void Uart_send_string(char *str)
 {
     char i;
@@ -2047,8 +2025,6 @@ void Uart_send_string(char *str)
         UART_TxChar(*(str+i));
     }
 }
-
-
 
 
 void initPic() {

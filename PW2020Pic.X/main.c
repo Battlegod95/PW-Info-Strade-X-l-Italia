@@ -98,7 +98,7 @@ char strToSend[8] = {0,0,0,0,0,0}; // Messaggio totale da mandare in seriale
 
 unsigned char datoSeriale=0; // Dato ricevuto dalla seriale
 
-int count=0,f=0;
+int count=0,f=3;
 char contAuto=0; // Conteggio automobili
 char contMoto=0; // Conteggio motoveicoli
 char contCamion=0; // Conteggio autocarri
@@ -107,8 +107,8 @@ char semafori[4]; //Numero dei semafori dell'incrocio
 unsigned char scattoSemafori=0,flagGiallo=0;
 //Verde 0, Giallo 1, Rosso 2
 char statoSemafori[3]={0,1,2};
-char countDown=TEMPO_DEFAULT, temporizzazione=0; // Temporizzazione del Verde, 35 secondi è la temporizzazione di default
-
+char countDown=TEMPO_DEFAULT; // Temporizzazione del Verde, 35 secondi è la temporizzazione di default
+char temporizzazione=0;
 
 void main(void) {
     
@@ -205,7 +205,7 @@ void main(void) {
         {
             contAuto++;
             stat1=0;
-            //UART_TxChar(contAuto);
+            
         }
         if(stat2) // Moto
         {
@@ -232,7 +232,7 @@ void main(void) {
                     if(semafori[i]==statoSemafori[0])// Se il semaforo corrente è Verde allora modifico
                     {
                         
-                         if(semafori[i]==statoSemafori[0])//Cambiamento a Rosso di tutti i semafori Verdi
+                        if(semafori[i]==statoSemafori[0])//Cambiamento a Rosso di tutti i semafori Verdi
                         {
                             flagGiallo=1;
                             while(flagGiallo==1)
@@ -252,7 +252,7 @@ void main(void) {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
                                     semafori[i+1]=statoSemafori[1]; 
-                                //__delay_ms(3000); //3 Secondi Obbligatori di giallo
+                                
                                 
                                 semafori[i+1]==statoSemafori[0];
                                 
@@ -264,8 +264,8 @@ void main(void) {
                             {
                                 flagGiallo=1;
                                 while(flagGiallo==1)
-                                    semafori[i+1]=statoSemafori[1]; 
-                                //__delay_ms(3000); //3 Secondi Obbligatori di giallo
+                                    semafori[0]=statoSemafori[1]; 
+                                
                                 semafori[0]==statoSemafori[0];
                                 
                             }
@@ -280,30 +280,6 @@ void main(void) {
             
         }
         
-        /*
- * BYTE TRASMISSIONE (strToSend)
- * 1 - Byte di controllo (se sensori 1 se veicoli o semaforo 2)
- * 2 - destinatario (chi deve ricevere la trasmissione)
- * 3 - mittente (id di chi trasmette)
- * 4 - id della strada in questione
- * 5 - codici di trasmissione:     - temperatura: 0 (0000)
-                                   - umidità: 1 (0001)
-                                   - pressione: 2 (0010)
-                                   - colore semaforo: 3 (0011)
- *                                      valore 00000000 (0) = verde
- *                                      valore 00000001 (1) = giallo
- *                                      valore 00000010 (2) = rosso
-                                   - numero ciclomotori: 4 (0100)
-                                   - numero automezzi: 5 (0101)
-                                   - numero camion: 6 (0110)
-
- * 6 - valore da trasmettere
- 
- * 
- * 
- * GUARDARE LA TEMPORIZZAZIONE DEL GIALLO PER LEGGE
- * TEMPORIZZAZIONE MINIMA 3 secondi
- */
         //void messageTransmission(char tipoMessaggio, char idStrada, char codice, char valore);
         // Gestione Trasmissione d'invio
         if(scattoSemafori==1)
@@ -389,20 +365,24 @@ void __interrupt() ISR()
         if (count == 125) //Quando count diventa 125 è passato un secondo
         {
             //Aggiornamento dello stato visuale del semaforo con id 0
+            
             if(semafori[0]==statoSemafori[0])
                 print_Countdown(countDown, 0);//seguo il semaforo 0
-            if(semafori[0]==statoSemafori[1])
-                print_Countdown(countDown, 1);
+               
             if(semafori[0]==statoSemafori[2])
                 print_Countdown(countDown, 2);
             
+            
             if(flagGiallo==1)
             {
-                f++;
-                if(f>=3)
+                if(semafori[0]==statoSemafori[1])
+                   print_Countdown(f, 1);
+                
+                f--;
+                if(f==0)
                 {
                     flagGiallo=0;
-                    f=0;
+                    f=3;
                 }
             }
             else
@@ -417,12 +397,6 @@ void __interrupt() ISR()
                         countDown=TEMPO_DEFAULT;
                 }
             }
-            //Timer Regolato/ Temporizzazione Semaforo Da Gateway
-            /*
-             if Tempo==0
-             scattoSemafori=1;
-             */
-            
             count = 0;
         }
    }
@@ -457,28 +431,6 @@ void messageTransmission(char tipoMessaggio, char idStrada, char codice, char va
     Uart_send_string(strToSend);
 }
 
-
-
-// Funzione per concatenare due stringhe
-void concatenate( char* str3, char* str1, char* str2 )
-{
-    int i = 0, j = 0;
-    while (str1[i] != '\0') { 
-        str3[j] = str1[i];
-        i++; 
-        j++; 
-    } 
-
-    i = 0; 
-    while (str2[i] != '\0') { 
-        str3[j] = str2[i]; 
-        i++; 
-        j++; 
-    } 
-    str3[j] = '\0';
-}
-
-
 // Funzione per inviare l'array di byte alla seriale
 void Uart_send_string(char *str)
 {
@@ -488,8 +440,6 @@ void Uart_send_string(char *str)
         UART_TxChar(*(str+i));
     }
 }
-
-
 
 //inizializzo il PIC
 void initPic() {
